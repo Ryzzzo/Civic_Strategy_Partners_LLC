@@ -17,7 +17,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background video will be added here - currently using gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a] via-[#1e40af] to-[#0a2847]"></div>
