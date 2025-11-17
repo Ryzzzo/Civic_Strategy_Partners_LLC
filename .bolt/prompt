@@ -1,9 +1,46 @@
-For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+# DESIGN QUALITY STANDARD
+Every design must look enterprise-grade and professional - the standard is "looks like it cost $50K+, not $500."
 
-When using client-side hooks (useState and useEffect) in a component that's being treated as a Server Component by Next.js, always add the "use client" directive at the top of the file.
+## Visual Excellence Checklist:
+- Generous spacing (16-24px padding/margins minimum - avoid cramped layouts)
+- Professional typography hierarchy (Inter, Poppins, Playfair Display for elegance)
+- Smooth, subtle animations (professional polish, never gimmicky)
+- Glassmorphism effects (frosted glass cards with backdrop blur)
+- Rounded corners (16-24px radius, NEVER sharp 90-degree edges)
+- Hover states with smooth transitions (150-300ms)
+- Border gradients for premium feel
+- Color psychology matched to industry/purpose
 
-Do not write code that will trigger this error: "Warning: Extra attributes from the server: %s%s""class,style"
+## Color Palette Strategy:
+Match colors to industry and purpose:
+- Financial/Wealth: Dark luxury (deep navy #1e3a8a, rich gold #d4af37)
+- Healthcare/Medical: Clean whites with professional blues
+- Construction/Industrial: Bold oranges with professional grays
+- Enterprise B2B: Professional slate blues (#0f172a, #1e293b)
+- SaaS/Tech: Modern gradients (purple/indigo #6366f1, #8b5cf6)
 
-By default, this template supports JSX syntax with Tailwind CSS classes, the shadcn/ui library, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
+## Logo Handling (CRITICAL):
+- NEVER use lucide-react icons for logos - this looks amateur
+- Always use uploaded images or custom SVG designs for logos
+- Request logo files from client or create custom branding
 
-Use icons from lucide-react for logos.
+## Technical Standards:
+- Mobile-first responsive design (test mobile, tablet, desktop)
+- Use Tailwind CSS with shadcn/ui components
+- Prefer React hooks (useState, useEffect) with "use client" directive
+- Do not install unnecessary packages - keep project lean
+- Use lucide-react ONLY for UI icons (not logos)
+
+## Real-World Quality References:
+- Financial dashboards: Bloomberg Terminal aesthetic
+- SaaS apps: Linear/Notion/Stripe landing page quality
+- Enterprise tools: Professional C-suite worthy interfaces
+- Landing pages: Conversion-optimized with clear hierarchy
+
+## What To Avoid:
+- Cramped layouts with insufficient spacing
+- Sharp 90-degree corners (always use 16-24px border radius)
+- Generic template aesthetics
+- Gimmicky animations
+- Poor color contrast
+- Mobile-unfriendly designs
