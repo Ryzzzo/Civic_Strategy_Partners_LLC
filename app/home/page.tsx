@@ -17,7 +17,7 @@ export default function Home() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const navHeight = 80;
+      const navHeight = 88;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - navHeight,
@@ -88,7 +88,7 @@ export default function Home() {
         className={`fixed top-0 left-0 right-0 bg-white z-50 transition-shadow duration-200 ${
           scrolled ? 'shadow-sm' : ''
         }`}
-        style={{ height: '80px' }}
+        style={{ height: '88px' }}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
           <button
@@ -98,7 +98,7 @@ export default function Home() {
             <img
               src="/Civic Strategy Partners LLC Logo NO TAGLINE copy.png"
               alt="Civic Strategy Partners Logo"
-              className="h-10 w-auto object-contain"
+              className="h-[52px] w-auto object-contain"
             />
             <div className="text-[#0F172A] font-semibold text-[18px]">
               CIVIC STRATEGY PARTNERS
@@ -189,9 +189,9 @@ export default function Home() {
       {/* Hero Section - Animated Gradient */}
       <section
         className="flex items-center justify-center px-6 relative overflow-hidden"
-        style={{ minHeight: 'calc(100vh - 80px)', marginTop: '80px' }}
+        style={{ minHeight: 'calc(100vh - 88px)', marginTop: '88px' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#1e2a3a] to-[#0F2847] animate-gradient-slow"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#0d1520] to-[#0F2847] animate-gradient-slow"></div>
         <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
 
@@ -241,13 +241,13 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
             <div>
               <h3 className="text-[24px] font-semibold text-[#0F172A] mb-4" style={{ fontWeight: 600 }}>
-                GSA Schedule Consulting
+                Offer Development
               </h3>
               <p className="text-[#4B5563] text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
-                Help companies get on GSA MAS and start selling to federal agencies. We guide you through the application process and position you for success.
+                Full-scope preparation and submission of GSA MAS offers, from readiness assessment through final award. We handle documentation, pricing strategy, and compliance requirements so you can focus on your business.
               </p>
               <a
-                href="mailto:kevin@civicstrategypartners.com?subject=GSA Schedule Consulting Inquiry"
+                href="mailto:kevin@civicstrategypartners.com?subject=Offer Development Inquiry"
                 className="text-[#1E3A8F] text-[16px] font-medium hover:text-[#1E40AF] transition-colors"
               >
                 Learn more →
@@ -256,13 +256,13 @@ export default function Home() {
 
             <div>
               <h3 className="text-[24px] font-semibold text-[#0F172A] mb-4" style={{ fontWeight: 600 }}>
-                Business Development
+                Post-Award Compliance
               </h3>
               <p className="text-[#4B5563] text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
-                Strategic BD support to identify and win federal contract opportunities. We help you build a pipeline and develop winning strategies.
+                Ongoing contract maintenance, modifications, and Economic Price Adjustments. We keep your Schedule compliant, current, and positioned for long-term success in the federal marketplace.
               </p>
               <a
-                href="mailto:kevin@civicstrategypartners.com?subject=Business Development Inquiry"
+                href="mailto:kevin@civicstrategypartners.com?subject=Post-Award Compliance Inquiry"
                 className="text-[#1E3A8F] text-[16px] font-medium hover:text-[#1E40AF] transition-colors"
               >
                 Learn more →
@@ -271,13 +271,13 @@ export default function Home() {
 
             <div>
               <h3 className="text-[24px] font-semibold text-[#0F172A] mb-4" style={{ fontWeight: 600 }}>
-                Contract Coaching
+                Growth Strategy
               </h3>
               <p className="text-[#4B5563] text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
-                Advisory services for companies navigating the federal marketplace. Get expert guidance on compliance, strategy, and execution.
+                Catalog expansion, BPA and IDIQ positioning, and GSA-driven sales optimization. We help you expand your federal footprint and turn your Schedule into a sustainable revenue engine.
               </p>
               <a
-                href="mailto:kevin@civicstrategypartners.com?subject=Contract Coaching Inquiry"
+                href="mailto:kevin@civicstrategypartners.com?subject=Growth Strategy Inquiry"
                 className="text-[#1E3A8F] text-[16px] font-medium hover:text-[#1E40AF] transition-colors"
               >
                 Learn more →
@@ -289,7 +289,7 @@ export default function Home() {
 
       {/* About Section - Animated Gradient */}
       <section id="about" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#1e2a3a] to-[#0F2847] animate-gradient-slow"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#0d1520] to-[#0F2847] animate-gradient-slow"></div>
         <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
 
@@ -312,18 +312,18 @@ export default function Home() {
               </h2>
 
               <p className="text-[16px] text-white/70 mb-8">
-                MBA • U.S. Marine Corps Veteran
+                MBA • U.S. Marine Corps Veteran • Former GSA Contract Specialist
               </p>
 
               <div className="text-[18px] text-white/90 space-y-6" style={{ lineHeight: '1.7' }}>
                 <p>
-                  Kevin brings deep expertise in federal contracting and GSA schedules, helping businesses successfully enter and grow in the government marketplace. His background combines strategic business acumen with the discipline and mission focus gained through military service.
+                  Kevin brings firsthand federal acquisition expertise from his time at the General Services Administration, where he evaluated offers, negotiated pricing, and guided contractors through the Multiple Award Schedule program. This insider perspective shapes everything Civic Strategy Partners delivers.
                 </p>
                 <p>
-                  With extensive experience guiding companies through the complexities of federal procurement, Kevin provides practical, results-driven consulting that helps clients win contracts and build sustainable government partnerships.
+                  As Founder and Principal Consultant, Kevin helps businesses secure, manage, and grow their GSA Schedule contracts with precision, compliance, and confidence. His approach combines strategic business acumen with the discipline and mission focus gained through Marine Corps service.
                 </p>
                 <p>
-                  Based in Charlotte, NC, Civic Strategy Partners works with businesses nationwide to navigate federal contracting requirements and achieve their government market goals.
+                  Whether you're pursuing your first Schedule award or optimizing a mature contract portfolio, Kevin provides hands-on expertise built from inside government itself.
                 </p>
               </div>
             </div>
@@ -360,7 +360,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-12 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#1e2a3a] to-[#0F2847] animate-gradient-slow"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#0d1520] to-[#0F2847] animate-gradient-slow"></div>
         <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
 
