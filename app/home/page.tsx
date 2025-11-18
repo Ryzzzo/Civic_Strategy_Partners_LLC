@@ -110,19 +110,26 @@ export default function HomePage() {
           50% { background-position: 100% 50%; }
         }
 
+        @keyframes video-gradient {
+          0%, 100% {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #0f172a 50%, #1e3a8a 75%, #0f172a 100%);
+          }
+          33% {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 25%, #1e3a8a 50%, #0f172a 75%, #1e293b 100%);
+          }
+          66% {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 25%, #0f172a 50%, #1e293b 75%, #1e3a8a 100%);
+          }
+        }
+
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.5; }
-        }
-
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
         }
 
         .animate-fade-up {
@@ -134,12 +141,34 @@ export default function HomePage() {
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+          border-radius: 16px;
         }
 
-        .gradient-bg {
-          background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #334155);
+        .video-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #0f172a 50%, #1e3a8a 75%, #0f172a 100%);
           background-size: 400% 400%;
-          animation: gradient-shift 30s ease infinite;
+          animation: video-gradient 25s ease infinite;
+        }
+
+        .video-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(15, 23, 42, 0.7);
+          z-index: 1;
+        }
+
+        .grid-pattern {
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+');
+          opacity: 0.4;
         }
 
         .gold-gradient-text {
@@ -147,16 +176,6 @@ export default function HomePage() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-        }
-
-        .radial-gradient-orb {
-          position: absolute;
-          width: 600px;
-          height: 600px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(30, 58, 138, 0.4) 0%, transparent 70%);
-          animation: pulse-glow 8s ease-in-out infinite;
-          pointer-events: none;
         }
       `}} />
 
@@ -226,58 +245,43 @@ export default function HomePage() {
       </nav>
 
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 gradient-bg"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+        <div className="video-background"></div>
+        <div className="video-overlay"></div>
+        <div className="absolute inset-0 grid-pattern z-[1]"></div>
 
-        <div className="radial-gradient-orb" style={{ top: '20%', left: '10%' }}></div>
+        <div className="relative max-w-6xl mx-auto px-6 lg:px-12 text-center z-10">
+          <div className="animate-on-scroll animate-fade-up" style={{ animationDelay: '0.1s' }}>
+            <p className="playfair text-[#d4af37] text-lg sm:text-xl mb-8 italic tracking-wide">
+              Marine-Owned. Mission-Driven. Federal-Focused.
+            </p>
+          </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-12 z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7">
-              <div className="animate-fade-up" style={{ animationDelay: '0.1s' }}>
-                <p className="playfair text-[#d4af37] text-lg mb-8 italic tracking-wide">
-                  Marine-Owned. Mission-Driven. Federal-Focused.
-                </p>
-              </div>
+          <h1
+            className="animate-on-scroll text-6xl sm:text-7xl lg:text-[80px] font-bold leading-[1.1] mb-8 tracking-tight animate-fade-up"
+            style={{ animationDelay: '0.2s', fontWeight: 700 }}
+          >
+            Expert Guidance for<br />
+            <span className="gold-gradient-text">Federal Market</span> Success
+          </h1>
 
-              <h1
-                className="text-6xl sm:text-7xl lg:text-[88px] font-bold leading-[1.1] mb-8 tracking-tight animate-fade-up"
-                style={{ animationDelay: '0.2s', fontWeight: 700 }}
-              >
-                Expert Guidance for<br />
-                <span className="gold-gradient-text">Federal Market</span> Success
-              </h1>
+          <p
+            className="animate-on-scroll text-[#e2e8f0] text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up"
+            style={{ animationDelay: '0.3s', lineHeight: '1.7' }}
+          >
+            Strategic consulting to help businesses win and perform on federal contracts with military precision and proven methodologies.
+          </p>
 
-              <p
-                className="text-[#e2e8f0] text-lg sm:text-xl max-w-xl mb-12 leading-relaxed animate-fade-up"
-                style={{ animationDelay: '0.3s', lineHeight: '1.7' }}
-              >
-                Strategic consulting to help businesses win and perform on federal contracts with military precision and proven methodologies.
-              </p>
-
-              <div className="animate-fade-up" style={{ animationDelay: '0.4s' }}>
-                <a
-                  href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-                  className="inline-block bg-[#d4af37] hover:bg-[#c4a027] text-[#0f172a] px-10 py-4 rounded-lg font-bold text-lg transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#d4af37]/30"
-                >
-                  Schedule Consultation
-                </a>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 animate-fade-up" style={{ animationDelay: '0.5s' }}>
-              <div className="glassmorphism rounded-3xl overflow-hidden shadow-2xl border-2 border-[#d4af37]/20">
-                <img
-                  src="/1743701547902.jpeg"
-                  alt="Kevin M. Lewis - Founder & CEO"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+          <div className="animate-on-scroll animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            <a
+              href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
+              className="inline-block bg-[#d4af37] hover:bg-[#c4a027] text-[#0f172a] px-10 py-4 rounded-lg font-bold text-lg transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#d4af37]/30"
+            >
+              Schedule Consultation
+            </a>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
           <svg className="w-6 h-6 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
           </svg>
@@ -298,13 +302,13 @@ export default function HomePage() {
       <section id="services" ref={servicesRef} className="py-32 bg-[#0f172a]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-20">
-            <h2 className={`text-5xl lg:text-[56px] font-bold mb-6 tracking-tight ${
-              visibleSections.has('services') ? 'animate-fade-up' : 'opacity-0'
+            <h2 className={`animate-on-scroll text-5xl lg:text-[56px] font-bold mb-6 tracking-tight ${
+              visibleSections.has('services') ? 'animate-fade-up' : ''
             }`} style={{ fontWeight: 700 }}>
               How We Help You Win
             </h2>
-            <p className={`text-[#94a3b8] text-lg max-w-2xl mx-auto ${
-              visibleSections.has('services') ? 'animate-fade-up' : 'opacity-0'
+            <p className={`animate-on-scroll text-[#94a3b8] text-lg max-w-2xl mx-auto ${
+              visibleSections.has('services') ? 'animate-fade-up' : ''
             }`} style={{ animationDelay: '0.1s', lineHeight: '1.7' }}>
               Comprehensive federal contracting expertise across every phase of the process
             </p>
@@ -330,13 +334,10 @@ export default function HomePage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className={`glassmorphism rounded-2xl p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] hover:border-[#d4af37]/30 ${
-                  visibleSections.has('services') ? 'animate-fade-up' : 'opacity-0'
+                className={`animate-on-scroll glassmorphism p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] hover:border-[rgba(212,175,55,0.3)] ${
+                  visibleSections.has('services') ? 'animate-fade-up' : ''
                 }`}
-                style={{
-                  animationDelay: service.delay,
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
-                }}
+                style={{ animationDelay: service.delay }}
               >
                 <h3 className="text-2xl font-semibold mb-4 text-white" style={{ fontWeight: 600 }}>
                   {service.title}
@@ -359,66 +360,77 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="video" ref={videoRef} className="relative py-40 overflow-hidden">
-        <div className="absolute inset-0 gradient-bg"></div>
-        <div className="absolute inset-0 bg-black/40"></div>
-
+      <section id="video" ref={videoRef} className="relative py-32 overflow-hidden bg-[#1e293b]">
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className={`text-5xl lg:text-[48px] font-bold mb-12 ${
-            visibleSections.has('video') ? 'animate-fade-up' : 'opacity-0'
+          <h2 className={`animate-on-scroll text-4xl lg:text-5xl font-bold mb-16 ${
+            visibleSections.has('video') ? 'animate-fade-up' : ''
           }`} style={{ fontWeight: 700 }}>
-            See Our Process in Action
+            See Our Process
           </h2>
 
-          <div className={`glassmorphism rounded-3xl aspect-video flex items-center justify-center transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
-            visibleSections.has('video') ? 'animate-fade-up' : 'opacity-0'
+          <div className={`animate-on-scroll flex items-center justify-center ${
+            visibleSections.has('video') ? 'animate-fade-up' : ''
           }`} style={{ animationDelay: '0.2s' }}>
-            <div className="text-center">
-              <div className="w-24 h-24 rounded-full bg-[#d4af37]/20 backdrop-blur-sm flex items-center justify-center mb-6 mx-auto border border-[#d4af37]/50 hover:bg-[#d4af37]/30 transition-all">
-                <svg className="w-10 h-10 text-[#d4af37] ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <button className="group relative">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#d4af37] flex items-center justify-center transition-all duration-300 group-hover:bg-[#c4a027] group-hover:scale-110 shadow-xl">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-[#0f172a] ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <p className="text-[#94a3b8] text-sm uppercase tracking-wider">Coming Soon</p>
+              <div className="absolute inset-0 rounded-full bg-[#d4af37] opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" ref={aboutRef} className="py-32 bg-[#0f172a]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-7">
+              <h2 className={`animate-on-scroll text-5xl lg:text-[56px] font-bold mb-8 leading-tight ${
+                visibleSections.has('about') ? 'animate-fade-up' : ''
+              }`} style={{ fontWeight: 700 }}>
+                Marine Leadership.<br />
+                Strategic Precision.
+              </h2>
+
+              <div className={`animate-on-scroll space-y-6 text-[#e2e8f0] text-lg leading-relaxed ${
+                visibleSections.has('about') ? 'animate-fade-up' : ''
+              }`} style={{ animationDelay: '0.1s', lineHeight: '1.7' }}>
+                <p>
+                  Led by a United States Marine Corps veteran with an MBA in Strategic Leadership, Civic Strategy Partners brings military precision and strategic thinking to federal contracting.
+                </p>
+                <p>
+                  Kevin Martin has guided businesses through the complexities of government procurement for over 14 years, supporting more than $500M in federal proposals and helping companies of all sizes secure and perform on federal contracts.
+                </p>
+                <p>
+                  Our approach combines deep regulatory knowledge with practical, results-driven strategies that win contracts. We don't just guide you through the process—we become your strategic partner in building a sustainable federal contracting business.
+                </p>
+              </div>
+
+              <div className={`animate-on-scroll mt-10 pt-8 border-t border-[#334155]/50 ${
+                visibleSections.has('about') ? 'animate-fade-up' : ''
+              }`} style={{ animationDelay: '0.2s' }}>
+                <p className="text-[#d4af37] font-semibold text-lg">Service-Disabled Veteran-Owned Small Business (SDVOSB)</p>
+              </div>
+            </div>
+
+            <div className={`animate-on-scroll lg:col-span-5 ${
+              visibleSections.has('about') ? 'animate-fade-up' : ''
+            }`} style={{ animationDelay: '0.3s' }}>
+              <div className="glassmorphism aspect-square overflow-hidden shadow-2xl">
+                <img
+                  src="/1743701547902.jpeg"
+                  alt="Kevin M. Lewis - Founder & CEO"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="about" ref={aboutRef} className="py-32 bg-[#1e293b]">
-        <div className="max-w-5xl mx-auto px-6 lg:px-12">
-          <div className="text-center">
-            <h2 className={`text-5xl lg:text-[56px] font-bold mb-8 leading-tight ${
-              visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
-            }`} style={{ fontWeight: 700 }}>
-              Marine Leadership.<br />
-              Strategic Precision.
-            </h2>
-
-            <div className={`space-y-6 text-[#e2e8f0] text-lg leading-relaxed max-w-3xl mx-auto ${
-              visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
-            }`} style={{ animationDelay: '0.1s', lineHeight: '1.7' }}>
-              <p>
-                Led by a United States Marine Corps veteran with an MBA in Strategic Leadership, Civic Strategy Partners brings military precision and strategic thinking to federal contracting.
-              </p>
-              <p>
-                Kevin Martin has guided businesses through the complexities of government procurement for over 14 years, supporting more than $500M in federal proposals and helping companies of all sizes secure and perform on federal contracts.
-              </p>
-              <p>
-                Our approach combines deep regulatory knowledge with practical, results-driven strategies that win contracts. We don't just guide you through the process—we become your strategic partner in building a sustainable federal contracting business.
-              </p>
-            </div>
-
-            <div className={`mt-12 pt-8 border-t border-[#334155]/50 max-w-3xl mx-auto ${
-              visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
-            }`} style={{ animationDelay: '0.2s' }}>
-              <p className="text-[#d4af37] font-semibold text-lg">Service-Disabled Veteran-Owned Small Business (SDVOSB)</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-40 bg-[#0f172a] border-y border-[#334155]/30">
+      <section className="py-40 bg-[#1e293b] border-y border-[#334155]/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-5xl lg:text-[56px] font-bold mb-6" style={{ fontWeight: 700 }}>
             Ready to Win Federal Contracts?
