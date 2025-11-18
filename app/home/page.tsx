@@ -301,22 +301,18 @@ export default function HomePage() {
                 visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
               }`} style={{ animationDelay: '0.2s' }}>
                 <p className="text-[#d4af37] font-semibold mb-2">Service-Disabled Veteran-Owned Small Business (SDVOSB)</p>
-                <p className="text-[#94a3b8]">A Gov Con Proposals Company</p>
               </div>
             </div>
 
             <div className={`lg:col-span-2 ${
               visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
             }`} style={{ animationDelay: '0.3s' }}>
-              <div className="glassmorphism rounded-2xl aspect-square flex items-center justify-center">
-                <div className="text-center px-8">
-                  <svg className="w-20 h-20 text-[#d4af37]/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  <p className="text-[#94a3b8] text-sm uppercase tracking-wider">
-                    Professional Photo
-                  </p>
-                </div>
+              <div className="glassmorphism rounded-2xl aspect-square overflow-hidden">
+                <img
+                  src="/1743701547902.jpeg"
+                  alt="Kevin M. Lewis - Founder & CEO"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
