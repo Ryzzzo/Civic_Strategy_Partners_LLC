@@ -169,21 +169,25 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section - Animated Gradient */}
       <section
-        className="flex items-center justify-center px-6 bg-white"
+        className="flex items-center justify-center px-6 relative overflow-hidden"
         style={{ minHeight: 'calc(100vh - 72px)', marginTop: '72px' }}
       >
-        <div className="text-center" style={{ maxWidth: '800px' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1F3F] via-[#1a1a1a] to-[#0B1F3F] animate-gradient-slow"></div>
+        <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
+
+        <div className="text-center relative z-10" style={{ maxWidth: '800px' }}>
           <h1
-            className="text-[32px] md:text-[40px] lg:text-[56px] font-semibold text-[#0F172A] mb-6"
+            className="text-[32px] md:text-[40px] lg:text-[56px] font-semibold text-white mb-6"
             style={{ lineHeight: '1.1', fontWeight: 600 }}
           >
             Expert Guidance for Federal Market Success
           </h1>
 
           <p
-            className="text-[20px] md:text-[24px] text-[#4B5563] mb-12 mx-auto"
+            className="text-[20px] md:text-[24px] text-white/80 mb-12 mx-auto"
             style={{ maxWidth: '600px' }}
           >
             Helping businesses navigate GSA schedules, win federal contracts, and build lasting government partnerships.
@@ -192,79 +196,72 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-              className="bg-[#1E3A8F] text-white px-8 py-3 rounded-lg text-[16px] font-medium hover:bg-[#1E40AF] w-full sm:w-auto text-center"
+              className="bg-white text-[#0B1F3F] px-8 py-3 rounded-lg text-[16px] font-medium hover:bg-gray-100 w-full sm:w-auto text-center transition-colors"
             >
               Schedule Consultation
             </a>
             <button
               onClick={() => scrollToSection('services')}
-              className="bg-white text-[#1E3A8F] border-2 border-[#1E3A8F] px-8 py-3 rounded-lg text-[16px] font-medium hover:bg-[#F9FAFB] w-full sm:w-auto"
+              className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg text-[16px] font-medium hover:bg-white/10 w-full sm:w-auto transition-colors"
             >
               View Services
             </button>
           </div>
 
-          <p className="text-[14px] text-[#6B7280] mt-12">
+          <p className="text-[14px] text-white/60 mt-12">
             Marine-Owned • Mission-Driven • Federal-Focused
           </p>
         </div>
       </section>
 
-      {/* Services Section - Animated Gradient */}
-      <section
-        id="services"
-        className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1F3F] via-[#1a1a1a] to-[#0B1F3F] animate-gradient-slow"></div>
-        <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
-
-        <div className="max-w-[1200px] mx-auto relative z-10">
-          <h2 className="text-[36px] font-semibold text-white mb-16 text-center" style={{ fontWeight: 600 }}>
+      {/* Services Section - White Background */}
+      <section id="services" className="py-24 md:py-32 lg:py-[120px] px-6 bg-white">
+        <div className="max-w-[1200px] mx-auto">
+          <h2 className="text-[36px] font-semibold text-[#0F172A] mb-16 text-center" style={{ fontWeight: 600 }}>
             Services
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
             <div>
-              <h3 className="text-[24px] font-semibold text-white mb-4" style={{ fontWeight: 600 }}>
+              <h3 className="text-[24px] font-semibold text-[#0F172A] mb-4" style={{ fontWeight: 600 }}>
                 GSA Schedule Consulting
               </h3>
-              <p className="text-white/90 text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
+              <p className="text-[#4B5563] text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
                 Help companies get on GSA MAS and start selling to federal agencies. We guide you through the application process and position you for success.
               </p>
               <a
                 href="mailto:kevin@civicstrategypartners.com?subject=GSA Schedule Consulting Inquiry"
-                className="text-[#93C5FD] text-[16px] font-medium hover:text-white transition-colors"
+                className="text-[#1E3A8F] text-[16px] font-medium hover:text-[#1E40AF] transition-colors"
               >
                 Learn more →
               </a>
             </div>
 
             <div>
-              <h3 className="text-[24px] font-semibold text-white mb-4" style={{ fontWeight: 600 }}>
+              <h3 className="text-[24px] font-semibold text-[#0F172A] mb-4" style={{ fontWeight: 600 }}>
                 Business Development
               </h3>
-              <p className="text-white/90 text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
+              <p className="text-[#4B5563] text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
                 Strategic BD support to identify and win federal contract opportunities. We help you build a pipeline and develop winning strategies.
               </p>
               <a
                 href="mailto:kevin@civicstrategypartners.com?subject=Business Development Inquiry"
-                className="text-[#93C5FD] text-[16px] font-medium hover:text-white transition-colors"
+                className="text-[#1E3A8F] text-[16px] font-medium hover:text-[#1E40AF] transition-colors"
               >
                 Learn more →
               </a>
             </div>
 
             <div>
-              <h3 className="text-[24px] font-semibold text-white mb-4" style={{ fontWeight: 600 }}>
+              <h3 className="text-[24px] font-semibold text-[#0F172A] mb-4" style={{ fontWeight: 600 }}>
                 Contract Coaching
               </h3>
-              <p className="text-white/90 text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
+              <p className="text-[#4B5563] text-[16px] mb-4" style={{ lineHeight: '1.7' }}>
                 Advisory services for companies navigating the federal marketplace. Get expert guidance on compliance, strategy, and execution.
               </p>
               <a
                 href="mailto:kevin@civicstrategypartners.com?subject=Contract Coaching Inquiry"
-                className="text-[#93C5FD] text-[16px] font-medium hover:text-white transition-colors"
+                className="text-[#1E3A8F] text-[16px] font-medium hover:text-[#1E40AF] transition-colors"
               >
                 Learn more →
               </a>
@@ -273,9 +270,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section - White */}
-      <section id="about" className="py-24 md:py-32 lg:py-[120px] px-6 bg-white">
-        <div className="max-w-[1200px] mx-auto">
+      {/* About Section - Animated Gradient */}
+      <section id="about" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1F3F] via-[#1a1a1a] to-[#0B1F3F] animate-gradient-slow"></div>
+        <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
+
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-16 items-center">
             <div className="md:col-span-2">
               <div
@@ -285,19 +286,19 @@ export default function Home() {
             </div>
 
             <div className="md:col-span-3">
-              <p className="text-[14px] text-[#6B7280] uppercase mb-4" style={{ letterSpacing: '0.1em' }}>
+              <p className="text-[14px] text-white/60 uppercase mb-4" style={{ letterSpacing: '0.1em' }}>
                 About
               </p>
 
-              <h2 className="text-[36px] font-semibold text-[#0F172A] mb-3" style={{ fontWeight: 600 }}>
+              <h2 className="text-[36px] font-semibold text-white mb-3" style={{ fontWeight: 600 }}>
                 Kevin Martin
               </h2>
 
-              <p className="text-[16px] text-[#6B7280] mb-8">
+              <p className="text-[16px] text-white/70 mb-8">
                 MBA • U.S. Marine Corps Veteran
               </p>
 
-              <div className="text-[18px] text-[#4B5563] space-y-6" style={{ lineHeight: '1.7' }}>
+              <div className="text-[18px] text-white/90 space-y-6" style={{ lineHeight: '1.7' }}>
                 <p>
                   Kevin brings deep expertise in federal contracting and GSA schedules, helping businesses successfully enter and grow in the government marketplace. His background combines strategic business acumen with the discipline and mission focus gained through military service.
                 </p>
@@ -313,34 +314,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact/CTA Section - Animated Gradient */}
-      <section
-        id="contact"
-        className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1F3F] via-[#1a1a1a] to-[#0B1F3F] animate-gradient-slow"></div>
-        <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
-
-        <div className="max-w-[1200px] mx-auto text-center relative z-10">
-          <h2 className="text-[36px] md:text-[48px] font-semibold text-white mb-6" style={{ fontWeight: 600 }}>
+      {/* Contact/CTA Section - White Background */}
+      <section id="contact" className="py-24 md:py-32 lg:py-[120px] px-6 bg-white">
+        <div className="max-w-[1200px] mx-auto text-center">
+          <h2 className="text-[36px] md:text-[48px] font-semibold text-[#0F172A] mb-6" style={{ fontWeight: 600 }}>
             Ready to Enter the Federal Market?
           </h2>
 
-          <p className="text-[20px] text-white/90 mb-12 max-w-[600px] mx-auto">
+          <p className="text-[20px] text-[#4B5563] mb-12 max-w-[600px] mx-auto">
             Schedule a consultation to discuss your government contracting goals.
           </p>
 
           <a
             href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-            className="inline-block bg-white text-[#0B1F3F] px-8 py-4 rounded-lg text-[18px] font-medium hover:bg-gray-100 mb-6 transition-colors"
+            className="inline-block bg-[#1E3A8F] text-white px-8 py-4 rounded-lg text-[18px] font-medium hover:bg-[#1E40AF] mb-6 transition-colors"
           >
             Schedule Consultation
           </a>
 
-          <p className="text-[14px] text-white/80">
+          <p className="text-[14px] text-[#6B7280]">
             or email{' '}
-            <a href="mailto:kevin@civicstrategypartners.com" className="text-[#93C5FD] hover:text-white underline transition-colors">
+            <a href="mailto:kevin@civicstrategypartners.com" className="text-[#1E3A8F] hover:text-[#1E40AF] underline transition-colors">
               kevin@civicstrategypartners.com
             </a>
           </p>
