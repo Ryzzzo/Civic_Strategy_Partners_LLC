@@ -98,7 +98,7 @@ export default function Home() {
             <img
               src="/Civic Strategy Partners LLC Logo NO TAGLINE copy.png"
               alt="Civic Strategy Partners Logo"
-              className="h-[52px] w-auto object-contain"
+              className="h-[70px] w-auto object-contain"
             />
             <div className="text-[#0F172A] font-semibold text-[18px]">
               CIVIC STRATEGY PARTNERS
@@ -296,10 +296,12 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-16 items-center">
             <div className="md:col-span-2">
-              <div
-                className="bg-[#E5E7EB] rounded-lg w-full"
+              <img
+                src="/1743701547902 copy.jpeg"
+                alt="Kevin Martin"
+                className="rounded-lg w-full object-cover"
                 style={{ aspectRatio: '4/5' }}
-              ></div>
+              />
             </div>
 
             <div className="md:col-span-3">
