@@ -17,13 +17,20 @@ export default function Home() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const navHeight = 72;
+      const navHeight = 80;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - navHeight,
         behavior: 'smooth'
       });
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -81,12 +88,22 @@ export default function Home() {
         className={`fixed top-0 left-0 right-0 bg-white z-50 transition-shadow duration-200 ${
           scrolled ? 'shadow-sm' : ''
         }`}
-        style={{ height: '72px' }}
+        style={{ height: '80px' }}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
-          <div className="text-[#0F172A] font-semibold text-[18px]">
-            CIVIC STRATEGY PARTNERS
-          </div>
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <img
+              src="/Civic Strategy Partners LLC Logo NO TAGLINE copy.png"
+              alt="Civic Strategy Partners Logo"
+              className="h-10 w-auto object-contain"
+            />
+            <div className="text-[#0F172A] font-semibold text-[18px]">
+              CIVIC STRATEGY PARTNERS
+            </div>
+          </button>
 
           <div className="hidden md:flex items-center gap-8">
             <button
@@ -172,9 +189,9 @@ export default function Home() {
       {/* Hero Section - Animated Gradient */}
       <section
         className="flex items-center justify-center px-6 relative overflow-hidden"
-        style={{ minHeight: 'calc(100vh - 72px)', marginTop: '72px' }}
+        style={{ minHeight: 'calc(100vh - 80px)', marginTop: '80px' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1F3F] via-[#1a1a1a] to-[#0B1F3F] animate-gradient-slow"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#1e2a3a] to-[#0F2847] animate-gradient-slow"></div>
         <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
 
@@ -196,7 +213,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-              className="bg-white text-[#0B1F3F] px-8 py-3 rounded-lg text-[16px] font-medium hover:bg-gray-100 w-full sm:w-auto text-center transition-colors"
+              className="bg-white text-[#0F2847] px-8 py-3 rounded-lg text-[16px] font-medium hover:bg-gray-100 w-full sm:w-auto text-center transition-colors"
             >
               Schedule Consultation
             </a>
@@ -272,7 +289,7 @@ export default function Home() {
 
       {/* About Section - Animated Gradient */}
       <section id="about" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1F3F] via-[#1a1a1a] to-[#0B1F3F] animate-gradient-slow"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#1e2a3a] to-[#0F2847] animate-gradient-slow"></div>
         <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
 
@@ -342,9 +359,13 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#F9FAFB] py-12 px-6">
-        <div className="max-w-[1200px] mx-auto text-center">
-          <p className="text-[14px] text-[#6B7280]">
+      <footer className="py-12 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#1e2a3a] to-[#0F2847] animate-gradient-slow"></div>
+        <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
+
+        <div className="max-w-[1200px] mx-auto text-center relative z-10">
+          <p className="text-[14px] text-white/70">
             © 2025 Civic Strategy Partners LLC
           </p>
         </div>
