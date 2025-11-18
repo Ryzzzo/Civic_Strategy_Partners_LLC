@@ -261,7 +261,7 @@ export default function HomePage() {
           </div>
 
           <h1
-            className="animate-on-scroll text-6xl sm:text-7xl lg:text-[80px] font-bold leading-[1.1] mb-8 tracking-tight animate-fade-up"
+            className="animate-on-scroll text-5xl sm:text-6xl lg:text-[64px] font-bold leading-[1.1] mb-8 tracking-tight animate-fade-up"
             style={{ animationDelay: '0.2s', fontWeight: 700 }}
           >
             Expert Guidance for<br />
