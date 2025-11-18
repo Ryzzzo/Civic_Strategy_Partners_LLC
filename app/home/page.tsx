@@ -3,22 +3,55 @@
 import { useState, useEffect, useRef } from 'react';
 
 function AnimatedStat({ value, label, delay, visible }: { value: string; label: string; delay: number; visible: boolean }) {
-  const [count, setCount] = useState('0');
+  const [displayValue, setDisplayValue] = useState('0');
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     if (visible && !hasAnimated) {
       setHasAnimated(true);
-      setTimeout(() => {
-        setCount(value);
-      }, delay);
+
+      const numericValue = value.replace(/[^0-9]/g, '');
+      const isNumeric = numericValue.length > 0;
+
+      if (isNumeric) {
+        const target = parseInt(numericValue);
+        const duration = 2000;
+        const steps = 60;
+        const increment = target / steps;
+        let current = 0;
+        let step = 0;
+
+        const timer = setInterval(() => {
+          step++;
+          current = Math.min(current + increment, target);
+
+          if (value.includes('M')) {
+            setDisplayValue(`${Math.floor(current)}M+`);
+          } else if (value.includes('+')) {
+            setDisplayValue(`${Math.floor(current)}+`);
+          } else {
+            setDisplayValue(Math.floor(current).toString());
+          }
+
+          if (step >= steps) {
+            setDisplayValue(value);
+            clearInterval(timer);
+          }
+        }, duration / steps);
+
+        return () => clearInterval(timer);
+      } else {
+        setTimeout(() => {
+          setDisplayValue(value);
+        }, delay);
+      }
     }
   }, [visible, value, delay, hasAnimated]);
 
   return (
     <div className="text-center">
       <div className="text-6xl font-bold mb-3 text-[#d4af37] transition-all duration-1000 ease-out">
-        {hasAnimated ? count : '0'}
+        {displayValue}
       </div>
       <div className="text-base text-[#94a3b8] font-light tracking-wide">
         {label}
@@ -65,8 +98,68 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="bg-[#0f172a] text-white">
-      <style dangerouslySetInnerHTML={{__html: "* { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { overflow-x: hidden; } .playfair { font-family: var(--font-playfair); } @keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } } @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } } .animate-fade-up { animation: fadeInUp 0.8s ease-out forwards; } .glassmorphism { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(226, 232, 240, 0.1); } .gradient-bg { background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #334155); background-size: 400% 400%; animation: gradient-shift 30s ease infinite; } .gold-gradient-text { background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }"}} />
+    <div className="bg-[#0f172a] text-white font-sans">
+      <style dangerouslySetInnerHTML={{__html: `
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; font-family: var(--font-inter); }
+        .playfair { font-family: var(--font-playfair); }
+
+        @keyframes gradient-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.5; }
+        }
+
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+
+        .animate-fade-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .glassmorphism {
+          background: rgba(30, 41, 59, 0.5);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-bg {
+          background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #334155);
+          background-size: 400% 400%;
+          animation: gradient-shift 30s ease infinite;
+        }
+
+        .gold-gradient-text {
+          background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .radial-gradient-orb {
+          position: absolute;
+          width: 600px;
+          height: 600px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(30, 58, 138, 0.4) 0%, transparent 70%);
+          animation: pulse-glow 8s ease-in-out infinite;
+          pointer-events: none;
+        }
+      `}} />
+
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-[#0f172a]/95 backdrop-blur-md shadow-lg border-b border-[#334155]/30'
@@ -132,45 +225,62 @@ export default function HomePage() {
         )}
       </nav>
 
-      <section id="home" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 gradient-bg"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
 
-        <div className="relative max-w-6xl mx-auto px-6 lg:px-12 text-center z-10">
-          <div className="animate-fade-up" style={{ animationDelay: '0.1s' }}>
-            <p className="text-[#94a3b8] text-sm uppercase tracking-widest mb-8 font-medium">
-              Marine-Owned. Mission-Driven. Federal-Focused.
-            </p>
+        <div className="radial-gradient-orb" style={{ top: '20%', left: '10%' }}></div>
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12 z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                <p className="playfair text-[#d4af37] text-lg mb-8 italic tracking-wide">
+                  Marine-Owned. Mission-Driven. Federal-Focused.
+                </p>
+              </div>
+
+              <h1
+                className="text-6xl sm:text-7xl lg:text-[88px] font-bold leading-[1.1] mb-8 tracking-tight animate-fade-up"
+                style={{ animationDelay: '0.2s', fontWeight: 700 }}
+              >
+                Expert Guidance for<br />
+                <span className="gold-gradient-text">Federal Market</span> Success
+              </h1>
+
+              <p
+                className="text-[#e2e8f0] text-lg sm:text-xl max-w-xl mb-12 leading-relaxed animate-fade-up"
+                style={{ animationDelay: '0.3s', lineHeight: '1.7' }}
+              >
+                Strategic consulting to help businesses win and perform on federal contracts with military precision and proven methodologies.
+              </p>
+
+              <div className="animate-fade-up" style={{ animationDelay: '0.4s' }}>
+                <a
+                  href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
+                  className="inline-block bg-[#d4af37] hover:bg-[#c4a027] text-[#0f172a] px-10 py-4 rounded-lg font-bold text-lg transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#d4af37]/30"
+                >
+                  Schedule Consultation
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 animate-fade-up" style={{ animationDelay: '0.5s' }}>
+              <div className="glassmorphism rounded-3xl overflow-hidden shadow-2xl border-2 border-[#d4af37]/20">
+                <img
+                  src="/1743701547902.jpeg"
+                  alt="Kevin M. Lewis - Founder & CEO"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
+        </div>
 
-          <h1
-            className="playfair text-6xl sm:text-7xl lg:text-[96px] font-bold leading-[1.1] mb-8 tracking-tight animate-fade-up"
-            style={{ animationDelay: '0.2s' }}
-          >
-            Expert Guidance for<br />
-            <span className="gold-gradient-text">Federal Market</span> Success
-          </h1>
-
-          <p
-            className="text-[#e2e8f0] text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light animate-fade-up"
-            style={{ animationDelay: '0.3s', lineHeight: '1.7' }}
-          >
-            Strategic consulting to help businesses win and perform on federal contracts with military precision and proven methodologies.
-          </p>
-
-          <div className="animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <a
-              href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-              className="inline-block bg-[#d4af37] hover:bg-[#c4a027] text-[#0f172a] px-10 py-4 rounded-lg font-bold text-lg transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#d4af37]/30"
-            >
-              Schedule Consultation
-            </a>
-          </div>
-
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg className="w-6 h-6 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <svg className="w-6 h-6 text-[#94a3b8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </section>
 
@@ -178,7 +288,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             <AnimatedStat value="14+" label="Years Federal Experience" delay={100} visible={visibleSections.has('stats')} />
-            <AnimatedStat value="$500M+" label="Proposals Supported" delay={200} visible={visibleSections.has('stats')} />
+            <AnimatedStat value="500M+" label="Proposals Supported" delay={200} visible={visibleSections.has('stats')} />
             <AnimatedStat value="USMC" label="Marine Corps Veteran" delay={300} visible={visibleSections.has('stats')} />
             <AnimatedStat value="MBA" label="Strategic Leadership" delay={400} visible={visibleSections.has('stats')} />
           </div>
@@ -188,9 +298,9 @@ export default function HomePage() {
       <section id="services" ref={servicesRef} className="py-32 bg-[#0f172a]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-20">
-            <h2 className={`playfair text-5xl lg:text-6xl font-semibold mb-6 tracking-tight ${
+            <h2 className={`text-5xl lg:text-[56px] font-bold mb-6 tracking-tight ${
               visibleSections.has('services') ? 'animate-fade-up' : 'opacity-0'
-            }`}>
+            }`} style={{ fontWeight: 700 }}>
               How We Help You Win
             </h2>
             <p className={`text-[#94a3b8] text-lg max-w-2xl mx-auto ${
@@ -220,12 +330,15 @@ export default function HomePage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className={`glassmorphism rounded-2xl p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#d4af37]/10 hover:border-[#d4af37]/30 ${
+                className={`glassmorphism rounded-2xl p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] hover:border-[#d4af37]/30 ${
                   visibleSections.has('services') ? 'animate-fade-up' : 'opacity-0'
                 }`}
-                style={{ animationDelay: service.delay }}
+                style={{
+                  animationDelay: service.delay,
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+                }}
               >
-                <h3 className="playfair text-2xl font-semibold mb-4 text-white">
+                <h3 className="text-2xl font-semibold mb-4 text-white" style={{ fontWeight: 600 }}>
                   {service.title}
                 </h3>
                 <p className="text-[#94a3b8] mb-6 leading-relaxed" style={{ lineHeight: '1.7' }}>
@@ -251,9 +364,9 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/40"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className={`playfair text-5xl lg:text-6xl font-semibold mb-8 ${
+          <h2 className={`text-5xl lg:text-[48px] font-bold mb-12 ${
             visibleSections.has('video') ? 'animate-fade-up' : 'opacity-0'
-          }`}>
+          }`} style={{ fontWeight: 700 }}>
             See Our Process in Action
           </h2>
 
@@ -266,54 +379,40 @@ export default function HomePage() {
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <p className="text-[#94a3b8] text-sm uppercase tracking-wider">Video Coming Soon</p>
+              <p className="text-[#94a3b8] text-sm uppercase tracking-wider">Coming Soon</p>
             </div>
           </div>
         </div>
       </section>
 
       <section id="about" ref={aboutRef} className="py-32 bg-[#1e293b]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
-            <div className="lg:col-span-3">
-              <h2 className={`playfair text-5xl lg:text-6xl font-semibold mb-8 leading-tight ${
-                visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
-              }`}>
-                Marine Leadership.<br />
-                Strategic Precision.
-              </h2>
+        <div className="max-w-5xl mx-auto px-6 lg:px-12">
+          <div className="text-center">
+            <h2 className={`text-5xl lg:text-[56px] font-bold mb-8 leading-tight ${
+              visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
+            }`} style={{ fontWeight: 700 }}>
+              Marine Leadership.<br />
+              Strategic Precision.
+            </h2>
 
-              <div className={`space-y-6 text-[#e2e8f0] text-lg leading-relaxed ${
-                visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
-              }`} style={{ animationDelay: '0.1s', lineHeight: '1.7' }}>
-                <p>
-                  Led by a United States Marine Corps veteran with an MBA in Strategic Leadership, Civic Strategy Partners brings military precision and strategic thinking to federal contracting.
-                </p>
-                <p>
-                  Kevin Martin has guided businesses through the complexities of government procurement for over 14 years, supporting more than $500M in federal proposals and helping companies of all sizes secure and perform on federal contracts.
-                </p>
-                <p>
-                  Our approach combines deep regulatory knowledge with practical, results-driven strategies that win contracts. We don't just guide you through the process—we become your strategic partner in building a sustainable federal contracting business.
-                </p>
-              </div>
-
-              <div className={`mt-10 pt-8 border-t border-[#334155]/50 ${
-                visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
-              }`} style={{ animationDelay: '0.2s' }}>
-                <p className="text-[#d4af37] font-semibold mb-2">Service-Disabled Veteran-Owned Small Business (SDVOSB)</p>
-              </div>
+            <div className={`space-y-6 text-[#e2e8f0] text-lg leading-relaxed max-w-3xl mx-auto ${
+              visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
+            }`} style={{ animationDelay: '0.1s', lineHeight: '1.7' }}>
+              <p>
+                Led by a United States Marine Corps veteran with an MBA in Strategic Leadership, Civic Strategy Partners brings military precision and strategic thinking to federal contracting.
+              </p>
+              <p>
+                Kevin Martin has guided businesses through the complexities of government procurement for over 14 years, supporting more than $500M in federal proposals and helping companies of all sizes secure and perform on federal contracts.
+              </p>
+              <p>
+                Our approach combines deep regulatory knowledge with practical, results-driven strategies that win contracts. We don't just guide you through the process—we become your strategic partner in building a sustainable federal contracting business.
+              </p>
             </div>
 
-            <div className={`lg:col-span-2 ${
+            <div className={`mt-12 pt-8 border-t border-[#334155]/50 max-w-3xl mx-auto ${
               visibleSections.has('about') ? 'animate-fade-up' : 'opacity-0'
-            }`} style={{ animationDelay: '0.3s' }}>
-              <div className="glassmorphism rounded-2xl aspect-square overflow-hidden">
-                <img
-                  src="/1743701547902.jpeg"
-                  alt="Kevin M. Lewis - Founder & CEO"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            }`} style={{ animationDelay: '0.2s' }}>
+              <p className="text-[#d4af37] font-semibold text-lg">Service-Disabled Veteran-Owned Small Business (SDVOSB)</p>
             </div>
           </div>
         </div>
@@ -321,7 +420,7 @@ export default function HomePage() {
 
       <section className="py-40 bg-[#0f172a] border-y border-[#334155]/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="playfair text-5xl lg:text-6xl font-semibold mb-6">
+          <h2 className="text-5xl lg:text-[56px] font-bold mb-6" style={{ fontWeight: 700 }}>
             Ready to Win Federal Contracts?
           </h2>
           <p className="text-[#e2e8f0] text-xl mb-12 max-w-2xl mx-auto leading-relaxed" style={{ lineHeight: '1.7' }}>
