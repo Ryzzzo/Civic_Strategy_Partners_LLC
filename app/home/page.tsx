@@ -137,13 +137,16 @@ export default function HomePage() {
         }
 
         .glassmorphism {
-          background: rgba(30, 41, 59, 0.5);
+          background: rgba(30, 41, 59, 0.6);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
           border-radius: 16px;
           transition: all 0.4s ease;
+          will-change: transform;
+          transform: translateZ(0);
+          backface-visibility: hidden;
         }
 
         .video-background {
@@ -335,10 +338,23 @@ export default function HomePage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className={`animate-on-scroll glassmorphism p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] hover:border-[rgba(212,175,55,0.3)] ${
+                className={`animate-on-scroll glassmorphism p-10 group ${
                   visibleSections.has('services') ? 'animate-fade-up' : ''
                 }`}
-                style={{ animationDelay: service.delay }}
+                style={{
+                  animationDelay: service.delay,
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.4)';
+                  e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                }}
               >
                 <h3 className="text-2xl font-semibold mb-4 text-white" style={{ fontWeight: 600 }}>
                   {service.title}
