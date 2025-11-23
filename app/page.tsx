@@ -63,10 +63,10 @@ export default function Home() {
           <p className="text-base text-white/70">
             For immediate inquiries:{' '}
             <a
-              href="mailto:kevin@civicstrategypartners.com"
+              href="mailto:info@civicstrategypartners.com"
               className="text-white/90 font-medium hover:text-white transition-colors underline decoration-white/30 hover:decoration-white/60"
             >
-              kevin@civicstrategypartners.com
+              info@civicstrategypartners.com
             </a>
           </p>
         </div>

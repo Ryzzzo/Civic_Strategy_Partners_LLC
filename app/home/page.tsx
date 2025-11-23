@@ -690,7 +690,7 @@ export default function Home() {
               Contact
             </button>
             <a
-              href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
+              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
               className="premium-cta"
               style={{ padding: '10px 24px', fontSize: '16px' }}
             >
@@ -743,7 +743,7 @@ export default function Home() {
               Contact
             </button>
             <a
-              href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
+              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
               className="premium-cta"
               style={{ padding: '10px 24px', fontSize: '16px' }}
             >
@@ -918,7 +918,7 @@ export default function Home() {
           </div>
 
           <a
-            href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
+            href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
             className="premium-cta mt-12"
           >
             Book a Consultation
@@ -969,7 +969,7 @@ export default function Home() {
 
           <div className="text-center mt-16">
             <a
-              href="mailto:kevin@civicstrategypartners.com?subject=Talk Through Your Scenario"
+              href="mailto:info@civicstrategypartners.com?subject=Talk Through Your Scenario"
               className="inline-block premium-cta text-white px-10 py-4 text-[18px] font-semibold"
               style={{ fontWeight: 600 }}
             >
@@ -1053,17 +1053,17 @@ export default function Home() {
               Or email directly:
             </p>
             <a
-              href="mailto:kevin@civicstrategypartners.com"
+              href="mailto:info@civicstrategypartners.com"
               className="text-[18px] text-[#1e3a5f] font-semibold hover:opacity-80 transition-opacity"
               style={{ fontFamily: 'Inter', fontWeight: 600, textDecoration: 'none' }}
             >
-              kevin@civicstrategypartners.com
+              info@civicstrategypartners.com
             </a>
           </div>
 
           <div className="text-center mt-8">
             <a
-              href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
+              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
               className="inline-block bg-white text-[#1e3a5f] border-2 border-[#1e3a5f] px-8 py-3.5 rounded-md text-[16px] font-semibold hover:bg-[#1e3a5f] hover:text-white transition-colors"
               style={{ fontFamily: 'Inter', fontWeight: 600 }}
             >
@@ -1206,7 +1206,7 @@ export default function Home() {
                 Ready to discuss your GSA strategy?
               </p>
               <a
-                href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
+                href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
                 className="inline-block bg-[#0F2847] text-white px-8 py-3.5 rounded-md text-[16px] font-medium cursor-pointer hover:bg-[#1e3a5f] transition-colors border-none"
                 style={{
                   fontFamily: 'Inter',
@@ -1247,8 +1247,8 @@ export default function Home() {
                 Contact
               </h3>
               <p className="text-[14px] text-white/80 mb-2" style={{ fontFamily: 'Inter' }}>
-                <a href="mailto:kevin@civicstrategypartners.com" className="hover:text-white transition-colors" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>
-                  kevin@civicstrategypartners.com
+                <a href="mailto:info@civicstrategypartners.com" className="hover:text-white transition-colors" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>
+                  info@civicstrategypartners.com
                 </a>
               </p>
               <p className="text-[14px] text-white/80 mb-4" style={{ fontFamily: 'Inter' }}>
