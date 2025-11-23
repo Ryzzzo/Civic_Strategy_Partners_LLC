@@ -618,7 +618,7 @@ export default function Home() {
 
         .about-container {
           display: grid;
-          grid-template-columns: 500px 1fr;
+          grid-template-columns: 600px 1fr;
           gap: 60px;
           align-items: center;
         }
