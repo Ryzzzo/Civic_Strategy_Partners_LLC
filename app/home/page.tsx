@@ -123,37 +123,19 @@ export default function Home() {
           transform: scale(1.02);
         }
 
-        @keyframes gradient-shift {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        @keyframes wave-shift {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          50% {
-            transform: translateX(-50px);
-          }
-        }
-
         .silk-gradient {
           background: linear-gradient(135deg,
             #15283d 0%,
+            #1a3247 25%,
             #1e3a5f 50%,
+            #1a3247 75%,
             #15283d 100%
           );
-          background-size: 400% 400%;
-          animation: gradient-shift 25s ease infinite;
         }
 
         .silk-overlay {
-          background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
-          animation: wave-shift 20s ease-in-out infinite;
+          background: rgba(255, 255, 255, 0.03);
+          opacity: 0.5;
         }
       `}</style>
 
