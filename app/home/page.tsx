@@ -618,7 +618,7 @@ export default function Home() {
 
         .about-container {
           display: grid;
-          grid-template-columns: 400px 1fr;
+          grid-template-columns: 500px 1fr;
           gap: 60px;
           align-items: center;
         }
@@ -652,6 +652,7 @@ export default function Home() {
           font-weight: 800;
           margin-bottom: 24px;
           line-height: 1.2;
+          text-align: center;
         }
 
         .about-content h2 span {
