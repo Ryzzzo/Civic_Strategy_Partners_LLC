@@ -616,6 +616,34 @@ export default function Home() {
           position: relative;
         }
 
+        .about-heading {
+          font-size: 48px;
+          font-weight: 800;
+          color: #ffffff;
+          text-align: left;
+          margin-bottom: 32px;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 900px;
+          letter-spacing: -0.02em;
+          line-height: 1.3;
+        }
+
+        .heading-line-1 {
+          display: block;
+          padding-left: 0;
+        }
+
+        .heading-line-2 {
+          display: block;
+          padding-left: 80px;
+        }
+
+        .heading-line-3 {
+          display: block;
+          padding-left: 160px;
+        }
+
         .marine-emblem {
           position: absolute;
           top: 50%;
@@ -839,8 +867,15 @@ export default function Home() {
             padding: 50px 20px !important;
           }
 
-          .about-section h2 {
-            font-size: 28px !important;
+          .about-heading {
+            font-size: 32px !important;
+            text-align: center !important;
+          }
+
+          .heading-line-1,
+          .heading-line-2,
+          .heading-line-3 {
+            padding-left: 0 !important;
           }
 
           .about-section p {
@@ -1235,8 +1270,10 @@ export default function Home() {
         />
 
         <div className="max-w-[900px] mx-auto text-center relative z-10">
-          <h2 className="text-[42px] font-bold text-white mb-8" style={{ fontWeight: 700, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
-            Marine-Owned. Mission-Driven. Federal-Focused.
+          <h2 className="about-heading" style={{ fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+            <span className="heading-line-1">Marine-Owned.</span>
+            <span className="heading-line-2">Mission-Driven.</span>
+            <span className="heading-line-3">Federal-Focused.</span>
           </h2>
 
           <div className="text-[18px] text-white/90 space-y-6 text-left" style={{ lineHeight: '1.7' }}>
