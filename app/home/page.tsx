@@ -144,7 +144,7 @@ export default function Home() {
             #15283d 100%
           );
           background-size: 200% 200%;
-          animation: wave-flow 5s ease-in-out infinite;
+          animation: wave-flow 7s ease-in-out infinite;
         }
 
         .silk-overlay {
