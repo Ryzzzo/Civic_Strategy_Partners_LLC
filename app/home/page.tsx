@@ -616,28 +616,54 @@ export default function Home() {
           position: relative;
         }
 
-        .about-section::before {
-          content: '';
+        .marine-emblem {
           position: absolute;
-          top: 20px;
-          right: 20px;
-          width: 80px;
-          height: 80px;
-          border-top: 3px solid rgba(255, 255, 255, 0.3);
-          border-right: 3px solid rgba(255, 255, 255, 0.3);
+          top: 24px;
+          right: 24px;
+          width: 120px;
+          height: 120px;
+          opacity: 0.25;
           z-index: 10;
+          pointer-events: none;
+          filter: brightness(0) invert(1);
+          transition: opacity 0.3s ease;
         }
 
-        .about-section::after {
-          content: '';
+        .marine-emblem:hover {
+          opacity: 0.4;
+        }
+
+        .service-photo {
           position: absolute;
-          bottom: 20px;
-          left: 20px;
-          width: 80px;
-          height: 80px;
-          border-bottom: 3px solid rgba(255, 255, 255, 0.3);
-          border-left: 3px solid rgba(255, 255, 255, 0.3);
+          bottom: 24px;
+          left: 24px;
+          width: 180px;
+          height: auto;
+          opacity: 0.2;
           z-index: 10;
+          pointer-events: none;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          transition: opacity 0.3s ease;
+        }
+
+        .service-photo:hover {
+          opacity: 0.35;
+        }
+
+        @media (max-width: 768px) {
+          .marine-emblem {
+            width: 80px;
+            height: 80px;
+            top: 16px;
+            right: 16px;
+          }
+
+          .service-photo {
+            width: 120px;
+            bottom: 16px;
+            left: 16px;
+          }
         }
 
         .fillout-container {
@@ -899,6 +925,20 @@ export default function Home() {
       <section id="about" className="about-section py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
         <div className="absolute inset-0 silk-gradient"></div>
         <div className="absolute inset-0 silk-overlay"></div>
+
+        {/* Marine Corps Emblem - Top Right */}
+        <img
+          src="/2025-11-23 01_11_42-Greenshot image editor.png"
+          alt="Marine Corps Emblem"
+          className="marine-emblem"
+        />
+
+        {/* Iraq Service Photo - Bottom Left */}
+        <img
+          src="/A714F951-FD08-400C-9B27-FCCB0D74049D.JPG"
+          alt="Iraq Service"
+          className="service-photo"
+        />
 
         <div className="max-w-[900px] mx-auto text-center relative z-10">
           <h2 className="text-[42px] font-bold text-white mb-8" style={{ fontWeight: 700, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
