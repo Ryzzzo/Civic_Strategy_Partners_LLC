@@ -54,7 +54,7 @@ export default function Home() {
         const response = await fetch('/api/gsa-news');
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
-        setGsaNews(data.items || []);
+        setGsaNews(Array.isArray(data) ? data : []);
         setGsaNewsError(false);
       } catch (error) {
         console.error('Error fetching GSA news:', error);
@@ -1469,11 +1469,7 @@ export default function Home() {
                   }}
                 >
                   <span className="text-[14px] text-[#6B7280] uppercase block mb-2">
-                    {new Date(item.pubDate).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
+                    {item.pubDate}
                   </span>
                   <h3 className="text-[20px] font-semibold text-[#1e3a5f] mb-3 line-clamp-2" style={{ fontWeight: 600, lineHeight: '1.4' }}>
                     {item.title}
