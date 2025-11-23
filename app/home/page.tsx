@@ -199,9 +199,12 @@ export default function Home() {
           border: 2px solid rgba(30, 58, 95, 0.08);
           border-radius: 16px;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
           position: relative;
           overflow: hidden;
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-font-smoothing: antialiased;
         }
 
         .premium-card::before {
@@ -223,7 +226,7 @@ export default function Home() {
         }
 
         .premium-card:hover {
-          transform: translateY(-8px) scale(1.02);
+          transform: translateY(-4px);
           box-shadow: 0 20px 60px rgba(30, 58, 95, 0.2);
           border-color: rgba(30, 58, 95, 0.3);
         }
@@ -247,16 +250,24 @@ export default function Home() {
           border-color: rgba(255, 255, 255, 0.2);
         }
 
-        .premium-cta {
-          background: linear-gradient(135deg, #1e3a5f 0%, #2a4a6f 100%);
-          box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
-          transition: all 0.3s ease;
-          border-radius: 8px;
+        .premium-cta, .cta-button {
+          background: linear-gradient(135deg, #1e3a5f 0%, #2a4a6f 100%) !important;
+          color: white !important;
+          padding: 16px 40px !important;
+          border-radius: 8px !important;
+          font-size: 18px !important;
+          font-weight: 600 !important;
+          border: none !important;
+          box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3) !important;
+          transition: all 0.3s ease !important;
+          text-decoration: none !important;
+          display: inline-block !important;
         }
 
-        .premium-cta:hover {
-          box-shadow: 0 6px 25px rgba(30, 58, 95, 0.5);
-          transform: translateY(-2px) scale(1.02);
+        .premium-cta:hover, .cta-button:hover {
+          transform: translateY(-2px) !important;
+          box-shadow: 0 6px 25px rgba(30, 58, 95, 0.5) !important;
+          background: linear-gradient(135deg, #2a4a6f 0%, #1e3a5f 100%) !important;
         }
 
         .learn-more-link {
@@ -280,10 +291,11 @@ export default function Home() {
         .premium-nav {
           background: linear-gradient(to bottom,
             rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 0.98) 50%,
-            rgba(255, 255, 255, 0.95) 100%
-          );
+            rgba(255, 255, 255, 0.98) 70%,
+            rgba(255, 255, 255, 0) 100%
+          ) !important;
           backdrop-filter: blur(10px);
+          border-bottom: none;
         }
 
         input:focus, textarea:focus, select:focus {
@@ -302,6 +314,48 @@ export default function Home() {
         .fade-in-visible {
           opacity: 1;
           transform: translateY(0);
+        }
+
+        .hero h1 {
+          white-space: nowrap;
+        }
+
+        @media (max-width: 1024px) {
+          .hero h1 {
+            white-space: normal;
+          }
+        }
+
+        .insights-grid {
+          gap: 48px !important;
+        }
+
+        .about-section {
+          position: relative;
+        }
+
+        .about-section::before {
+          content: '';
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          width: 80px;
+          height: 80px;
+          border-top: 3px solid rgba(255, 255, 255, 0.3);
+          border-right: 3px solid rgba(255, 255, 255, 0.3);
+          z-index: 10;
+        }
+
+        .about-section::after {
+          content: '';
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          width: 80px;
+          height: 80px;
+          border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+          border-left: 3px solid rgba(255, 255, 255, 0.3);
+          z-index: 10;
         }
       `}</style>
 
@@ -348,7 +402,8 @@ export default function Home() {
             </button>
             <a
               href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-              className="bg-[#1E3A8F] text-white px-6 py-2.5 rounded-lg text-[16px] font-medium hover:bg-[#1E40AF]"
+              className="premium-cta"
+              style={{ padding: '10px 24px', fontSize: '16px' }}
             >
               Schedule Consultation
             </a>
@@ -400,7 +455,8 @@ export default function Home() {
             </button>
             <a
               href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-              className="bg-[#1E3A8F] text-white px-6 py-2.5 rounded-lg text-[16px] font-medium text-center"
+              className="premium-cta"
+              style={{ padding: '10px 24px', fontSize: '16px' }}
             >
               Schedule Consultation
             </a>
@@ -410,7 +466,7 @@ export default function Home() {
 
       {/* Hero Section - Silk Flag Gradient */}
       <section
-        className="flex items-center justify-center px-6 relative overflow-hidden"
+        className="hero flex items-center justify-center px-6 relative overflow-hidden"
         style={{ minHeight: 'calc(100vh - 88px)', marginTop: '88px' }}
       >
         <div className="absolute inset-0 silk-gradient"></div>
@@ -440,8 +496,7 @@ export default function Home() {
 
           <a
             href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-            className="inline-block bg-white text-[#1e3a5f] px-10 py-4 rounded-md text-[18px] font-semibold hover:bg-gray-100 transition-all"
-            style={{ fontWeight: 600, boxShadow: '0 4px 15px rgba(255, 255, 255, 0.3)' }}
+            className="premium-cta"
           >
             Book a Consultation
           </a>
@@ -571,7 +626,7 @@ export default function Home() {
       </section>
 
       {/* About Section - Silk Flag Gradient */}
-      <section id="about" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
+      <section id="about" className="about-section py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
         <div className="absolute inset-0 silk-gradient"></div>
         <div className="absolute inset-0 silk-overlay"></div>
 
@@ -594,8 +649,7 @@ export default function Home() {
 
           <a
             href="mailto:kevin@civicstrategypartners.com?subject=Consultation Request"
-            className="inline-block mt-12 bg-white text-[#1e3a5f] px-10 py-4 rounded-md text-[18px] font-semibold hover:bg-gray-100 transition-all"
-            style={{ fontWeight: 600, boxShadow: '0 4px 15px rgba(255, 255, 255, 0.3)' }}
+            className="premium-cta mt-12"
           >
             Book a Consultation
           </a>
@@ -685,7 +739,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="insights-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {mockArticles.map((article, index) => (
               <article
                 key={index}
@@ -805,8 +859,7 @@ export default function Home() {
 
             <button
               type="submit"
-              className="w-full bg-[#1e3a5f] text-white px-4 py-4 rounded-md text-[18px] font-semibold hover:bg-[#2a4a6f] transition-colors"
-              style={{ fontFamily: 'Inter', fontWeight: 600 }}
+              className="w-full premium-cta"
             >
               Send Message
             </button>
