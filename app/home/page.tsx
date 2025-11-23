@@ -616,81 +616,46 @@ export default function Home() {
           position: relative;
         }
 
-        .about-heading {
-          font-size: 48px;
-          font-weight: 800;
-          color: #ffffff;
-          text-align: left;
-          margin-bottom: 32px;
-          margin-left: 10%;
-          margin-right: auto;
-          max-width: 700px;
-          letter-spacing: -0.02em;
-          line-height: 1.3;
+        .about-container {
+          display: grid;
+          grid-template-columns: 400px 1fr;
+          gap: 60px;
+          align-items: center;
         }
 
-        .heading-line-1 {
-          display: block;
-          padding-left: 0;
+        .about-image {
+          position: relative;
         }
 
-        .heading-line-2 {
-          display: block;
-          padding-left: 80px;
-        }
-
-        .heading-line-3 {
-          display: block;
-          padding-left: 160px;
-        }
-
-        .marine-emblem {
-          position: absolute;
-          top: 120px;
-          right: 15%;
-          transform: translateX(0);
-          width: 180px;
-          height: 180px;
-          opacity: 0.6;
-          z-index: 0;
-          pointer-events: none;
-          filter: brightness(1.1);
-          transition: opacity 0.3s ease;
-        }
-
-        .marine-emblem:hover {
-          opacity: 1;
-        }
-
-        .service-photo {
-          position: absolute;
-          top: 50%;
-          left: 40px;
-          transform: translateY(-50%);
-          width: 480px;
-          height: auto;
-          opacity: 0.9;
-          z-index: 5;
-          pointer-events: none;
+        .about-image img {
+          width: 100%;
           border-radius: 8px;
-          border: 3px solid rgba(255, 255, 255, 0.5);
+          border: 3px solid rgba(255, 255, 255, 0.3);
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-          filter: brightness(1.05);
-          transition: opacity 0.3s ease;
         }
 
-        .service-photo:hover {
-          opacity: 1;
+        .image-caption {
+          text-align: center;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 14px;
+          font-weight: 600;
+          margin-top: 12px;
+          line-height: 1.4;
         }
 
-        @media (max-width: 768px) {
-          .marine-emblem {
-            display: none;
-          }
+        .about-content {
+          color: #ffffff;
+        }
 
-          .service-photo {
-            display: none;
-          }
+        .about-content h2 {
+          font-size: 42px;
+          font-weight: 800;
+          margin-bottom: 24px;
+          line-height: 1.2;
+        }
+
+        .about-content h2 span {
+          display: block;
         }
 
         .fillout-container {
@@ -867,16 +832,19 @@ export default function Home() {
             padding: 50px 20px !important;
           }
 
-          .about-heading {
-            font-size: 32px !important;
-            text-align: center !important;
-            margin-left: 0 !important;
+          .about-container {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
           }
 
-          .heading-line-1,
-          .heading-line-2,
-          .heading-line-3 {
-            padding-left: 0 !important;
+          .about-image {
+            max-width: 350px !important;
+            margin: 0 auto !important;
+          }
+
+          .about-content h2 {
+            font-size: 32px !important;
+            text-align: center !important;
           }
 
           .about-section p {
@@ -1251,50 +1219,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section - Silk Flag Gradient */}
+      {/* About Section - Side by Side Layout */}
       <section id="about" className="about-section py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
         <div className="absolute inset-0 silk-gradient"></div>
         <div className="absolute inset-0 silk-overlay"></div>
 
-        {/* Marine Corps Emblem - Top Right */}
-        <img
-          src="/2025-11-23 01_11_42-Greenshot image editor.png"
-          alt="Marine Corps Emblem"
-          className="marine-emblem"
-        />
-
-        {/* Iraq Service Photo - Bottom Left */}
-        <img
-          src="/A714F951-FD08-400C-9B27-FCCB0D74049D.JPG"
-          alt="Iraq Service"
-          className="service-photo"
-        />
-
-        <div className="max-w-[900px] mx-auto text-center relative z-10">
-          <h2 className="about-heading" style={{ fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
-            <span className="heading-line-1">Marine-Owned.</span>
-            <span className="heading-line-2">Mission-Driven.</span>
-            <span className="heading-line-3">Federal-Focused.</span>
-          </h2>
-
-          <div className="text-[18px] text-white/90 space-y-6 text-left" style={{ lineHeight: '1.7' }}>
-            <p>
-              Civic Strategy Partners is built on the belief that federal acquisition should be agile, modern, and mission-oriented—and that GSA MAS is becoming the government's fastest, cleanest way to get there. Agencies are moving more requirements onto MAS to speed procurement, increase commercial access, and push capability directly into government hands. That shift demands contractors who understand the doctrine, the compliance landscape, and how to maintain a contract so it performs.
-            </p>
-            <p>
-              CSP brings a blend of Marine Corps discipline, former-GSA Contract Specialist experience, and deep knowledge of MAS structure and federal readiness. We help companies diagnose failing contracts, correct course, and build federal revenue engines that actually work. Our approach is structured, direct, and grounded in the Civic Strategy Method and MAS Doctrine—models designed to help companies operate with clarity in a constantly changing federal environment.
-            </p>
-            <p>
-              For founders, small businesses, and growing federal practices, CSP provides the guidance, structure, and truth you need to perform in the federal space with confidence.
+        <div className="about-container max-w-[1200px] mx-auto relative z-10">
+          {/* Iraq Photo - Left Side */}
+          <div className="about-image">
+            <img
+              src="/A714F951-FD08-400C-9B27-FCCB0D74049D.JPG"
+              alt="Kevin Martin - Operation Iraqi Freedom"
+            />
+            <p className="image-caption">
+              Operation Iraqi Freedom<br />Kevin Martin, USMC
             </p>
           </div>
 
-          <a
-            href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
-            className="premium-cta mt-12"
-          >
-            Book a Consultation
-          </a>
+          {/* Text Content - Right Side */}
+          <div className="about-content">
+            <h2>
+              <span className="line-1">Marine-Owned.</span>
+              <span className="line-2">Mission-Driven.</span>
+              <span className="line-3">Federal-Focused.</span>
+            </h2>
+
+            <div className="text-[16px] text-white/95 space-y-4" style={{ lineHeight: '1.7' }}>
+              <p>
+                Civic Strategy Partners is built on the belief that federal acquisition should be agile, modern, and mission-oriented—and that GSA MAS is becoming the government's fastest, cleanest way to get there. Agencies are moving more requirements onto MAS to speed procurement, increase commercial access, and push capability directly into government hands. That shift demands contractors who understand the doctrine, the compliance landscape, and how to maintain a contract so it performs.
+              </p>
+              <p>
+                CSP brings a blend of Marine Corps discipline, former-GSA Contract Specialist experience, and deep knowledge of MAS structure and federal readiness. We help companies diagnose failing contracts, correct course, and build federal revenue engines that actually work. Our approach is structured, direct, and grounded in the Civic Strategy Method and MAS Doctrine—models designed to help companies operate with clarity in a constantly changing federal environment.
+              </p>
+              <p>
+                For founders, small businesses, and growing federal practices, CSP provides the guidance, structure, and truth you need to perform in the federal space with confidence.
+              </p>
+            </div>
+
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+              className="cta-button inline-block mt-8"
+            >
+              Book a Consultation
+            </a>
+          </div>
         </div>
       </section>
 
