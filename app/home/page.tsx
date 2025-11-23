@@ -440,8 +440,126 @@ export default function Home() {
           }
         }
 
+        .insights-section {
+          background: linear-gradient(135deg, #1e3a5f 0%, #15283d 100%);
+          padding: 80px 24px;
+          position: relative;
+        }
+
+        .insights-section h2 {
+          font-size: 42px;
+          font-weight: 800;
+          color: #ffffff;
+          text-align: center;
+          margin-bottom: 16px;
+          letter-spacing: -0.02em;
+        }
+
+        .insights-section .subtitle {
+          font-size: 18px;
+          color: rgba(255, 255, 255, 0.85);
+          text-align: center;
+          margin-bottom: 56px;
+        }
+
         .insights-grid {
-          gap: 48px !important;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 32px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .insight-card {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 12px;
+          padding: 32px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .insight-card:hover {
+          background: rgba(255, 255, 255, 1);
+          transform: translateY(-4px);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+          border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .insight-card h3 {
+          color: #1e3a5f;
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 16px;
+          line-height: 1.3;
+        }
+
+        .insight-card .card-title-full {
+          color: #1e3a5f;
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 12px;
+          line-height: 1.4;
+        }
+
+        .insight-card .date {
+          color: #6b7280;
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 16px;
+          display: block;
+        }
+
+        .insight-card .excerpt {
+          color: #4b5563;
+          font-size: 15px;
+          line-height: 1.6;
+          margin-bottom: 20px;
+        }
+
+        .insight-card .read-more {
+          color: #1e3a5f;
+          font-weight: 600;
+          font-size: 15px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.3s ease;
+        }
+
+        .insight-card .read-more:hover {
+          color: #2a4a6f;
+          gap: 12px;
+        }
+
+        .insight-card .read-more::after {
+          content: '→';
+          font-size: 18px;
+        }
+
+        .corner-decoration {
+          opacity: 0.15;
+        }
+
+        @media (max-width: 768px) {
+          .insights-section {
+            padding: 60px 20px;
+          }
+
+          .insights-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+
+          .insight-card {
+            padding: 24px;
+          }
+
+          .insight-card h3 {
+            font-size: 22px;
+          }
         }
 
         .about-section {
@@ -810,76 +928,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Insights & Expertise Section - Silk Flag Gradient */}
-      <section id="insights" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
-        <div className="absolute inset-0 silk-gradient"></div>
-        <div className="absolute inset-0 silk-overlay"></div>
-
+      {/* Insights & Expertise Section - Light Glassmorphism Cards */}
+      <section id="insights" className="insights-section fade-in-section">
         <div
-          className="absolute top-5 left-5 w-20 h-20 border-t-[3px] border-l-[3px] border-white/30 z-10"
+          className="corner-decoration absolute top-5 left-5 w-20 h-20 border-t-[3px] border-l-[3px] border-white/30 z-10"
           style={{
             borderTopColor: 'rgba(255, 255, 255, 0.3)',
             borderLeftColor: 'rgba(255, 255, 255, 0.3)'
           }}
         ></div>
         <div
-          className="absolute bottom-5 right-5 w-20 h-20 border-b-[3px] border-r-[3px] border-white/30 z-10"
+          className="corner-decoration absolute bottom-5 right-5 w-20 h-20 border-b-[3px] border-r-[3px] border-white/30 z-10"
           style={{
             borderBottomColor: 'rgba(255, 255, 255, 0.3)',
             borderRightColor: 'rgba(255, 255, 255, 0.3)'
           }}
         ></div>
 
-        <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-[42px] font-semibold text-white mb-4" style={{ fontWeight: 600, textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
-              Insights & Expertise
-            </h2>
-            <p className="text-[18px] text-white/70">
-              Expert guidance for government market success
-            </p>
-          </div>
+        <div>
+          <h2>Insights & Expertise</h2>
+          <p className="subtitle">Expert guidance for government market success</p>
 
-          <div className="insights-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="insights-grid">
             {mockArticles.map((article, index) => (
               <article
                 key={index}
                 onClick={() => openModal(article)}
-                className="cursor-pointer transition-opacity duration-300 hover:opacity-85"
-                style={{ background: 'transparent' }}
+                className="insight-card"
               >
-                <img
-                  src={article.imageUrl}
-                  alt={article.title}
-                  className="w-full rounded-lg mb-5 object-cover"
-                  style={{ aspectRatio: '16/9' }}
-                />
-                <h3
-                  className="text-[20px] font-semibold text-white mb-3 line-clamp-2"
-                  style={{
-                    fontWeight: 600,
-                    lineHeight: '1.3',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden'
-                  }}
-                >
-                  {article.title}
-                </h3>
-                <p className="text-[14px] text-white/60 mb-3">
-                  {formatDate(article.date)}
-                </p>
-                <p
-                  className="text-[16px] text-white/80 mb-4 line-clamp-3"
-                  style={{
-                    lineHeight: '1.6',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden'
-                  }}
-                >
+                <h3>{article.title}</h3>
+                <span className="date">{formatDate(article.date)}</span>
+                <p className="excerpt">
                   {article.content.substring(0, 150)}...
                 </p>
                 <a
@@ -888,10 +967,9 @@ export default function Home() {
                     e.preventDefault();
                     openModal(article);
                   }}
-                  className="text-[16px] font-medium text-white hover:text-white/80 inline-flex items-center gap-2 transition-all"
-                  style={{ fontWeight: 500 }}
+                  className="read-more"
                 >
-                  Read more <span>→</span>
+                  Read more
                 </a>
               </article>
             ))}
