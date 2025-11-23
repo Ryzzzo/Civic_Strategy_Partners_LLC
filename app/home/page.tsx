@@ -38,11 +38,6 @@ export default function Home() {
   const [gsaNews, setGsaNews] = useState<GSANewsItem[]>([]);
   const [gsaNewsLoading, setGsaNewsLoading] = useState(true);
   const [gsaNewsError, setGsaNewsError] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -172,10 +167,6 @@ export default function Home() {
       sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <>
