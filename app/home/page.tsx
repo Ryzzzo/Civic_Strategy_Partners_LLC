@@ -1423,15 +1423,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GSA Latest News Section - White Background */}
+      {/* Government Contracting News Section - White Background */}
       <section id="gsa-news" className="py-20 md:py-24 lg:py-[80px] px-6 bg-white fade-in-section">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-[42px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700, textShadow: '0 2px 4px rgba(0,0,0,0.06)' }}>
-              GSA Latest News
+              Government Contracting News
             </h2>
             <p className="text-[18px] text-[#6B7280]">
-              Stay informed with updates from the General Services Administration
+              Latest updates on GSA Schedules, federal procurement, and contract opportunities
             </p>
           </div>
 
@@ -1449,14 +1449,14 @@ export default function Home() {
           ) : gsaNewsError ? (
             <div className="text-center py-12">
               <p className="text-[16px] text-[#6B7280] mb-4">
-                Unable to load latest GSA news. Please visit{' '}
+                Unable to load latest government contracting news. Please visit{' '}
                 <a
-                  href="https://www.gsa.gov/blog"
+                  href="https://govconwire.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#1e3a5f] font-semibold hover:opacity-80 transition-opacity"
                 >
-                  gsa.gov/blog
+                  GovConWire.com
                 </a>
                 {' '}directly.
               </p>
@@ -1487,7 +1487,7 @@ export default function Home() {
                     className="text-[15px] text-[#1e3a5f] font-medium hover:opacity-80 transition-opacity inline-flex items-center gap-1"
                     style={{ fontWeight: 500 }}
                   >
-                    Read on GSA.gov →
+                    Read Full Story →
                   </a>
                 </article>
               ))}

@@ -1,43 +1,19 @@
 import { NextResponse } from 'next/server';
 
-const FALLBACK_NEWS = [
-  {
-    title: 'GSA Announces Initiatives to Modernize Federal Acquisition',
-    link: 'https://www.gsa.gov/about-us/newsroom',
-    pubDate: 'Nov 20, 2025',
-    description: 'The General Services Administration continues modernizing federal procurement processes for improved efficiency...'
-  },
-  {
-    title: 'Updates to GSA Multiple Award Schedule Program',
-    link: 'https://www.gsa.gov/about-us/newsroom',
-    pubDate: 'Nov 18, 2025',
-    description: 'Recent updates to the MAS program provide greater flexibility for contract holders and improved access for buyers...'
-  },
-  {
-    title: 'Federal Marketplace Trends for Government Contractors',
-    link: 'https://www.gsa.gov/about-us/newsroom',
-    pubDate: 'Nov 15, 2025',
-    description: 'Industry insights show increasing emphasis on commercial solutions and streamlined procurement processes...'
-  },
-  {
-    title: 'GSA Technology Initiatives Support Agency Modernization',
-    link: 'https://www.gsa.gov/about-us/newsroom',
-    pubDate: 'Nov 12, 2025',
-    description: 'New technology acquisition vehicles help federal agencies access cutting-edge solutions with compliance...'
-  }
-];
+interface NewsItem {
+  title: string;
+  link: string;
+  pubDate: string;
+  description: string;
+  isGSARelated?: boolean;
+}
 
-const RSS_FEED_URLS = [
-  'https://www.gsa.gov/about-us/newsroom/news-releases.rss',
-  'https://www.gsa.gov/blog/feed',
-  'https://gsablogs.gsa.gov/gsablog/feed/',
-];
-
-async function tryFetchRSS(url: string) {
-  const response = await fetch(url, {
+async function fetchGovConNews() {
+  const response = await fetch('https://govconwire.com/feed/', {
     next: { revalidate: 300 },
+    redirect: 'follow',
     headers: {
-      'User-Agent': 'Mozilla/5.0 (compatible; GSANewsFetcher/1.0)'
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     }
   });
 
@@ -47,64 +23,71 @@ async function tryFetchRSS(url: string) {
 
   const xmlText = await response.text();
 
-  if (!xmlText.includes('<item>') && !xmlText.includes('<entry>')) {
-    throw new Error('Not a valid RSS/Atom feed');
+  if (!xmlText.includes('<item>') && !xmlText.toLowerCase().includes('<rss')) {
+    throw new Error('Not a valid RSS feed');
   }
 
   return xmlText;
 }
 
+function parseRSSItems(xmlText: string): NewsItem[] {
+  const items: NewsItem[] = [];
+  const itemMatches = Array.from(xmlText.matchAll(/<item>([\s\S]*?)<\/item>/g));
+
+  for (const match of itemMatches) {
+    const itemXml = match[1];
+
+    const titleMatch = itemXml.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) ||
+                      itemXml.match(/<title>(.*?)<\/title>/);
+    const linkMatch = itemXml.match(/<link>(.*?)<\/link>/);
+    const pubDateMatch = itemXml.match(/<pubDate>(.*?)<\/pubDate>/);
+    const descriptionMatch = itemXml.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/) ||
+                            itemXml.match(/<description>(.*?)<\/description>/);
+
+    if (titleMatch && linkMatch && pubDateMatch) {
+      const title = titleMatch[1];
+      const description = descriptionMatch ? descriptionMatch[1] : '';
+      const isGSARelated = /GSA|General Services Administration|Multiple Award Schedule|MAS Contract/i.test(title + ' ' + description);
+
+      items.push({
+        title,
+        link: linkMatch[1],
+        pubDate: new Date(pubDateMatch[1]).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        }),
+        description: description.replace(/<[^>]*>/g, '').substring(0, 120) + '...',
+        isGSARelated
+      });
+    }
+  }
+
+  return items;
+}
+
 export async function GET() {
   try {
-    let xmlText = '';
+    const xmlText = await fetchGovConNews();
+    const allItems = parseRSSItems(xmlText);
 
-    for (const url of RSS_FEED_URLS) {
-      try {
-        xmlText = await tryFetchRSS(url);
-        break;
-      } catch {
-        continue;
-      }
+    const gsaItems = allItems.filter(item => item.isGSARelated);
+    const otherItems = allItems.filter(item => !item.isGSARelated);
+
+    let selectedItems: NewsItem[] = [];
+
+    if (gsaItems.length >= 4) {
+      selectedItems = gsaItems.slice(0, 4);
+    } else {
+      selectedItems = [...gsaItems, ...otherItems].slice(0, 4);
     }
 
-    if (!xmlText) {
-      return NextResponse.json(FALLBACK_NEWS);
-    }
+    return NextResponse.json(selectedItems.map(({ isGSARelated, ...item }) => item));
 
-    const items = [];
-    const itemMatches = Array.from(xmlText.matchAll(/<item>([\s\S]*?)<\/item>/g));
-
-    for (const match of itemMatches) {
-      const itemXml = match[1];
-
-      const titleMatch = itemXml.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) ||
-                        itemXml.match(/<title>(.*?)<\/title>/);
-      const linkMatch = itemXml.match(/<link>(.*?)<\/link>/);
-      const pubDateMatch = itemXml.match(/<pubDate>(.*?)<\/pubDate>/);
-      const descriptionMatch = itemXml.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/) ||
-                              itemXml.match(/<description>(.*?)<\/description>/);
-
-      if (titleMatch && linkMatch && pubDateMatch) {
-        items.push({
-          title: titleMatch[1],
-          link: linkMatch[1],
-          pubDate: new Date(pubDateMatch[1]).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-          }),
-          description: descriptionMatch ? descriptionMatch[1].substring(0, 120) + '...' : ''
-        });
-      }
-    }
-
-    if (items.length === 0) {
-      return NextResponse.json(FALLBACK_NEWS);
-    }
-
-    return NextResponse.json(items.slice(0, 4));
-
-  } catch {
-    return NextResponse.json(FALLBACK_NEWS);
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Unable to fetch government contracting news' },
+      { status: 500 }
+    );
   }
 }
