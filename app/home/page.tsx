@@ -123,21 +123,6 @@ export default function Home() {
           transform: scale(1.02);
         }
 
-        @keyframes silk-flow {
-          0% {
-            background-position: 0% 50%;
-            opacity: 0.15;
-          }
-          50% {
-            background-position: 100% 50%;
-            opacity: 0.25;
-          }
-          100% {
-            background-position: 0% 50%;
-            opacity: 0.15;
-          }
-        }
-
         @keyframes gradient-shift {
           0%, 100% {
             background-position: 0% 50%;
@@ -147,26 +132,28 @@ export default function Home() {
           }
         }
 
+        @keyframes wave-shift {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(-50px);
+          }
+        }
+
         .silk-gradient {
           background: linear-gradient(135deg,
-            #1a3250 0%,
-            #1e3a5f 20%,
-            #2a4d7f 40%,
-            #1e3a5f 60%,
-            #2a4d7f 80%,
-            #1a3250 100%
+            #15283d 0%,
+            #1e3a5f 50%,
+            #15283d 100%
           );
           background-size: 400% 400%;
           animation: gradient-shift 25s ease infinite;
         }
 
         .silk-overlay {
-          background-image:
-            radial-gradient(ellipse 800px 600px at 20% 30%, rgba(42,77,127,0.4) 0%, transparent 50%),
-            radial-gradient(ellipse 600px 800px at 80% 70%, rgba(42,77,127,0.3) 0%, transparent 50%),
-            radial-gradient(ellipse 1000px 400px at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 60%);
-          background-size: 200% 200%;
-          animation: silk-flow 20s ease-in-out infinite;
+          background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
+          animation: wave-shift 20s ease-in-out infinite;
         }
       `}</style>
 
