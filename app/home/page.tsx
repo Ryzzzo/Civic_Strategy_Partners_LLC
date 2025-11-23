@@ -1590,27 +1590,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dramatic Gold Separator */}
+      {/* Premium Gold Separator Bar */}
       <div style={{
-        background: 'linear-gradient(135deg, #1e3a5f 0%, #15283d 100%)',
-        padding: '40px 0'
-      }}>
-        <div style={{
-          height: '4px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(184,134,11,0.5) 20%, #b8860b 50%, rgba(184,134,11,0.5) 80%, transparent 100%)',
-          maxWidth: '800px',
-          margin: '0 auto',
-          boxShadow: '0 0 20px rgba(184,134,11,0.6)'
-        }}></div>
-        <div style={{
-          height: '12px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(218,165,32,0.4) 25%, rgba(218,165,32,0.8) 50%, rgba(218,165,32,0.4) 75%, transparent 100%)',
-          maxWidth: '600px',
-          margin: '12px auto 0',
-          borderRadius: '6px',
-          boxShadow: '0 4px 24px rgba(218,165,32,0.5), 0 -4px 24px rgba(218,165,32,0.5)'
-        }}></div>
-      </div>
+        height: '6px',
+        background: 'linear-gradient(90deg, rgba(184,134,11,0) 0%, rgba(184,134,11,0.3) 15%, #b8860b 50%, rgba(184,134,11,0.3) 85%, rgba(184,134,11,0) 100%)',
+        boxShadow: '0 2px 12px rgba(184,134,11,0.4), 0 -2px 12px rgba(184,134,11,0.4)',
+        maxWidth: '100%',
+        margin: '0'
+      }}></div>
 
       {/* Modal Popup */}
       {modalOpen && currentArticle && (
