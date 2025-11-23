@@ -38,6 +38,11 @@ export default function Home() {
   const [gsaNews, setGsaNews] = useState<GSANewsItem[]>([]);
   const [gsaNewsLoading, setGsaNewsLoading] = useState(true);
   const [gsaNewsError, setGsaNewsError] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -147,6 +152,8 @@ export default function Home() {
   }, [modalOpen]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -100px 0px'
@@ -1160,9 +1167,11 @@ export default function Home() {
 
       {/* Hero Section with Video */}
       <section className="hero-video">
-        <video ref={videoRef} autoPlay loop muted playsInline className="hero-video-bg">
-          <source src="/dc_at_dusk.mp4" type="video/mp4" />
-        </video>
+        {isClient && (
+          <video ref={videoRef} autoPlay loop muted playsInline className="hero-video-bg">
+            <source src="/dc_at_dusk.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="video-overlay"></div>
         <div className="hero-content">
           <h1>Your GSA MAS Contract Won't Sell Itself.</h1>
