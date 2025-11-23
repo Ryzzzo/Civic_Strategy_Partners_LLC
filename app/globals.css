@@ -83,3 +83,13 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Prevent FOUC - ensure background shows immediately */
+body {
+  background: #0F172A;
+  min-height: 100vh;
+}
+
+html {
+  background: #0F172A;
+}
