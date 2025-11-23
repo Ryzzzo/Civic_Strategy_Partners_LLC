@@ -672,6 +672,301 @@ export default function Home() {
           border-radius: 12px;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
+
+        /* ========== COMPREHENSIVE MOBILE RESPONSIVE STYLES ========== */
+
+        @media (max-width: 768px) {
+
+          /* === NAVIGATION === */
+          nav {
+            padding: 12px 16px !important;
+            height: 56px !important;
+          }
+
+          nav .logo-button img {
+            height: 40px !important;
+          }
+
+          nav .logo-button div {
+            font-size: 14px !important;
+          }
+
+          nav button,
+          nav a {
+            font-size: 14px !important;
+          }
+
+          nav .premium-cta {
+            padding: 8px 16px !important;
+            font-size: 14px !important;
+          }
+
+          /* === WAVE BARS === */
+          .wave-bar {
+            height: 60px !important;
+          }
+
+          .wave-bar-top {
+            margin-top: 56px !important;
+          }
+
+          /* === HERO SECTION === */
+          .hero-video {
+            min-height: calc(100vh - 56px - 120px) !important;
+            height: 500px !important;
+          }
+
+          .hero-content {
+            padding: 0 20px !important;
+          }
+
+          .hero-content h1 {
+            font-size: 26px !important;
+            margin-bottom: 16px !important;
+          }
+
+          .hero-subline {
+            font-size: 16px !important;
+            margin-bottom: 12px !important;
+          }
+
+          .hero-intro {
+            font-size: 14px !important;
+            margin-bottom: 20px !important;
+          }
+
+          .hero-content .cta-button {
+            padding: 12px 28px !important;
+            font-size: 15px !important;
+          }
+
+          /* === SECTION SPACING === */
+          section {
+            padding: 50px 20px !important;
+          }
+
+          /* === TYPOGRAPHY === */
+          h2 {
+            font-size: 28px !important;
+            margin-bottom: 12px !important;
+          }
+
+          h3 {
+            font-size: 20px !important;
+          }
+
+          h4 {
+            font-size: 18px !important;
+          }
+
+          .section-subtitle {
+            font-size: 15px !important;
+            margin-bottom: 32px !important;
+          }
+
+          p {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+          }
+
+          /* === SERVICES SECTION === */
+          #services .grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+
+          .premium-card {
+            padding: 24px !important;
+          }
+
+          .premium-card h3 {
+            font-size: 20px !important;
+            margin-bottom: 12px !important;
+          }
+
+          .premium-card p {
+            font-size: 14px !important;
+          }
+
+          /* === RESULTS/STATS SECTION === */
+          #results .grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+
+          /* === INSIGHTS/BLOG SECTION === */
+          .insights-section {
+            padding: 50px 20px !important;
+          }
+
+          .insights-section h2 {
+            font-size: 28px !important;
+          }
+
+          .insights-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+
+          .insight-card {
+            padding: 20px !important;
+          }
+
+          .insight-card h3 {
+            font-size: 20px !important;
+            margin-bottom: 10px !important;
+          }
+
+          .insight-card .card-title-full {
+            font-size: 16px !important;
+          }
+
+          .insight-card .date {
+            font-size: 13px !important;
+            margin-bottom: 12px !important;
+          }
+
+          .insight-card .excerpt {
+            font-size: 14px !important;
+            margin-bottom: 16px !important;
+          }
+
+          .insight-card .read-more {
+            font-size: 14px !important;
+          }
+
+          /* === ABOUT SECTION === */
+          .about-section {
+            padding: 50px 20px !important;
+          }
+
+          .about-section h2 {
+            font-size: 28px !important;
+          }
+
+          .about-section p {
+            font-size: 15px !important;
+            margin-bottom: 16px !important;
+          }
+
+          /* === CONTACT FORM === */
+          .fillout-container {
+            padding: 20px !important;
+          }
+
+          #contact h2 {
+            font-size: 28px !important;
+          }
+
+          #contact p {
+            font-size: 15px !important;
+          }
+
+          /* === BUTTONS === */
+          .cta-button,
+          .premium-cta,
+          button {
+            padding: 12px 24px !important;
+            font-size: 15px !important;
+          }
+
+          /* === CORNER DECORATIONS === */
+          .corner-decoration {
+            width: 40px !important;
+            height: 40px !important;
+          }
+
+          /* === FOOTER === */
+          footer {
+            padding: 40px 20px 24px !important;
+          }
+
+          footer h3 {
+            font-size: 16px !important;
+          }
+
+          footer p,
+          footer a {
+            font-size: 14px !important;
+          }
+
+          footer .grid {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+
+          /* === BACK TO TOP BUTTON === */
+          button[aria-label="Return to top"] {
+            width: 48px !important;
+            height: 48px !important;
+            font-size: 20px !important;
+            bottom: 20px !important;
+            right: 20px !important;
+          }
+
+          /* === MODAL === */
+          .modal-content h1 {
+            font-size: 24px !important;
+            margin: 24px 20px 12px !important;
+          }
+
+          .modal-content p {
+            font-size: 14px !important;
+            margin: 0 20px 20px !important;
+          }
+
+          .modal-content .text-\\[18px\\] {
+            font-size: 16px !important;
+            margin: 0 20px !important;
+            padding-bottom: 24px !important;
+          }
+
+          .modal-content .bg-\\[\\#F9FAFB\\] {
+            margin: 20px !important;
+            padding: 24px !important;
+          }
+        }
+
+        /* === EXTRA SMALL PHONES (480px and below) === */
+        @media (max-width: 480px) {
+          .hero-content h1 {
+            font-size: 24px !important;
+          }
+
+          .hero-subline {
+            font-size: 15px !important;
+          }
+
+          .hero-intro {
+            display: none !important;
+          }
+
+          .hero-video {
+            height: 450px !important;
+          }
+
+          h2 {
+            font-size: 24px !important;
+          }
+
+          .premium-card,
+          .insight-card {
+            padding: 20px !important;
+          }
+
+          section {
+            padding: 40px 16px !important;
+          }
+
+          nav .logo-button div {
+            display: none !important;
+          }
+
+          .marine-emblem,
+          .service-photo {
+            display: none !important;
+          }
+        }
       `}</style>
 
       {/* Navigation */}
