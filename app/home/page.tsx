@@ -270,8 +270,8 @@ export default function Home() {
           </p>
 
           <p
-            className="text-[16px] md:text-[18px] text-white/85 mb-12 mx-auto"
-            style={{ maxWidth: '800px', lineHeight: '1.7' }}
+            className="text-[16px] md:text-[18px] mb-12 mx-auto"
+            style={{ maxWidth: '800px', lineHeight: '1.7', color: 'rgba(255, 255, 255, 0.9)' }}
           >
             Most companies think a GSA Schedule will generate sales automatically. It won't. MAS performs only when it's aligned, maintained, and guided by someone who understands the doctrine—and your CO will not do that for you. If your contract is quiet, misaligned, or at risk of cancellation, you're not alone. CSP brings former-GSA insight and Marine-grade discipline to correct course and build a federal revenue engine that actually works.
           </p>
@@ -299,7 +299,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
+            <div className="border-2 border-[#E5E7EB] rounded-xl p-8 bg-white shadow-sm hover:border-[#1e3a5f] hover:-translate-y-1 transition-all">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Contract Diagnosis & Performance Correction
               </h3>
@@ -315,7 +315,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div>
+            <div className="border-2 border-[#E5E7EB] rounded-xl p-8 bg-white shadow-sm hover:border-[#1e3a5f] hover:-translate-y-1 transition-all">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Federal Readiness Roadmaps
               </h3>
@@ -331,7 +331,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div>
+            <div className="border-2 border-[#E5E7EB] rounded-xl p-8 bg-white shadow-sm hover:border-[#1e3a5f] hover:-translate-y-1 transition-all">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Advisory & Offer Support
               </h3>
@@ -347,7 +347,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div>
+            <div className="border-2 border-[#E5E7EB] rounded-xl p-8 bg-white shadow-sm hover:border-[#1e3a5f] hover:-translate-y-1 transition-all">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Post-Award Compliance & Lifecycle Support
               </h3>
@@ -363,7 +363,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div>
+            <div className="border-2 border-[#E5E7EB] rounded-xl p-8 bg-white shadow-sm hover:border-[#1e3a5f] hover:-translate-y-1 transition-all">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Retainer-Based Support
               </h3>
@@ -379,7 +379,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div>
+            <div className="border-2 border-[#E5E7EB] rounded-xl p-8 bg-white shadow-sm hover:border-[#1e3a5f] hover:-translate-y-1 transition-all">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 À La Carte Mod Support
               </h3>
@@ -404,96 +404,6 @@ export default function Home() {
             >
               View All Services & Details →
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Insights & Expertise Section - Animated Gradient */}
-      <section id="insights" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F2847] via-[#0d1520] to-[#0F2847] animate-gradient-slow"></div>
-        <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
-
-        <div
-          className="absolute top-5 left-5 w-20 h-20 border-t-[3px] border-l-[3px] border-white/30"
-          style={{
-            borderTopColor: 'rgba(255, 255, 255, 0.3)',
-            borderLeftColor: 'rgba(255, 255, 255, 0.3)'
-          }}
-        ></div>
-        <div
-          className="absolute bottom-5 right-5 w-20 h-20 border-b-[3px] border-r-[3px] border-white/30"
-          style={{
-            borderBottomColor: 'rgba(255, 255, 255, 0.3)',
-            borderRightColor: 'rgba(255, 255, 255, 0.3)'
-          }}
-        ></div>
-
-        <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-[36px] font-semibold text-white mb-4" style={{ fontWeight: 600 }}>
-              Insights & Expertise
-            </h2>
-            <p className="text-[18px] text-white/70">
-              Expert guidance for government market success
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {mockArticles.map((article, index) => (
-              <article
-                key={index}
-                onClick={() => openModal(article)}
-                className="cursor-pointer transition-opacity duration-300 hover:opacity-85"
-                style={{ background: 'transparent' }}
-              >
-                <img
-                  src={article.imageUrl}
-                  alt={article.title}
-                  className="w-full rounded-lg mb-5 object-cover"
-                  style={{ aspectRatio: '16/9' }}
-                />
-                <h3
-                  className="text-[20px] font-semibold text-white mb-3 line-clamp-2"
-                  style={{
-                    fontWeight: 600,
-                    lineHeight: '1.3',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden'
-                  }}
-                >
-                  {article.title}
-                </h3>
-                <p className="text-[14px] text-white/60 mb-3">
-                  {formatDate(article.date)}
-                </p>
-                <p
-                  className="text-[16px] text-white/80 mb-4 line-clamp-3"
-                  style={{
-                    lineHeight: '1.6',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden'
-                  }}
-                >
-                  {article.content.substring(0, 150)}...
-                </p>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    openModal(article);
-                  }}
-                  className="text-[16px] font-medium text-white hover:text-white/80 inline-flex items-center gap-2 transition-all"
-                  style={{ fontWeight: 500 }}
-                >
-                  Read more <span>→</span>
-                </a>
-              </article>
-            ))}
           </div>
         </div>
       </section>
@@ -580,6 +490,96 @@ export default function Home() {
             >
               Talk Through Your Scenario
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Insights & Expertise Section - Animated Gradient */}
+      <section id="insights" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f] via-[#152844] to-[#1e3a5f] animate-gradient-slow"></div>
+        <div className="absolute inset-0 opacity-[0.015] bg-noise"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,179,213,0.05),transparent_50%)]"></div>
+
+        <div
+          className="absolute top-5 left-5 w-20 h-20 border-t-[3px] border-l-[3px] border-white/30"
+          style={{
+            borderTopColor: 'rgba(255, 255, 255, 0.3)',
+            borderLeftColor: 'rgba(255, 255, 255, 0.3)'
+          }}
+        ></div>
+        <div
+          className="absolute bottom-5 right-5 w-20 h-20 border-b-[3px] border-r-[3px] border-white/30"
+          style={{
+            borderBottomColor: 'rgba(255, 255, 255, 0.3)',
+            borderRightColor: 'rgba(255, 255, 255, 0.3)'
+          }}
+        ></div>
+
+        <div className="max-w-[1200px] mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-[36px] font-semibold text-white mb-4" style={{ fontWeight: 600 }}>
+              Insights & Expertise
+            </h2>
+            <p className="text-[18px] text-white/70">
+              Expert guidance for government market success
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {mockArticles.map((article, index) => (
+              <article
+                key={index}
+                onClick={() => openModal(article)}
+                className="cursor-pointer transition-opacity duration-300 hover:opacity-85"
+                style={{ background: 'transparent' }}
+              >
+                <img
+                  src={article.imageUrl}
+                  alt={article.title}
+                  className="w-full rounded-lg mb-5 object-cover"
+                  style={{ aspectRatio: '16/9' }}
+                />
+                <h3
+                  className="text-[20px] font-semibold text-white mb-3 line-clamp-2"
+                  style={{
+                    fontWeight: 600,
+                    lineHeight: '1.3',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {article.title}
+                </h3>
+                <p className="text-[14px] text-white/60 mb-3">
+                  {formatDate(article.date)}
+                </p>
+                <p
+                  className="text-[16px] text-white/80 mb-4 line-clamp-3"
+                  style={{
+                    lineHeight: '1.6',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {article.content.substring(0, 150)}...
+                </p>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openModal(article);
+                  }}
+                  className="text-[16px] font-medium text-white hover:text-white/80 inline-flex items-center gap-2 transition-all"
+                  style={{ fontWeight: 500 }}
+                >
+                  Read more <span>→</span>
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
