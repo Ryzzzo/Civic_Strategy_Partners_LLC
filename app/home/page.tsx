@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const mockArticles = [
   {
@@ -31,12 +31,14 @@ interface GSANewsItem {
 }
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentArticle, setCurrentArticle] = useState<typeof mockArticles[0] | null>(null);
   const [gsaNews, setGsaNews] = useState<GSANewsItem[]>([]);
   const [gsaNewsLoading, setGsaNewsLoading] = useState(true);
   const [gsaNewsError, setGsaNewsError] = useState(false);
+  const [playbackDirection, setPlaybackDirection] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,6 +48,33 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleLoadedMetadata = () => {
+      video.playbackRate = 0.55 * playbackDirection;
+    };
+
+    const handleTimeUpdate = () => {
+      if (playbackDirection === 1 && video.currentTime >= video.duration - 0.1) {
+        setPlaybackDirection(-1);
+        video.playbackRate = -0.55;
+      } else if (playbackDirection === -1 && video.currentTime <= 0.1) {
+        setPlaybackDirection(1);
+        video.playbackRate = 0.55;
+      }
+    };
+
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    video.addEventListener('timeupdate', handleTimeUpdate);
+
+    return () => {
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+    };
+  }, [playbackDirection]);
 
   useEffect(() => {
     const fetchGSANews = async () => {
@@ -459,7 +488,7 @@ export default function Home() {
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(30, 58, 95, 0.5);
+          background: rgba(30, 58, 95, 0.35);
           z-index: 1;
         }
 
@@ -1134,7 +1163,7 @@ export default function Home() {
 
       {/* Hero Section with Video */}
       <section className="hero-video">
-        <video autoPlay loop muted playsInline className="hero-video-bg">
+        <video ref={videoRef} autoPlay loop muted playsInline className="hero-video-bg">
           <source src="/dc_at_dusk.mp4" type="video/mp4" />
         </video>
         <div className="video-overlay"></div>
