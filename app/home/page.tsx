@@ -52,12 +52,15 @@ export default function Home() {
       try {
         setGsaNewsLoading(true);
         const response = await fetch('/api/gsa-news');
-        if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch');
+        }
+
         setGsaNews(Array.isArray(data) ? data : []);
         setGsaNewsError(false);
       } catch (error) {
-        console.error('Error fetching GSA news:', error);
         setGsaNewsError(true);
       } finally {
         setGsaNewsLoading(false);
