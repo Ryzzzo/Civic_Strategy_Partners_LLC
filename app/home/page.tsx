@@ -1778,7 +1778,7 @@ export default function Home() {
                 </a>
               </p>
               <p className="text-[14px] text-white/80 mb-4" style={{ fontFamily: 'Inter' }}>
-                (603) 969-2269
+                (202) 796-7987
               </p>
               <p className="text-[14px] mt-4" style={{ fontFamily: 'Inter' }}>
                 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors" style={{ textDecoration: 'none' }}>
