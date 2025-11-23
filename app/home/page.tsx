@@ -413,12 +413,21 @@ export default function Home() {
         }
 
         .hero-content h1 {
-          font-size: clamp(36px, 4vw, 52px);
+          font-size: clamp(24px, 5vw, 52px);
           font-weight: 800;
           line-height: 1.2;
           letter-spacing: -0.02em;
           margin-bottom: 24px;
           text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+          white-space: nowrap;
+          overflow: visible;
+        }
+
+        @media (max-width: 480px) {
+          .hero-content h1 {
+            font-size: clamp(20px, 5.5vw, 52px);
+            letter-spacing: -0.03em;
+          }
         }
 
         .hero-subline {
