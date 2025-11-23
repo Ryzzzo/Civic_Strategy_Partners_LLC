@@ -622,9 +622,9 @@ export default function Home() {
           color: #ffffff;
           text-align: left;
           margin-bottom: 32px;
-          margin-left: 0;
+          margin-left: 10%;
           margin-right: auto;
-          max-width: 900px;
+          max-width: 700px;
           letter-spacing: -0.02em;
           line-height: 1.3;
         }
@@ -646,11 +646,11 @@ export default function Home() {
 
         .marine-emblem {
           position: absolute;
-          top: 50%;
-          right: 8%;
-          transform: translate(50%, -50%);
-          width: 200px;
-          height: 200px;
+          top: 120px;
+          right: 15%;
+          transform: translateX(0);
+          width: 180px;
+          height: 180px;
           opacity: 0.6;
           z-index: 0;
           pointer-events: none;
@@ -870,6 +870,7 @@ export default function Home() {
           .about-heading {
             font-size: 32px !important;
             text-align: center !important;
+            margin-left: 0 !important;
           }
 
           .heading-line-1,
