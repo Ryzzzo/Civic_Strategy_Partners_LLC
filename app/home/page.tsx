@@ -23,10 +23,20 @@ const mockArticles = [
   }
 ];
 
+interface GSANewsItem {
+  title: string;
+  link: string;
+  pubDate: string;
+  description: string;
+}
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentArticle, setCurrentArticle] = useState<typeof mockArticles[0] | null>(null);
+  const [gsaNews, setGsaNews] = useState<GSANewsItem[]>([]);
+  const [gsaNewsLoading, setGsaNewsLoading] = useState(true);
+  const [gsaNewsError, setGsaNewsError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +45,26 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const fetchGSANews = async () => {
+      try {
+        setGsaNewsLoading(true);
+        const response = await fetch('/api/gsa-news');
+        if (!response.ok) throw new Error('Failed to fetch');
+        const data = await response.json();
+        setGsaNews(data.items || []);
+        setGsaNewsError(false);
+      } catch (error) {
+        console.error('Error fetching GSA news:', error);
+        setGsaNewsError(true);
+      } finally {
+        setGsaNewsLoading(false);
+      }
+    };
+
+    fetchGSANews();
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -828,6 +858,24 @@ export default function Home() {
             font-size: 14px !important;
           }
 
+          /* === GSA NEWS SECTION === */
+          #gsa-news {
+            padding: 50px 20px !important;
+          }
+
+          #gsa-news .grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+
+          #gsa-news h2 {
+            font-size: 28px !important;
+          }
+
+          #gsa-news article {
+            padding: 20px !important;
+          }
+
           /* === ABOUT SECTION === */
           .about-section {
             padding: 50px 20px !important;
@@ -1110,8 +1158,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="premium-card p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="premium-card p-6">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Contract Diagnosis & Performance Correction
               </h3>
@@ -1127,7 +1175,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-8">
+            <div className="premium-card p-6">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Federal Readiness Roadmaps
               </h3>
@@ -1143,7 +1191,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-8">
+            <div className="premium-card p-6">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Advisory & Offer Support
               </h3>
@@ -1159,7 +1207,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-8">
+            <div className="premium-card p-6">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Post-Award Compliance & Lifecycle Support
               </h3>
@@ -1175,7 +1223,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-8">
+            <div className="premium-card p-6">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Retainer-Based Support
               </h3>
@@ -1191,7 +1239,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-8">
+            <div className="premium-card p-6">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 À La Carte Mod Support
               </h3>
@@ -1372,19 +1420,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact/CTA Section - White Background */}
-      <section id="contact" className="py-24 md:py-32 lg:py-[120px] px-6 bg-white fade-in-section">
-        <div className="max-w-[600px] mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
-              Get in Touch with Civic Strategy Partners
+      {/* GSA Latest News Section - White Background */}
+      <section id="gsa-news" className="py-20 md:py-24 lg:py-[80px] px-6 bg-white fade-in-section">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-[42px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700, textShadow: '0 2px 4px rgba(0,0,0,0.06)' }}>
+              GSA Latest News
             </h2>
             <p className="text-[18px] text-[#6B7280]">
+              Stay informed with updates from the General Services Administration
+            </p>
+          </div>
+
+          {gsaNewsLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="bg-white/95 backdrop-blur-[10px] border border-white/20 rounded-2xl p-6 animate-pulse">
+                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-3"></div>
+                  <div className="h-6 bg-gray-300 rounded mb-3"></div>
+                  <div className="h-20 bg-gray-200 rounded mb-4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              ))}
+            </div>
+          ) : gsaNewsError ? (
+            <div className="text-center py-12">
+              <p className="text-[16px] text-[#6B7280] mb-4">
+                Unable to load latest GSA news. Please visit{' '}
+                <a
+                  href="https://www.gsa.gov/blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1e3a5f] font-semibold hover:opacity-80 transition-opacity"
+                >
+                  gsa.gov/blog
+                </a>
+                {' '}directly.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {gsaNews.map((item, index) => (
+                <article
+                  key={index}
+                  className="bg-white/95 backdrop-blur-[10px] border border-white/20 rounded-2xl p-6 hover:bg-white hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  style={{
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  <span className="text-[14px] text-[#6B7280] uppercase block mb-2">
+                    {new Date(item.pubDate).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric'
+                    })}
+                  </span>
+                  <h3 className="text-[20px] font-semibold text-[#1e3a5f] mb-3 line-clamp-2" style={{ fontWeight: 600, lineHeight: '1.4' }}>
+                    {item.title}
+                  </h3>
+                  <p className="text-[15px] text-[#4B5563] mb-4 line-clamp-3" style={{ lineHeight: '1.6' }}>
+                    {item.description.length > 120 ? item.description.substring(0, 120) + '...' : item.description}
+                  </p>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[15px] text-[#1e3a5f] font-medium hover:opacity-80 transition-opacity inline-flex items-center gap-1"
+                    style={{ fontWeight: 500 }}
+                  >
+                    Read on GSA.gov →
+                  </a>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Contact/CTA Section - Navy Background */}
+      <section id="contact" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
+        <div className="absolute inset-0 silk-gradient"></div>
+        <div className="absolute inset-0 silk-overlay"></div>
+        <div className="max-w-[600px] mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-[36px] font-bold text-white mb-4" style={{ fontWeight: 700 }}>
+              Get in Touch with Civic Strategy Partners
+            </h2>
+            <p className="text-[18px] text-white/90">
               Whether you need MAS diagnosis, federal readiness guidance, mod support, or a strategic advisor, CSP is here to help you move with clarity and purpose in the federal marketplace.
             </p>
           </div>
 
-          <div className="fillout-container" style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+          <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto', background: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)' }}>
             <iframe
               src="[FILLOUT_FORM_URL_HERE]"
               style={{ width: '100%', height: '700px', border: 'none', borderRadius: '8px' }}
@@ -1393,12 +1520,12 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-[16px] text-[#6B7280] mb-2" style={{ fontFamily: 'Inter' }}>
+            <p className="text-[16px] text-white/80 mb-2" style={{ fontFamily: 'Inter' }}>
               Or email directly:
             </p>
             <a
               href="mailto:info@civicstrategypartners.com"
-              className="text-[18px] text-[#1e3a5f] font-semibold hover:opacity-80 transition-opacity"
+              className="text-[18px] text-[#daa520] font-semibold hover:opacity-80 transition-opacity"
               style={{ fontFamily: 'Inter', fontWeight: 600, textDecoration: 'none' }}
             >
               info@civicstrategypartners.com
@@ -1408,7 +1535,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <a
               href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
-              className="inline-block bg-white text-[#1e3a5f] border-2 border-[#1e3a5f] px-8 py-3.5 rounded-md text-[16px] font-semibold hover:bg-[#1e3a5f] hover:text-white transition-colors"
+              className="premium-cta inline-block text-white px-8 py-3.5 rounded-md text-[16px] font-semibold"
               style={{ fontFamily: 'Inter', fontWeight: 600 }}
             >
               Schedule a Consultation
