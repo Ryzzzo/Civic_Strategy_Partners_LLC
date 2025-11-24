@@ -44,7 +44,20 @@ export default function Home() {
     setIsClient(true);
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://server.fillout.com/embed/v1/';
+      script.async = true;
+      document.body.appendChild(script);
 
+      return () => {
+        if (document.body.contains(script)) {
+          document.body.removeChild(script);
+        }
+      };
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1558,24 +1571,15 @@ export default function Home() {
 
             <div
               style={{
-                width: '100%',
-                maxWidth: '800px',
+                width: '80%',
+                height: '500px',
                 margin: '0 auto'
               }}
-            >
-              <iframe
-                src="https://forms.fillout.com/t/eQxkUtxCQ9us?inheritParameters=true"
-                style={{
-                  width: '100%',
-                  height: '1200px',
-                  border: 'none',
-                  borderRadius: '12px',
-                  overflow: 'hidden'
-                }}
-                allow="payment"
-                title="Contact Form"
-              />
-            </div>
+              data-fillout-id="eQxkUtxCQ9us"
+              data-fillout-embed-type="standard"
+              data-fillout-inherit-parameters
+              data-fillout-dynamic-resize
+            />
           </div>
 
           {/* OR DIVIDER */}
