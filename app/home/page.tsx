@@ -940,7 +940,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           opacity: 0.15;
         }
 
-        /* === SERVICES GRID CROSS/PLUS PATTERN LAYOUT === */
+        /* === SERVICES GRID 3x3 LAYOUT === */
         .services-grid-container {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -951,46 +951,47 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         }
 
         .services-tile {
-          min-height: 280px;
+          min-height: 260px;
           position: relative;
-          z-index: 2;
         }
 
-        /* Top row - 2 tiles side by side centered */
-        .services-tile:nth-child(1) {
-          grid-column: 1 / 2;
-          grid-row: 1;
-        }
-
-        .services-tile:nth-child(2) {
-          grid-column: 2 / 3;
-          grid-row: 1;
-        }
-
-        /* Middle row - 3 tiles: left tile, logo, right tile */
+        /* Row 1 - All three tiles */
+        .services-tile:nth-child(1),
+        .services-tile:nth-child(2),
         .services-tile:nth-child(3) {
-          grid-column: 1 / 2;
+          grid-row: 1;
+        }
+
+        /* Row 2 - Tile 4, Logo, Tile 5 */
+        .services-tile:nth-child(4) {
+          grid-column: 1;
           grid-row: 2;
         }
 
         .services-logo-container {
-          grid-column: 2 / 3;
+          grid-column: 2;
           grid-row: 2;
         }
 
-        .services-tile:nth-child(4) {
-          grid-column: 3 / 4;
-          grid-row: 2;
-        }
-
-        /* Bottom row - 2 tiles side by side centered */
         .services-tile:nth-child(5) {
-          grid-column: 1 / 2;
+          grid-column: 3;
+          grid-row: 2;
+        }
+
+        /* Row 3 - Tile 6, CTA, Tile 7 */
+        .services-tile:nth-child(6) {
+          grid-column: 1;
           grid-row: 3;
         }
 
-        .services-tile:nth-child(6) {
-          grid-column: 2 / 3;
+        .services-cta-tile {
+          grid-column: 2;
+          grid-row: 3;
+          min-height: 260px;
+        }
+
+        .services-tile:nth-child(7) {
+          grid-column: 3;
           grid-row: 3;
         }
 
@@ -999,60 +1000,60 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           display: flex;
           align-items: center;
           justify-content: center;
-          min-height: 280px;
+          min-height: 260px;
           border-radius: 16px;
           background: #ffffff;
-          overflow: visible;
-          z-index: 1;
+          overflow: hidden;
           box-shadow:
-            0 0 150px 80px rgba(30,58,95,0.25),
-            0 0 200px 120px rgba(30,58,95,0.15),
-            0 0 250px 150px rgba(30,58,95,0.08),
-            0 8px 24px rgba(0,0,0,0.1);
+            0 0 100px 50px rgba(30,58,95,0.20),
+            0 0 150px 80px rgba(30,58,95,0.12),
+            0 8px 24px rgba(0,0,0,0.08);
         }
 
-        .services-logo-glow {
-          position: absolute;
-          width: 200%;
-          height: 200%;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(30,58,95,0.08) 0%, transparent 60%);
-          pointer-events: none;
-          z-index: -1;
+        .services-cta-tile {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 32px 24px;
+          border-radius: 16px;
+          background: linear-gradient(135deg, #1e3a5f 0%, #2d4a7c 100%);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+          text-align: center;
         }
 
-        .services-connecting-lines {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          z-index: 0;
+        .services-cta-tile h3 {
+          color: white;
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 8px;
         }
 
-        .services-connecting-lines .line-top {
-          position: absolute;
-          left: 50%;
-          bottom: 100%;
-          width: 1px;
-          height: 12px;
-          background: rgba(184,134,11,0.15);
-          transform: translateX(-50%);
+        .services-cta-tile p {
+          color: rgba(255,255,255,0.9);
+          font-size: 16px;
+          margin-bottom: 20px;
         }
 
-        .services-connecting-lines .line-bottom {
-          position: absolute;
-          left: 50%;
-          top: 100%;
-          width: 1px;
-          height: 12px;
-          background: rgba(184,134,11,0.15);
-          transform: translateX(-50%);
+        .services-cta-tile .cta-button {
+          background: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+          color: white;
+          padding: 12px 32px;
+          border-radius: 8px;
+          font-weight: 600;
+          text-decoration: none;
+          display: inline-block;
+          transition: all 0.3s ease;
+        }
+
+        .services-cta-tile .cta-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(184,134,11,0.3);
         }
 
         .services-logo {
-          position: relative;
-          z-index: 2;
-          max-width: 80%;
+          max-width: 70%;
           height: auto;
           object-fit: contain;
         }
@@ -1638,7 +1639,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       <div className="wave-bar wave-bar-bottom silk-gradient"></div>
 
       {/* What We Do Section - White Background */}
-      <section id="services" className="py-24 md:py-32 lg:py-[120px] px-6 bg-white fade-in-section">
+      <section id="services" className="py-16 px-6 bg-white fade-in-section">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-[42px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700, textShadow: '0 2px 4px rgba(0,0,0,0.06)' }}>
@@ -1649,9 +1650,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </p>
           </div>
 
-          {/* Cross/Plus Pattern Grid with Center Logo */}
+          {/* 3x3 Grid */}
           <div className="services-grid-container">
-            {/* Top Row - Tiles 1 & 2 */}
+            {/* Row 1 - Three tiles */}
             <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Contract Diagnosis & Performance Correction
@@ -1664,7 +1665,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 className="text-[#1e3a5f] text-[16px] font-medium learn-more-link"
                 style={{ fontWeight: 500 }}
               >
-                Learn More
+                Learn More →
               </a>
             </div>
 
@@ -1680,11 +1681,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 className="text-[#1e3a5f] text-[16px] font-medium learn-more-link"
                 style={{ fontWeight: 500 }}
               >
-                Learn More
+                Learn More →
               </a>
             </div>
 
-            {/* Middle Row - Tiles 3 & 4 */}
             <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Advisory & Offer Support
@@ -1697,10 +1697,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 className="text-[#1e3a5f] text-[16px] font-medium learn-more-link"
                 style={{ fontWeight: 500 }}
               >
-                Learn More
+                Learn More →
               </a>
             </div>
 
+            {/* Row 2 - Tile, Logo, Tile */}
             <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Post-Award Compliance & Lifecycle Support
@@ -1713,17 +1714,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 className="text-[#1e3a5f] text-[16px] font-medium learn-more-link"
                 style={{ fontWeight: 500 }}
               >
-                Learn More
+                Learn More →
               </a>
             </div>
 
             {/* Center Logo */}
             <div className="services-logo-container">
-              <div className="services-logo-glow"></div>
-              <div className="services-connecting-lines">
-                <div className="line-top"></div>
-                <div className="line-bottom"></div>
-              </div>
               <img
                 src="/CSP Simple No Background.png"
                 alt="Civic Strategy Partners Logo"
@@ -1731,7 +1727,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               />
             </div>
 
-            {/* Bottom Row - Tiles 5 & 6 */}
             <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Retainer-Based Support
@@ -1744,10 +1739,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 className="text-[#1e3a5f] text-[16px] font-medium learn-more-link"
                 style={{ fontWeight: 500 }}
               >
-                Learn More
+                Learn More →
               </a>
             </div>
 
+            {/* Row 3 - Tile, CTA, Tile */}
             <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 À La Carte Mod Support
@@ -1760,19 +1756,38 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 className="text-[#1e3a5f] text-[16px] font-medium learn-more-link"
                 style={{ fontWeight: 500 }}
               >
-                Learn More
+                Learn More →
               </a>
             </div>
-          </div>
 
-          <div className="text-center mt-16">
-            <a
-              href="/services"
-              className="text-[18px] text-[#1e3a5f] font-semibold border-b-2 border-[#1e3a5f] pb-1 hover:opacity-80 transition-opacity"
-              style={{ fontWeight: 600, textDecoration: 'none' }}
-            >
-              View All Services & Details →
-            </a>
+            {/* CTA Tile - Center Bottom */}
+            <div className="services-cta-tile">
+              <h3>Ready to Get Started?</h3>
+              <p>Let's discuss your federal strategy.</p>
+              <a
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+                className="cta-button"
+              >
+                Book a Consultation
+              </a>
+            </div>
+
+            <div className="premium-card p-6 services-tile">
+              <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
+                Custom Federal Engagements
+              </h3>
+              <p className="text-[#4B5563] text-[16px] mb-4" style={{ lineHeight: '1.6' }}>
+                Not every need fits a standard engagement. CSP supports custom projects involving federal strategy, market intelligence, lifecycle analysis, competitive positioning, and agency-specific requirements. If you have a unique challenge, we'll scope it and build the plan.
+              </p>
+              <a
+                href="/services#custom"
+                className="text-[#1e3a5f] text-[16px] font-medium learn-more-link"
+                style={{ fontWeight: 500 }}
+              >
+                Learn More →
+              </a>
+            </div>
           </div>
         </div>
       </section>
