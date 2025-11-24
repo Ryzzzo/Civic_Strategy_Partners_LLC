@@ -943,7 +943,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         /* === SERVICES GRID 3x3 LAYOUT === */
         .services-grid-container {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: repeat(3, 1fr);
           gap: 24px;
           max-width: 1200px;
           margin: 0 auto;
@@ -956,22 +956,37 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           z-index: 2;
         }
 
-        /* Top row tiles - offset inward to create circular pattern */
+        /* Top row tiles - offset inward to create diamond pattern */
         .services-tile:nth-child(1) {
-          margin-left: 60px;
+          grid-column: 1 / 2;
+          margin-left: 90px;
         }
 
         .services-tile:nth-child(3) {
-          margin-right: 60px;
+          grid-column: 3 / 4;
+          margin-right: 90px;
+        }
+
+        /* Middle row tiles - stay at far edges */
+        .services-tile:nth-child(4) {
+          grid-column: 1 / 2;
+          margin-left: 0;
+        }
+
+        .services-tile:nth-child(6) {
+          grid-column: 3 / 4;
+          margin-right: 0;
         }
 
         /* Bottom row tiles - offset inward to mirror top row */
         .services-tile:nth-child(7) {
-          margin-left: 60px;
+          grid-column: 1 / 2;
+          margin-left: 90px;
         }
 
         .services-tile:nth-child(9) {
-          margin-right: 60px;
+          grid-column: 3 / 4;
+          margin-right: 90px;
         }
 
         .services-grid-spacer {
@@ -989,8 +1004,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           overflow: hidden;
           z-index: 1;
           box-shadow:
-            0 0 80px 40px rgba(30,58,95,0.15),
-            0 0 120px 60px rgba(30,58,95,0.08),
+            0 0 150px 80px rgba(30,58,95,0.25),
+            0 0 200px 120px rgba(30,58,95,0.15),
+            0 0 250px 150px rgba(30,58,95,0.08),
             0 8px 24px rgba(0,0,0,0.1);
         }
 
