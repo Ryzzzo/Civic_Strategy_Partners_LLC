@@ -44,16 +44,6 @@ export default function Home() {
     setIsClient(true);
   }, []);
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://server.fillout.com/embed/v1/';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1566,13 +1556,15 @@ export default function Home() {
             </p>
 
             <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto', background: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)' }}>
-              <div
-                style={{ width: '100%', height: '500px' }}
-                data-fillout-id="eQxkUtxCQ9us"
-                data-fillout-embed-type="standard"
-                data-fillout-inherit-parameters
-                data-fillout-dynamic-resize
-              ></div>
+              <iframe
+                src="https://forms.fillout.com/t/eQxkUtxCQ9us"
+                width="100%"
+                height="700"
+                frameBorder="0"
+                sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+                style={{ border: 'none', borderRadius: '8px' }}
+                title="Contact Form"
+              ></iframe>
             </div>
           </div>
 
