@@ -675,6 +675,115 @@ export default function Home() {
           opacity: 0.15;
         }
 
+        /* === SERVICES GRID 3x3 LAYOUT === */
+        .services-grid-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .services-tile {
+          min-height: 280px;
+        }
+
+        .services-grid-spacer {
+          min-height: 280px;
+        }
+
+        .services-logo-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 280px;
+          border-radius: 16px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+          background: white;
+        }
+
+        .services-logo-glow {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 16px;
+          background: radial-gradient(circle, rgba(30,58,95,0.08) 0%, transparent 70%);
+          pointer-events: none;
+        }
+
+        .services-connecting-lines {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+        }
+
+        .services-connecting-lines .line-horizontal {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(90deg, transparent 0%, rgba(184,134,11,0.15) 50%, transparent 100%);
+          transform: translateY(-50%);
+        }
+
+        .services-connecting-lines .line-vertical {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(180deg, transparent 0%, rgba(184,134,11,0.15) 50%, transparent 100%);
+          transform: translateX(-50%);
+        }
+
+        .services-logo {
+          position: relative;
+          z-index: 2;
+          max-width: 90%;
+          height: auto;
+          object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+          .services-grid-container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
+          .services-logo-container {
+            order: -1;
+            min-height: 200px;
+            margin-bottom: 20px;
+          }
+
+          .services-tile {
+            min-height: auto;
+          }
+
+          .services-grid-spacer {
+            display: none;
+          }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .services-grid-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .services-logo-container {
+            grid-column: 1 / -1;
+            order: -1;
+            margin-bottom: 20px;
+          }
+
+          .services-grid-spacer {
+            display: none;
+          }
+        }
+
         @media (max-width: 768px) {
           .insights-section {
             padding: 60px 20px;
@@ -1212,8 +1321,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="premium-card p-6">
+          {/* 3x3 Grid with Center Logo */}
+          <div className="services-grid-container">
+            {/* Top Row - Tile 1 */}
+            <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Contract Diagnosis & Performance Correction
               </h3>
@@ -1229,7 +1340,11 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-6">
+            {/* Top Row - Empty Center */}
+            <div className="services-grid-spacer"></div>
+
+            {/* Top Row - Tile 2 */}
+            <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Federal Readiness Roadmaps
               </h3>
@@ -1245,7 +1360,8 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-6">
+            {/* Middle Row - Tile 3 */}
+            <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Advisory & Offer Support
               </h3>
@@ -1261,7 +1377,22 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-6">
+            {/* Middle Row - Center Logo */}
+            <div className="services-logo-container">
+              <div className="services-logo-glow"></div>
+              <div className="services-connecting-lines">
+                <div className="line-horizontal"></div>
+                <div className="line-vertical"></div>
+              </div>
+              <img
+                src="/Civic Strategy Partners Minus LLC.png"
+                alt="Civic Strategy Partners Logo"
+                className="services-logo"
+              />
+            </div>
+
+            {/* Middle Row - Tile 4 */}
+            <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Post-Award Compliance & Lifecycle Support
               </h3>
@@ -1277,7 +1408,8 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-6">
+            {/* Bottom Row - Tile 5 */}
+            <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 Retainer-Based Support
               </h3>
@@ -1293,7 +1425,11 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="premium-card p-6">
+            {/* Bottom Row - Empty Center */}
+            <div className="services-grid-spacer"></div>
+
+            {/* Bottom Row - Tile 6 */}
+            <div className="premium-card p-6 services-tile">
               <h3 className="text-[22px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 À La Carte Mod Support
               </h3>
