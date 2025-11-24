@@ -1014,15 +1014,18 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 900px;
-          height: 900px;
+          width: 1000px;
+          height: 1000px;
           background: radial-gradient(
             circle,
-            rgba(30, 58, 95, 0.30) 0%,
-            rgba(30, 58, 95, 0.22) 20%,
-            rgba(30, 58, 95, 0.14) 40%,
-            rgba(30, 58, 95, 0.08) 60%,
-            rgba(30, 58, 95, 0.03) 80%,
+            rgba(30, 58, 95, 0.45) 0%,
+            rgba(30, 58, 95, 0.38) 10%,
+            rgba(30, 58, 95, 0.30) 20%,
+            rgba(30, 58, 95, 0.22) 35%,
+            rgba(30, 58, 95, 0.14) 50%,
+            rgba(30, 58, 95, 0.08) 65%,
+            rgba(30, 58, 95, 0.04) 80%,
+            rgba(30, 58, 95, 0.01) 90%,
             transparent 100%
           );
           border-radius: 50%;
@@ -1034,7 +1037,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         .diamond-logo {
           background: white;
           border-radius: 12px;
-          padding: 16px;
+          padding: 28px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1044,7 +1047,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         }
 
         .diamond-logo img {
-          max-width: 140px;
+          max-width: 200px;
           width: 100%;
           height: auto;
           object-fit: contain;
@@ -1640,7 +1643,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       <div className="wave-bar wave-bar-bottom silk-gradient"></div>
 
       {/* What We Do Section - Diamond Layout */}
-      <section id="services" className="py-10 px-6 bg-white fade-in-section">
+      <section id="services" className="pt-10 pb-20 px-6 bg-white fade-in-section">
         <div className="max-w-[1100px] mx-auto">
           {/* Section Header */}
           <div className="text-center mb-8">
