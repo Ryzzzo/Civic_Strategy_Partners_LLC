@@ -943,9 +943,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         /* === SERVICES GRID CROSS/PLUS PATTERN LAYOUT === */
         .services-grid-container {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 24px;
-          max-width: 900px;
+          max-width: 1200px;
           margin: 0 auto;
           position: relative;
         }
@@ -956,26 +956,41 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           z-index: 2;
         }
 
-        /* Top row - 2 tiles side by side */
-        .services-tile:nth-child(1),
-        .services-tile:nth-child(2) {
+        /* Top row - 2 tiles side by side centered */
+        .services-tile:nth-child(1) {
+          grid-column: 1 / 2;
           grid-row: 1;
         }
 
-        /* Middle row - left tile, logo, right tile */
+        .services-tile:nth-child(2) {
+          grid-column: 2 / 3;
+          grid-row: 1;
+        }
+
+        /* Middle row - 3 tiles: left tile, logo, right tile */
         .services-tile:nth-child(3) {
-          grid-column: 1;
+          grid-column: 1 / 2;
+          grid-row: 2;
+        }
+
+        .services-logo-container {
+          grid-column: 2 / 3;
           grid-row: 2;
         }
 
         .services-tile:nth-child(4) {
-          grid-column: 2;
+          grid-column: 3 / 4;
           grid-row: 2;
         }
 
-        /* Bottom row - 2 tiles side by side */
-        .services-tile:nth-child(5),
+        /* Bottom row - 2 tiles side by side centered */
+        .services-tile:nth-child(5) {
+          grid-column: 1 / 2;
+          grid-row: 3;
+        }
+
         .services-tile:nth-child(6) {
+          grid-column: 2 / 3;
           grid-row: 3;
         }
 
@@ -989,11 +1004,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           background: white;
           overflow: visible;
           z-index: 1;
-          grid-column: 1 / -1;
-          grid-row: 2;
-          max-width: 440px;
-          margin: 0 auto;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+          box-shadow:
+            0 0 150px 80px rgba(30,58,95,0.25),
+            0 0 200px 120px rgba(30,58,95,0.15),
+            0 0 250px 150px rgba(30,58,95,0.08),
+            0 8px 24px rgba(0,0,0,0.1);
         }
 
         .services-logo-glow {
