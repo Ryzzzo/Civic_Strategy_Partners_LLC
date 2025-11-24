@@ -39,6 +39,8 @@ export default function Home() {
   const [gsaNewsLoading, setGsaNewsLoading] = useState(true);
   const [gsaNewsError, setGsaNewsError] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [legalModalContent, setLegalModalContent] = useState<{title: string, content: string} | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -158,13 +160,276 @@ export default function Home() {
     return `${minutes} min read`;
   };
 
+  const legalContent = {
+    privacy: {
+      title: "Privacy Policy",
+      content: `Last Updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+
+INTRODUCTION
+Civic Strategy Partners, LLC ("CSP," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+
+INFORMATION WE COLLECT
+We collect information that you provide directly to us, including:
+• Name, email address, phone number, and company information
+• Communications you send to us
+• Information you provide when requesting our services
+• Payment and billing information
+
+We also automatically collect certain information when you visit our website:
+• Log and usage data
+• Device and browser information
+• Cookies and similar technologies
+
+HOW WE USE YOUR INFORMATION
+We use the information we collect to:
+• Provide, maintain, and improve our services
+• Process your requests and transactions
+• Send you technical notices and support messages
+• Respond to your comments and questions
+• Communicate with you about services, offers, and events
+
+DATA SECURITY
+We implement appropriate technical and organizational measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.
+
+YOUR RIGHTS
+You have the right to:
+• Access your personal information
+• Correct inaccurate information
+• Request deletion of your information
+• Opt-out of marketing communications
+
+CONTACT US
+If you have questions about this Privacy Policy, please contact us at:
+Civic Strategy Partners, LLC
+Email: info@civicstrategypartners.com`
+    },
+    terms: {
+      title: "Terms of Service",
+      content: `Last Updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+
+AGREEMENT TO TERMS
+By accessing or using the services of Civic Strategy Partners, LLC ("CSP"), you agree to be bound by these Terms of Service. If you do not agree to these terms, you may not access or use our services.
+
+SERVICES
+CSP provides government contracting advisory services, including but not limited to:
+• GSA Multiple Award Schedule (MAS) consulting
+• Federal readiness assessments
+• Compliance support
+• Strategic advisory services
+
+CLIENT RESPONSIBILITIES
+Clients agree to:
+• Provide accurate and complete information
+• Cooperate with CSP in good faith
+• Comply with all applicable laws and regulations
+• Maintain confidentiality of proprietary information
+
+FEES AND PAYMENT
+• Fees are specified in individual service agreements
+• Payment terms are outlined in engagement letters
+• Late payments may incur additional charges
+
+INTELLECTUAL PROPERTY
+All materials, content, and deliverables created by CSP remain our intellectual property unless explicitly transferred in writing.
+
+CONFIDENTIALITY
+Both parties agree to maintain confidentiality of sensitive information shared during the engagement.
+
+LIMITATION OF LIABILITY
+CSP's liability is limited to the fees paid for the specific services that gave rise to the claim. We are not liable for indirect, incidental, or consequential damages.
+
+TERMINATION
+Either party may terminate services with written notice as specified in the engagement agreement.
+
+GOVERNING LAW
+These terms are governed by the laws of the jurisdiction where CSP operates.
+
+CONTACT
+For questions about these Terms, contact:
+Civic Strategy Partners, LLC
+Email: info@civicstrategypartners.com`
+    },
+    disclaimer: {
+      title: "Disclaimer",
+      content: `PROFESSIONAL SERVICES DISCLAIMER
+
+Civic Strategy Partners, LLC ("CSP") provides consulting and advisory services related to government contracting and GSA Multiple Award Schedule (MAS) matters. The following disclaimers apply to all services and information provided:
+
+NO GUARANTEE OF RESULTS
+CSP does not guarantee any specific outcome, including but not limited to:
+• Award of government contracts
+• GSA Schedule approval
+• Specific revenue or sales results
+• Resolution of compliance issues
+
+Success depends on numerous factors beyond CSP's control, including but not limited to client qualifications, market conditions, government policies, and agency decisions.
+
+NOT LEGAL ADVICE
+CSP is not a law firm. Our services do not constitute legal advice. Clients should consult with qualified legal counsel for legal matters related to government contracting.
+
+NO AGENCY RELATIONSHIP
+CSP is not an agent of the General Services Administration (GSA) or any other government agency. We operate as an independent consultant.
+
+INFORMATION ACCURACY
+While we strive to provide accurate and current information, government contracting rules and regulations change frequently. CSP is not responsible for:
+• Changes in regulations after information is provided
+• Errors or omissions in third-party information
+• Client misunderstanding or misapplication of guidance
+
+CLIENT RESPONSIBILITY
+Clients are ultimately responsible for:
+• Compliance with all government contracting regulations
+• Accuracy of submissions to government agencies
+• Business decisions based on CSP guidance
+• Maintaining their contracts and certifications
+
+NO WARRANTIES
+Services are provided "as is" without warranties of any kind, express or implied.
+
+LIMITATION OF LIABILITY
+CSP's liability is limited as specified in individual engagement agreements.
+
+CONTACT
+Questions about this disclaimer should be directed to:
+Civic Strategy Partners, LLC
+Email: info@civicstrategypartners.com`
+    },
+    cookies: {
+      title: "Cookie Policy",
+      content: `Last Updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+
+INTRODUCTION
+This Cookie Policy explains how Civic Strategy Partners, LLC ("CSP") uses cookies and similar technologies on our website.
+
+WHAT ARE COOKIES
+Cookies are small text files stored on your device when you visit a website. They help websites function properly and provide information to website owners.
+
+TYPES OF COOKIES WE USE
+
+Essential Cookies
+These cookies are necessary for the website to function and cannot be disabled:
+• Session management
+• Security features
+• Basic functionality
+
+Analytics Cookies
+These cookies help us understand how visitors interact with our website:
+• Page views and navigation patterns
+• Time spent on pages
+• Traffic sources
+• Device and browser information
+
+Functional Cookies
+These cookies enable enhanced functionality:
+• Remembering preferences
+• Personalized content
+• Form completion assistance
+
+THIRD-PARTY COOKIES
+We may use third-party services that set their own cookies:
+• Analytics providers
+• Social media platforms
+• Marketing partners
+
+MANAGING COOKIES
+You can control cookies through your browser settings:
+• Block all cookies
+• Block third-party cookies
+• Delete existing cookies
+• Receive notifications when cookies are set
+
+Note: Disabling cookies may affect website functionality.
+
+YOUR CONSENT
+By using our website, you consent to our use of cookies as described in this policy.
+
+UPDATES
+We may update this Cookie Policy periodically. Changes will be posted on this page with an updated revision date.
+
+CONTACT
+For questions about our Cookie Policy:
+Civic Strategy Partners, LLC
+Email: info@civicstrategypartners.com`
+    },
+    accessibility: {
+      title: "Accessibility Statement",
+      content: `COMMITMENT TO ACCESSIBILITY
+
+Civic Strategy Partners, LLC ("CSP") is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards.
+
+CONFORMANCE STATUS
+We strive to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. These guidelines explain how to make web content more accessible for people with disabilities.
+
+MEASURES TO SUPPORT ACCESSIBILITY
+CSP takes the following measures to ensure accessibility:
+• Include accessibility as part of our mission statement
+• Integrate accessibility into our procurement practices
+• Provide continual accessibility training for our staff
+• Include people with disabilities in our design processes
+
+TECHNICAL SPECIFICATIONS
+Our website relies on the following technologies:
+• HTML
+• CSS
+• JavaScript
+
+These technologies are used in conformance with WCAG 2.1 standards.
+
+LIMITATIONS AND ALTERNATIVES
+Despite our efforts, some limitations may exist:
+• Third-party embedded content may not be fully accessible
+• Legacy documents may not meet current standards
+• Some features may require JavaScript enabled
+
+We are actively working to address these limitations.
+
+FEEDBACK
+We welcome your feedback on the accessibility of our website. If you encounter accessibility barriers, please contact us:
+
+Civic Strategy Partners, LLC
+Email: info@civicstrategypartners.com
+Phone: Contact through website inquiry form
+
+We aim to respond to accessibility feedback within 5 business days.
+
+ASSESSMENT
+We regularly assess our website's accessibility through:
+• Self-evaluation
+• External accessibility audits
+• User testing with people with disabilities
+
+FORMAL COMPLAINTS
+If you are not satisfied with our response to your accessibility concerns, you have the right to file a formal complaint with:
+• U.S. Department of Justice
+• Your local civil rights office
+
+UPDATES
+This statement was last updated on ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} and will be reviewed regularly.`
+    }
+  };
+
+  const openLegalModal = (type: 'privacy' | 'terms' | 'disclaimer' | 'cookies' | 'accessibility') => {
+    setLegalModalContent(legalContent[type]);
+    setLegalModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLegalModal = () => {
+    setLegalModalOpen(false);
+    setLegalModalContent(null);
+    document.body.style.overflow = 'auto';
+  };
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && modalOpen) closeModal();
+      if (e.key === 'Escape') {
+        if (modalOpen) closeModal();
+        if (legalModalOpen) closeLegalModal();
+      }
     };
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
-  }, [modalOpen]);
+  }, [modalOpen, legalModalOpen]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -678,14 +943,35 @@ export default function Home() {
         /* === SERVICES GRID 3x3 LAYOUT === */
         .services-grid-container {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: 1fr 1fr 1fr;
           gap: 24px;
           max-width: 1200px;
           margin: 0 auto;
+          position: relative;
         }
 
         .services-tile {
           min-height: 280px;
+          position: relative;
+          z-index: 2;
+        }
+
+        /* Top row tiles - offset inward to create circular pattern */
+        .services-tile:nth-child(1) {
+          margin-left: 60px;
+        }
+
+        .services-tile:nth-child(3) {
+          margin-right: 60px;
+        }
+
+        /* Bottom row tiles - offset inward to mirror top row */
+        .services-tile:nth-child(7) {
+          margin-left: 60px;
+        }
+
+        .services-tile:nth-child(9) {
+          margin-right: 60px;
         }
 
         .services-grid-spacer {
@@ -699,8 +985,13 @@ export default function Home() {
           justify-content: center;
           min-height: 280px;
           border-radius: 16px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
           background: white;
+          overflow: hidden;
+          z-index: 1;
+          box-shadow:
+            0 0 80px 40px rgba(30,58,95,0.15),
+            0 0 120px 60px rgba(30,58,95,0.08),
+            0 8px 24px rgba(0,0,0,0.1);
         }
 
         .services-logo-glow {
@@ -757,10 +1048,15 @@ export default function Home() {
             order: -1;
             min-height: 200px;
             margin-bottom: 20px;
+            box-shadow:
+              0 0 40px 20px rgba(30,58,95,0.1),
+              0 8px 24px rgba(0,0,0,0.1);
           }
 
           .services-tile {
             min-height: auto;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
           }
 
           .services-grid-spacer {
@@ -777,6 +1073,14 @@ export default function Home() {
             grid-column: 1 / -1;
             order: -1;
             margin-bottom: 20px;
+            box-shadow:
+              0 0 60px 30px rgba(30,58,95,0.12),
+              0 8px 24px rgba(0,0,0,0.1);
+          }
+
+          .services-tile {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
           }
 
           .services-grid-spacer {
@@ -1956,6 +2260,94 @@ export default function Home() {
         </div>
       )}
 
+      {/* Legal Modal Popup */}
+      {legalModalOpen && legalModalContent && (
+        <div
+          onClick={closeLegalModal}
+          className="fixed inset-0 bg-black/80 flex justify-center items-center z-[1000] p-10"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.8)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+            padding: '40px'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-xl max-w-[800px] max-h-[90vh] overflow-y-auto relative shadow-2xl"
+            style={{
+              background: 'white',
+              maxWidth: '800px',
+              maxHeight: '90vh',
+              borderRadius: '12px',
+              overflowY: 'auto',
+              position: 'relative',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
+            }}
+          >
+            <button
+              onClick={closeLegalModal}
+              className="absolute top-5 right-5 bg-white border-2 border-[#E5E7EB] rounded-full w-10 h-10 text-2xl text-[#6B7280] cursor-pointer z-10 hover:bg-gray-50 transition-colors"
+              style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                background: 'white',
+                border: '2px solid #E5E7EB',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                fontSize: '24px',
+                color: '#6B7280',
+                cursor: 'pointer',
+                zIndex: 10
+              }}
+            >
+              ×
+            </button>
+
+            <div className="p-10">
+              <h1
+                className="text-[32px] font-semibold text-[#0F2847] mb-8"
+                style={{
+                  fontFamily: 'Inter',
+                  fontWeight: 600,
+                  fontSize: '32px',
+                  color: '#0F2847',
+                  lineHeight: '1.2',
+                  marginBottom: '32px'
+                }}
+              >
+                {legalModalContent.title}
+              </h1>
+
+              <div
+                className="text-[16px] text-[#374151]"
+                style={{
+                  fontFamily: 'Inter',
+                  fontSize: '16px',
+                  color: '#374151',
+                  lineHeight: '1.8'
+                }}
+              >
+                {legalModalContent.content.split('\n\n').map((section, i) => (
+                  <p key={i} style={{ marginBottom: '24px', whiteSpace: 'pre-line' }}>
+                    {section}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Footer - Silk Flag Gradient */}
       <footer className="py-16 px-6 relative overflow-hidden">
         <div className="absolute inset-0 silk-gradient"></div>
@@ -2012,55 +2404,45 @@ export default function Home() {
           {/* Legal Links Section */}
           <div className="border-t border-white/20 pt-8 pb-6 text-center">
             <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-6 text-[14px]">
-              <a
-                href="/Privacy Policy.docx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-white transition-colors"
+              <button
+                onClick={() => openLegalModal('privacy')}
+                className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
                 style={{ fontFamily: 'Inter', textDecoration: 'none' }}
               >
                 Privacy Policy
-              </a>
+              </button>
               <span className="text-white/40">|</span>
-              <a
-                href="/TERMS OF SERVICE.docx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-white transition-colors"
+              <button
+                onClick={() => openLegalModal('terms')}
+                className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
                 style={{ fontFamily: 'Inter', textDecoration: 'none' }}
               >
                 Terms of Service
-              </a>
+              </button>
               <span className="text-white/40">|</span>
-              <a
-                href="/DISCLAIMER.docx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-white transition-colors"
+              <button
+                onClick={() => openLegalModal('disclaimer')}
+                className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
                 style={{ fontFamily: 'Inter', textDecoration: 'none' }}
               >
                 Disclaimer
-              </a>
+              </button>
               <span className="text-white/40">|</span>
-              <a
-                href="/COOKIE POLICY.docx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-white transition-colors"
+              <button
+                onClick={() => openLegalModal('cookies')}
+                className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
                 style={{ fontFamily: 'Inter', textDecoration: 'none' }}
               >
                 Cookie Policy
-              </a>
+              </button>
               <span className="text-white/40">|</span>
-              <a
-                href="/ACCESSIBILITY STATEMENT.docx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-white transition-colors"
+              <button
+                onClick={() => openLegalModal('accessibility')}
+                className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
                 style={{ fontFamily: 'Inter', textDecoration: 'none' }}
               >
                 Accessibility Statement
-              </a>
+              </button>
             </div>
             <p className="text-[14px] text-white/60" style={{ fontFamily: 'Inter' }} suppressHydrationWarning>
               © {new Date().getFullYear()} Civic Strategy Partners, LLC. All rights reserved.
