@@ -953,15 +953,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         .services-grid-container::before {
           content: '';
           position: absolute;
-          top: 50%;
+          top: 33.33%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 100%;
-          height: 100%;
-          border-radius: 16px;
-          box-shadow:
-            0 0 100px 50px rgba(30,58,95,0.20),
-            0 0 150px 80px rgba(30,58,95,0.12);
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(30,58,95,0.15) 0%, rgba(30,58,95,0.08) 40%, transparent 70%);
           pointer-events: none;
           z-index: 0;
         }
@@ -969,7 +966,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         .services-tile {
           min-height: 260px;
           position: relative;
-          z-index: 1;
+          z-index: 2;
         }
 
         /* Row 1 - All three tiles */
@@ -1022,7 +1019,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           background: #ffffff;
           overflow: hidden;
           box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-          z-index: 1;
+          z-index: 2;
         }
 
         .services-cta-tile {
@@ -1036,7 +1033,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           background: linear-gradient(135deg, #1e3a5f 0%, #2d4a7c 100%);
           box-shadow: 0 8px 24px rgba(0,0,0,0.12);
           text-align: center;
-          z-index: 1;
+          z-index: 2;
         }
 
         .services-cta-tile h3 {
