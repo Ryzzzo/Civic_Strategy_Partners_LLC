@@ -39,9 +39,24 @@ export default function Home() {
   const [gsaNewsLoading, setGsaNewsLoading] = useState(true);
   const [gsaNewsError, setGsaNewsError] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [filloutLoaded, setFilloutLoaded] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://server.fillout.com/embed/v1/';
+    script.async = true;
+    script.onload = () => setFilloutLoaded(true);
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
   }, []);
 
 
@@ -1555,13 +1570,14 @@ export default function Home() {
               Send us a message and we'll get back to you within 24 hours.
             </p>
 
-            <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto', background: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)' }}>
-              <iframe
-                src="https://forms.fillout.com/embed/t/eQxkUtxCQ9us"
-                style={{ width: '100%', height: '700px', border: 'none', borderRadius: '8px' }}
-                title="Contact Form"
-                allowFullScreen
-              ></iframe>
+            <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+              <div
+                data-fillout-id="eQxkUtxCQ9us"
+                data-fillout-embed-type="standard"
+                data-fillout-inherit-parameters
+                data-fillout-dynamic-resize
+                style={{ width: '100%', height: '700px' }}
+              ></div>
             </div>
           </div>
 
