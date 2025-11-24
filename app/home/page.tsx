@@ -1001,7 +1001,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           justify-content: center;
           min-height: 280px;
           border-radius: 16px;
-          background: white;
+          background: #ffffff;
           overflow: visible;
           z-index: 1;
           box-shadow:
