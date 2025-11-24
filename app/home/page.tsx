@@ -1572,7 +1572,15 @@ export default function Home() {
               Send us a message and we'll get back to you within 24 hours.
             </p>
 
-            <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+            <div
+              className="fillout-form-container"
+              style={{
+                width: '100%',
+                maxWidth: '600px',
+                margin: '0 auto',
+                isolation: 'isolate'
+              }}
+            >
               <div
                 style={{ width: '100%', height: '500px' }}
                 data-fillout-id="eQxkUtxCQ9us"
