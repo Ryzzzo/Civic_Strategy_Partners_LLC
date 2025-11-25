@@ -1785,6 +1785,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             gap: 24px !important;
           }
 
+          /* === CONTACT SECTION - TABLET === */
+          .contact-promise-line {
+            font-size: 26px !important;
+          }
+
           .service-card-title {
             font-size: 1.15rem !important;
           }
@@ -3251,19 +3256,20 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 hyphens: 'none',
                 wordBreak: 'normal'
               }}>
-                Whether you need MAS diagnosis, federal readiness guidance, or strategic advisory support —
+                Whether you need MAS diagnosis, federal readiness guidance, or strategic advisory support...
               </p>
               {/* PART 2 - Promise Line */}
               <p className="contact-promise-line" style={{
                 fontFamily: "'Playfair Display', 'Merriweather', serif",
-                fontSize: '26px',
+                fontSize: '32px',
                 color: '#c9a227',
                 fontStyle: 'italic',
-                fontWeight: 500,
+                fontWeight: 600,
                 lineHeight: '1.4',
                 display: 'block',
                 textAlign: 'center',
-                letterSpacing: '0.01em'
+                letterSpacing: '0.02em',
+                textShadow: '0 2px 8px rgba(0,0,0,0.2)'
               }}>
                 We're here to help you move with clarity and purpose.
               </p>
