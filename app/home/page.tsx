@@ -596,6 +596,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
     <>
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
 
         * {
           margin: 0;
@@ -1469,6 +1470,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
           .contact-card-title {
             font-size: 20px !important;
+          }
+
+          .contact-promise-line {
+            font-size: 22px !important;
           }
 
           /* === BACK TO TOP BUTTON === */
@@ -3233,13 +3238,36 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             }}>
               Get in Touch with Civic Strategy Partners
             </h2>
-            <p className="text-[16px] md:text-[18px] text-white/90 max-w-[750px] mx-auto" style={{
-              lineHeight: '1.6',
-              hyphens: 'none',
-              wordBreak: 'normal'
-            }}>
-              Whether you need MAS diagnosis, federal readiness guidance,<br className="hidden md:block" /> or strategic advisory support—we're here to help you<br className="hidden md:block" /> move with clarity and purpose.
-            </p>
+            <div className="max-w-[750px] mx-auto">
+              {/* PART 1 - Supporting Text */}
+              <p className="contact-supporting-text" style={{
+                fontFamily: 'Source Sans Pro, sans-serif',
+                fontSize: '18px',
+                color: 'rgba(255,255,255,0.8)',
+                lineHeight: '1.6',
+                display: 'block',
+                textAlign: 'center',
+                marginBottom: '16px',
+                hyphens: 'none',
+                wordBreak: 'normal'
+              }}>
+                Whether you need MAS diagnosis, federal readiness guidance, or strategic advisory support —
+              </p>
+              {/* PART 2 - Promise Line */}
+              <p className="contact-promise-line" style={{
+                fontFamily: "'Playfair Display', 'Merriweather', serif",
+                fontSize: '26px',
+                color: '#c9a227',
+                fontStyle: 'italic',
+                fontWeight: 500,
+                lineHeight: '1.4',
+                display: 'block',
+                textAlign: 'center',
+                letterSpacing: '0.01em'
+              }}>
+                We're here to help you move with clarity and purpose.
+              </p>
+            </div>
           </div>
 
           {/* Dual CTA Cards */}
