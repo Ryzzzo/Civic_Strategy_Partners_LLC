@@ -43,6 +43,8 @@ export default function Home() {
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [legalModalContent, setLegalModalContent] = useState<{title: string, content: string} | null>(null);
   const [expandedService, setExpandedService] = useState<number | null>(null);
+  const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
+  const [schedulingModalOpen, setSchedulingModalOpen] = useState(false);
 
   const services = [
     {
@@ -1453,6 +1455,20 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
           .why-csp-card {
             padding: 24px !important;
+          }
+
+          /* === CONTACT SECTION === */
+          .contact-card {
+            padding: 32px !important;
+          }
+
+          .contact-icon {
+            width: 40px !important;
+            height: 40px !important;
+          }
+
+          .contact-card-title {
+            font-size: 20px !important;
           }
 
           /* === BACK TO TOP BUTTON === */
@@ -3190,33 +3206,197 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       <section id="contact" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
         <div className="absolute inset-0 silk-gradient"></div>
         <div className="absolute inset-0 silk-overlay"></div>
-        <div className="max-w-[900px] mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] font-bold text-white mb-4" style={{ fontWeight: 700 }}>
+
+        {/* Corner Decorations */}
+        <div
+          className="corner-decoration absolute top-5 left-5 w-20 h-20 border-t-[3px] border-l-[3px] border-white/30 z-10"
+          style={{
+            borderTopColor: 'rgba(255, 255, 255, 0.3)',
+            borderLeftColor: 'rgba(255, 255, 255, 0.3)'
+          }}
+        ></div>
+        <div
+          className="corner-decoration absolute bottom-5 right-5 w-20 h-20 border-b-[3px] border-r-[3px] border-white/30 z-10"
+          style={{
+            borderBottomColor: 'rgba(255, 255, 255, 0.3)',
+            borderRightColor: 'rgba(255, 255, 255, 0.3)'
+          }}
+        ></div>
+
+        <div className="max-w-[1200px] mx-auto relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-[32px] md:text-[42px] font-bold text-white mb-4" style={{
+              fontWeight: 700,
+              lineHeight: '1.2',
+              textShadow: '0 2px 8px rgba(0,0,0,0.2)'
+            }}>
               Get in Touch with Civic Strategy Partners
             </h2>
-            <p className="text-[18px] text-white/90">
-              Whether you need MAS diagnosis, federal readiness guidance, or strategic advisory support, CSP is here to help you move with clarity and purpose in the federal marketplace.
+            <p className="text-[16px] md:text-[18px] text-white/90 max-w-[800px] mx-auto" style={{ lineHeight: '1.6' }}>
+              Whether you need MAS diagnosis, federal readiness guidance, or strategic advisory support—we're here to help you move with clarity and purpose.
             </p>
           </div>
 
-
-          {/* CONSULTATION BOOKING */}
-          <div className="text-center">
-            <h3 className="text-[22px] font-semibold text-white mb-3">
-              Ready to Discuss Your Situation?
-            </h3>
-            <p className="text-[16px] text-white/80 mb-6">
-              Book a consultation to talk strategy with our team.
-            </p>
-
-            <a
-              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
-              className="premium-cta inline-block text-white px-8 py-3.5 rounded-md text-[16px] font-semibold"
-              style={{ fontFamily: 'Inter', fontWeight: 600 }}
+          {/* Dual CTA Cards */}
+          <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-[900px] mx-auto">
+            {/* LEFT CARD - Send Us a Message */}
+            <div
+              className="contact-card flex-1"
+              style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: '20px',
+                backdropFilter: 'blur(10px)',
+                padding: '40px',
+                maxWidth: '400px',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                transition: 'all 0.3s ease',
+                margin: '0 auto'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.border = '1px solid rgba(201,162,39,0.4)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.border = '1px solid rgba(255,255,255,0.15)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
             >
-              Schedule a Consultation
-            </a>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#c9a227"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ marginBottom: '24px' }}
+                className="contact-icon"
+              >
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <h3 style={{
+                fontFamily: 'Merriweather, serif',
+                fontSize: '24px',
+                fontWeight: 700,
+                color: '#ffffff',
+                marginBottom: '16px',
+                lineHeight: '1.3'
+              }}
+              className="contact-card-title">
+                Send Us a Message
+              </h3>
+              <p style={{
+                fontFamily: 'Source Sans Pro, sans-serif',
+                fontSize: '16px',
+                color: 'rgba(255,255,255,0.8)',
+                lineHeight: '1.6',
+                marginBottom: '28px',
+                flexGrow: 1
+              }}>
+                Not sure where to start? Tell us about your situation and we'll respond within 24 hours.
+              </p>
+              <button
+                onClick={() => setInquiryModalOpen(true)}
+                className="premium-cta"
+                style={{
+                  width: '100%',
+                  fontFamily: 'Inter, sans-serif'
+                }}
+                aria-label="Open inquiry form"
+              >
+                Start a Conversation
+              </button>
+            </div>
+
+            {/* RIGHT CARD - Schedule Consultation */}
+            <div
+              className="contact-card flex-1"
+              style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: '20px',
+                backdropFilter: 'blur(10px)',
+                padding: '40px',
+                maxWidth: '400px',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                transition: 'all 0.3s ease',
+                margin: '0 auto'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.border = '1px solid rgba(201,162,39,0.4)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.border = '1px solid rgba(255,255,255,0.15)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#c9a227"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ marginBottom: '24px' }}
+                className="contact-icon"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <h3 style={{
+                fontFamily: 'Merriweather, serif',
+                fontSize: '24px',
+                fontWeight: 700,
+                color: '#ffffff',
+                marginBottom: '16px',
+                lineHeight: '1.3'
+              }}
+              className="contact-card-title">
+                Schedule Consultation
+              </h3>
+              <p style={{
+                fontFamily: 'Source Sans Pro, sans-serif',
+                fontSize: '16px',
+                color: 'rgba(255,255,255,0.8)',
+                lineHeight: '1.6',
+                marginBottom: '28px',
+                flexGrow: 1
+              }}>
+                Ready to discuss your federal strategy? Book time directly with our team.
+              </p>
+              <button
+                onClick={() => setSchedulingModalOpen(true)}
+                className="premium-cta"
+                style={{
+                  width: '100%',
+                  fontFamily: 'Inter, sans-serif'
+                }}
+                aria-label="Open scheduling tool"
+              >
+                Book a Time
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -3459,6 +3639,284 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                     {section}
                   </p>
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Inquiry Modal */}
+      {inquiryModalOpen && (
+        <div
+          onClick={() => setInquiryModalOpen(false)}
+          className="fixed inset-0 bg-black/80 flex justify-center items-center z-[1000] p-6"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.85)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+            padding: '24px'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-xl max-w-[600px] w-full relative shadow-2xl"
+            style={{
+              background: 'white',
+              maxWidth: '600px',
+              width: '100%',
+              borderRadius: '16px',
+              position: 'relative',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
+            }}
+          >
+            <button
+              onClick={() => setInquiryModalOpen(false)}
+              className="absolute top-4 right-4 bg-white border-2 border-gray-200 rounded-full w-10 h-10 text-2xl text-gray-600 cursor-pointer z-10 hover:bg-gray-50 transition-colors"
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'white',
+                border: '2px solid #E5E7EB',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                fontSize: '24px',
+                color: '#6B7280',
+                cursor: 'pointer',
+                zIndex: 10,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                lineHeight: '1'
+              }}
+              aria-label="Close inquiry modal"
+            >
+              ×
+            </button>
+
+            <div className="p-8">
+              <h2
+                className="text-[28px] font-bold text-[#1e3a5f] mb-4"
+                style={{
+                  fontFamily: 'Merriweather, serif',
+                  fontWeight: 700,
+                  fontSize: '28px',
+                  color: '#1e3a5f',
+                  lineHeight: '1.2',
+                  marginBottom: '16px'
+                }}
+              >
+                Send Us a Message
+              </h2>
+              <p
+                className="text-[16px] text-gray-600 mb-8"
+                style={{
+                  fontFamily: 'Source Sans Pro, sans-serif',
+                  fontSize: '16px',
+                  color: '#6B7280',
+                  lineHeight: '1.6',
+                  marginBottom: '32px'
+                }}
+              >
+                Tell us about your situation and we'll respond within 24 hours.
+              </p>
+
+              <div
+                className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center"
+                style={{
+                  background: '#F9FAFB',
+                  border: '2px dashed #D1D5DB',
+                  borderRadius: '12px',
+                  padding: '48px',
+                  textAlign: 'center'
+                }}
+              >
+                <svg
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#c9a227"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    margin: '0 auto 24px',
+                    opacity: 0.6
+                  }}
+                >
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <p
+                  style={{
+                    fontFamily: 'Source Sans Pro, sans-serif',
+                    fontSize: '18px',
+                    color: '#6B7280',
+                    fontWeight: 600,
+                    marginBottom: '8px'
+                  }}
+                >
+                  HubSpot Form Integration
+                </p>
+                <p
+                  style={{
+                    fontFamily: 'Source Sans Pro, sans-serif',
+                    fontSize: '14px',
+                    color: '#9CA3AF',
+                    lineHeight: '1.5'
+                  }}
+                >
+                  HubSpot form will be embedded here
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Scheduling Modal */}
+      {schedulingModalOpen && (
+        <div
+          onClick={() => setSchedulingModalOpen(false)}
+          className="fixed inset-0 bg-black/80 flex justify-center items-center z-[1000] p-6"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.85)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+            padding: '24px'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-xl max-w-[600px] w-full relative shadow-2xl"
+            style={{
+              background: 'white',
+              maxWidth: '600px',
+              width: '100%',
+              borderRadius: '16px',
+              position: 'relative',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
+            }}
+          >
+            <button
+              onClick={() => setSchedulingModalOpen(false)}
+              className="absolute top-4 right-4 bg-white border-2 border-gray-200 rounded-full w-10 h-10 text-2xl text-gray-600 cursor-pointer z-10 hover:bg-gray-50 transition-colors"
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'white',
+                border: '2px solid #E5E7EB',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                fontSize: '24px',
+                color: '#6B7280',
+                cursor: 'pointer',
+                zIndex: 10,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                lineHeight: '1'
+              }}
+              aria-label="Close scheduling modal"
+            >
+              ×
+            </button>
+
+            <div className="p-8">
+              <h2
+                className="text-[28px] font-bold text-[#1e3a5f] mb-4"
+                style={{
+                  fontFamily: 'Merriweather, serif',
+                  fontWeight: 700,
+                  fontSize: '28px',
+                  color: '#1e3a5f',
+                  lineHeight: '1.2',
+                  marginBottom: '16px'
+                }}
+              >
+                Schedule Consultation
+              </h2>
+              <p
+                className="text-[16px] text-gray-600 mb-8"
+                style={{
+                  fontFamily: 'Source Sans Pro, sans-serif',
+                  fontSize: '16px',
+                  color: '#6B7280',
+                  lineHeight: '1.6',
+                  marginBottom: '32px'
+                }}
+              >
+                Book time directly with our team to discuss your federal strategy.
+              </p>
+
+              <div
+                className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center"
+                style={{
+                  background: '#F9FAFB',
+                  border: '2px dashed #D1D5DB',
+                  borderRadius: '12px',
+                  padding: '48px',
+                  textAlign: 'center'
+                }}
+              >
+                <svg
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#c9a227"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    margin: '0 auto 24px',
+                    opacity: 0.6
+                  }}
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <p
+                  style={{
+                    fontFamily: 'Source Sans Pro, sans-serif',
+                    fontSize: '18px',
+                    color: '#6B7280',
+                    fontWeight: 600,
+                    marginBottom: '8px'
+                  }}
+                >
+                  HubSpot Scheduling Integration
+                </p>
+                <p
+                  style={{
+                    fontFamily: 'Source Sans Pro, sans-serif',
+                    fontSize: '14px',
+                    color: '#9CA3AF',
+                    lineHeight: '1.5'
+                  }}
+                >
+                  HubSpot scheduling tool will be embedded here
+                </p>
               </div>
             </div>
           </div>
