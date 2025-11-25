@@ -2198,12 +2198,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   background: '#ffffff',
                   border: '1px solid rgba(30, 58, 95, 0.08)',
                   borderRadius: '20px',
-                  padding: '32px 28px',
+                  padding: '28px 24px',
                   boxShadow: '0 4px 16px rgba(30, 58, 95, 0.08), 0 2px 8px rgba(30, 58, 95, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
                   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   display: 'flex',
                   flexDirection: 'column',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  position: 'relative'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-8px)';
@@ -2216,34 +2217,44 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   e.currentTarget.style.border = '1px solid rgba(30, 58, 95, 0.08)';
                 }}
               >
-                {/* Gold Star Icon with Background Circle */}
+                {/* Header Section - Title and Star on Same Line */}
                 <div style={{
-                  marginBottom: '16px',
-                  width: '52px',
-                  height: '52px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05))',
-                  border: '1px solid rgba(201, 162, 39, 0.2)',
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  marginBottom: '12px'
                 }}>
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="#c9a227" style={{ filter: 'drop-shadow(0 2px 4px rgba(201, 162, 39, 0.3))' }}>
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                </div>
+                  {/* Title */}
+                  <h3 style={{
+                    fontFamily: 'Merriweather, serif',
+                    fontSize: '1.35rem',
+                    fontWeight: 700,
+                    color: '#1e3a5f',
+                    lineHeight: 1.3,
+                    margin: 0,
+                    paddingRight: '12px',
+                    flex: 1
+                  }}>
+                    {service.title}
+                  </h3>
 
-                {/* Title */}
-                <h3 style={{
-                  fontFamily: 'Merriweather, serif',
-                  fontSize: '1.35rem',
-                  fontWeight: 700,
-                  color: '#1e3a5f',
-                  marginBottom: '14px',
-                  lineHeight: 1.3
-                }}>
-                  {service.title}
-                </h3>
+                  {/* Gold Star Icon with Background Circle */}
+                  <div style={{
+                    width: '52px',
+                    height: '52px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05))',
+                    border: '1px solid rgba(201, 162, 39, 0.2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="#c9a227" style={{ filter: 'drop-shadow(0 2px 4px rgba(201, 162, 39, 0.3))' }}>
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  </div>
+                </div>
 
                 {/* Description */}
                 <p style={{
@@ -2251,13 +2262,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   fontSize: '0.9rem',
                   color: '#6B7280',
                   lineHeight: 1.5,
-                  marginBottom: '20px'
+                  marginBottom: '16px'
                 }}>
                   {service.description}
                 </p>
 
                 {/* What You Receive */}
-                <div style={{ marginBottom: '20px' }}>
+                <div style={{ marginBottom: '16px' }}>
                   <p style={{
                     fontFamily: 'Source Sans Pro, sans-serif',
                     fontSize: '0.75rem',
@@ -2277,7 +2288,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                         fontFamily: 'Source Sans Pro, sans-serif',
                         fontSize: '0.875rem',
                         color: '#4a5568',
-                        marginBottom: '10px',
+                        marginBottom: '8px',
                         paddingLeft: '1.5rem',
                         position: 'relative',
                         lineHeight: 1.5
@@ -2298,7 +2309,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
                 {/* Outcome Metric - pushed to bottom */}
                 <div style={{
-                  marginTop: 'auto',
+                  marginTop: '18px',
                   padding: '20px',
                   background: 'linear-gradient(135deg, rgba(30, 58, 95, 0.03), rgba(201, 162, 39, 0.03))',
                   borderLeft: '3px solid #c9a227',
