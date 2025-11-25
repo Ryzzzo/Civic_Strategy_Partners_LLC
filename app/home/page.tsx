@@ -596,7 +596,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
     <>
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
 
         * {
           margin: 0;
@@ -1473,7 +1472,14 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           }
 
           .contact-promise-line {
-            font-size: 22px !important;
+            font-size: 20px !important;
+          }
+
+          /* Very small mobile screens - reduce to 18px to keep on one line */
+          @media (max-width: 480px) {
+            .contact-promise-line {
+              font-size: 18px !important;
+            }
           }
 
           /* === BACK TO TOP BUTTON === */
@@ -1783,11 +1789,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           .services-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 24px !important;
-          }
-
-          /* === CONTACT SECTION - TABLET === */
-          .contact-promise-line {
-            font-size: 26px !important;
           }
 
           .service-card-title {
@@ -3260,16 +3261,16 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               </p>
               {/* PART 2 - Promise Line */}
               <p className="contact-promise-line" style={{
-                fontFamily: "'Playfair Display', 'Merriweather', serif",
-                fontSize: '32px',
+                fontFamily: 'Merriweather, serif',
+                fontSize: '24px',
                 color: '#c9a227',
                 fontStyle: 'italic',
-                fontWeight: 600,
-                lineHeight: '1.4',
+                fontWeight: 500,
                 display: 'block',
                 textAlign: 'center',
-                letterSpacing: '0.02em',
-                textShadow: '0 2px 8px rgba(0,0,0,0.2)'
+                marginTop: '12px',
+                whiteSpace: 'nowrap',
+                textShadow: '0 2px 6px rgba(0,0,0,0.15)'
               }}>
                 We're here to help you move with clarity and purpose.
               </p>
