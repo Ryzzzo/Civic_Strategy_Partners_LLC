@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { Activity, Map, Briefcase, RefreshCw, Award, Package, Check } from 'lucide-react';
 
 const mockArticles = [
   {
@@ -2071,6 +2072,350 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </div>
           </div>
         )}
+      </section>
+
+      {/* Services Section */}
+      <section style={{ background: '#ffffff' }}>
+        {/* Section Header */}
+        <div style={{ padding: '5rem 1.5rem 3rem', maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{
+            fontFamily: 'Merriweather, serif',
+            fontSize: '2.75rem',
+            fontWeight: 700,
+            color: '#1e3a5f',
+            marginBottom: '1rem'
+          }}>
+            Our Services
+          </h2>
+          <p style={{
+            fontFamily: 'Source Sans Pro, sans-serif',
+            fontSize: '1rem',
+            color: '#6B7280',
+            maxWidth: '600px',
+            margin: '0 auto'
+          }}>
+            Comprehensive support for every stage of your GSA Schedule journey
+          </p>
+        </div>
+
+        {/* Service Cards */}
+        {[
+          {
+            number: 1,
+            title: 'MAS Performance Diagnosis & Correction',
+            description: 'Your MAS contract isn\'t performing, and you know something\'s wrong. We identify exactly where your contract is failing and build a correction plan to restore compliance, visibility, and performance.',
+            icon: 'Activity',
+            whatYouReceive: [
+              'Comprehensive contract health audit identifying compliance gaps and performance blockers',
+              'Root cause analysis showing exactly where and why your contract is underperforming',
+              'Prioritized correction roadmap with clear, actionable steps',
+              'Documentation package aligned with GSA expectations and audit requirements',
+              'Implementation support to execute corrections and verify results'
+            ],
+            keyOutcomes: [
+              'Contract compliance restored to GSA standards',
+              'Visibility gaps closed with proper documentation',
+              'Performance metrics improved and measurable'
+            ],
+            bg: '#ffffff'
+          },
+          {
+            number: 2,
+            title: 'Federal Readiness Roadmap',
+            description: 'Entering the federal marketplace without a roadmap is like deploying without a mission brief. We assess where you are now, identify what\'s missing, and build a step-by-step plan to get you contract-ready.',
+            icon: 'Map',
+            whatYouReceive: [
+              'Current state assessment of your federal readiness across compliance, capabilities, and positioning',
+              'Gap analysis identifying what you need to compete effectively',
+              'Phased implementation roadmap with clear milestones and timelines',
+              'Market intelligence briefing on target agencies and competitors',
+              'Certification and registration guidance (SAM, DSBS, GSA)'
+            ],
+            keyOutcomes: [
+              'Clear path from current state to contract-ready',
+              'Market positioning strategy developed',
+              'Competitive intelligence on target agencies'
+            ],
+            bg: '#f8fafc'
+          },
+          {
+            number: 3,
+            title: 'MAS Advisory & Offer Strategy',
+            description: 'The MAS offer process isn\'t just complex—it\'s designed to catch mistakes. We embed expert guidance into your offer development from day one, helping you build it right the first time.',
+            icon: 'Briefcase',
+            whatYouReceive: [
+              'Pre-offer strategy session to align structure with your business model',
+              'Offer development support: SIN selection, pricing strategy, T&C negotiation',
+              'Real-time review and feedback as you build your offer',
+              'GSA submission package review ensuring completeness and accuracy',
+              'Post-award support to verify correct setup'
+            ],
+            keyOutcomes: [
+              'Offer accepted with minimal iterations',
+              'Pricing structure optimized for profitability',
+              'Contract structure aligned with business model'
+            ],
+            bg: '#ffffff'
+          },
+          {
+            number: 4,
+            title: 'MAS Lifecycle & Compliance Support',
+            description: 'Your GSA Schedule requires ongoing maintenance, updates, and strategic adjustments to stay compliant and competitive. We handle the ongoing management burden so you can focus on winning work.',
+            icon: 'RefreshCw',
+            whatYouReceive: [
+              'Annual compliance calendar with key deadlines and requirements',
+              'Modification package development for price adjustments, SIN additions, and updates',
+              'Price list update support ensuring accuracy and compliance',
+              'Solicitation refresh alignment to keep your contract competitive',
+              'Annual reporting and documentation support'
+            ],
+            keyOutcomes: [
+              '100% on-time compliance with GSA deadlines',
+              'Contract modifications executed correctly',
+              'Competitive positioning maintained'
+            ],
+            bg: '#f8fafc'
+          },
+          {
+            number: 5,
+            title: 'White-Glove Retainer Support',
+            description: 'Some federal contractors need a trusted advisor on call—someone who understands their business, knows their contract inside and out, and can provide strategic guidance when decisions need to be made quickly.',
+            icon: 'Award',
+            whatYouReceive: [
+              'Direct access to Principal Consultant with guaranteed response times',
+              'Proactive contract monitoring to identify opportunities and risks',
+              'Strategic guidance on pricing, modifications, and market positioning',
+              'Priority support for urgent issues and time-sensitive decisions',
+              'Quarterly business reviews to assess performance and adjust strategy'
+            ],
+            keyOutcomes: [
+              'Expert guidance available on-demand',
+              'Proactive contract optimization',
+              'Strategic decisions made with confidence'
+            ],
+            bg: '#ffffff'
+          },
+          {
+            number: 6,
+            title: 'À La Carte Mod Support',
+            description: 'Not every modification requires full-service support. We provide flexible, project-based assistance for individual modifications—from administrative updates to major contract restructuring.',
+            icon: 'Package',
+            whatYouReceive: [
+              'Modification scoping and strategy determination',
+              'Package development support: documentation, pricing analysis, compliance verification',
+              'GSA submission review ensuring accuracy and completeness',
+              'Follow-up support to address GSA questions or requested revisions',
+              'Implementation guidance to execute approved modifications correctly'
+            ],
+            keyOutcomes: [
+              'Modifications approved on first submission',
+              'No compliance issues or rejections',
+              'Faster approval timelines'
+            ],
+            bg: '#f8fafc'
+          }
+        ].map((service, index) => {
+          const isEven = index % 2 === 1;
+          const IconComponent = service.icon === 'Activity' ? Activity :
+                                service.icon === 'Map' ? Map :
+                                service.icon === 'Briefcase' ? Briefcase :
+                                service.icon === 'RefreshCw' ? RefreshCw :
+                                service.icon === 'Award' ? Award : Package;
+
+          return (
+            <div key={service.number} style={{ background: service.bg, borderBottom: '1px solid rgba(30, 58, 95, 0.05)' }}>
+              <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '4rem 1.5rem',
+                display: 'flex',
+                flexDirection: isEven ? 'row-reverse' : 'row',
+                alignItems: 'center',
+                gap: '4rem',
+                flexWrap: 'wrap'
+              }}>
+                {/* Content Block */}
+                <div style={{ flex: '1 1 500px', minWidth: '300px' }}>
+                  {/* Service Number Badge */}
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '50%',
+                    background: '#1e3a5f',
+                    color: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'Merriweather, serif',
+                    fontSize: '1.5rem',
+                    fontWeight: 700,
+                    marginBottom: '1.5rem'
+                  }}>
+                    {service.number}
+                  </div>
+
+                  {/* Title */}
+                  <h3 style={{
+                    fontFamily: 'Merriweather, serif',
+                    fontSize: '1.75rem',
+                    fontWeight: 700,
+                    color: '#1e3a5f',
+                    marginBottom: '1rem',
+                    lineHeight: 1.3
+                  }}>
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p style={{
+                    fontFamily: 'Source Sans Pro, sans-serif',
+                    fontSize: '1rem',
+                    color: '#4a5568',
+                    lineHeight: 1.7,
+                    marginBottom: '2rem'
+                  }}>
+                    {service.description}
+                  </p>
+
+                  {/* What You Receive */}
+                  <div style={{ marginBottom: '2rem' }}>
+                    <h4 style={{
+                      fontFamily: 'Merriweather, serif',
+                      fontSize: '1.1rem',
+                      fontWeight: 600,
+                      color: '#1e3a5f',
+                      marginBottom: '1rem'
+                    }}>
+                      What You Receive
+                    </h4>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      {service.whatYouReceive.map((item, idx) => (
+                        <li key={idx} style={{
+                          fontFamily: 'Source Sans Pro, sans-serif',
+                          fontSize: '0.95rem',
+                          color: '#4a5568',
+                          marginBottom: '0.75rem',
+                          paddingLeft: '1.75rem',
+                          position: 'relative',
+                          lineHeight: 1.6
+                        }}>
+                          <Check style={{
+                            position: 'absolute',
+                            left: 0,
+                            top: '2px',
+                            width: '20px',
+                            height: '20px',
+                            color: '#c9a227'
+                          }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Key Outcomes */}
+                  <div style={{ marginBottom: '2rem' }}>
+                    <h4 style={{
+                      fontFamily: 'Merriweather, serif',
+                      fontSize: '1.1rem',
+                      fontWeight: 600,
+                      color: '#1e3a5f',
+                      marginBottom: '1rem'
+                    }}>
+                      Key Outcomes
+                    </h4>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                      {service.keyOutcomes.map((outcome, idx) => (
+                        <div key={idx} style={{
+                          flex: '1 1 calc(33.333% - 0.5rem)',
+                          minWidth: '200px',
+                          padding: '1rem',
+                          background: 'linear-gradient(135deg, rgba(30, 58, 95, 0.05) 0%, rgba(201, 162, 39, 0.05) 100%)',
+                          borderRadius: '12px',
+                          border: '1px solid rgba(30, 58, 95, 0.08)'
+                        }}>
+                          <p style={{
+                            fontFamily: 'Source Sans Pro, sans-serif',
+                            fontSize: '0.95rem',
+                            fontWeight: 600,
+                            color: '#1e3a5f',
+                            margin: 0,
+                            lineHeight: 1.4
+                          }}>
+                            {outcome}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    style={{
+                      fontFamily: 'Source Sans Pro, sans-serif',
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      background: '#1e3a5f',
+                      padding: '0.875rem 2rem',
+                      borderRadius: '12px',
+                      border: '2px solid #1e3a5f',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 12px rgba(30, 58, 95, 0.2)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 6px 20px rgba(30, 58, 95, 0.3)';
+                      e.currentTarget.style.borderColor = '#c9a227';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(30, 58, 95, 0.2)';
+                      e.currentTarget.style.borderColor = '#1e3a5f';
+                    }}
+                  >
+                    Request Consultation
+                  </button>
+                </div>
+
+                {/* Visual Element */}
+                <div style={{
+                  flex: '0 0 300px',
+                  height: '300px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'relative'
+                }}>
+                  {/* Decorative Background */}
+                  <div style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    background: 'linear-gradient(135deg, rgba(30, 58, 95, 0.08) 0%, rgba(201, 162, 39, 0.08) 100%)',
+                    borderRadius: '50%',
+                    opacity: 0.6
+                  }} />
+
+                  {/* Corner Brackets */}
+                  <div style={{ position: 'absolute', top: '20px', left: '20px', width: '40px', height: '40px', border: '3px solid #c9a227', borderRight: 'none', borderBottom: 'none', borderRadius: '12px 0 0 0', opacity: 0.5 }} />
+                  <div style={{ position: 'absolute', bottom: '20px', right: '20px', width: '40px', height: '40px', border: '3px solid #c9a227', borderLeft: 'none', borderTop: 'none', borderRadius: '0 0 12px 0', opacity: 0.5 }} />
+
+                  {/* Icon */}
+                  <IconComponent style={{
+                    width: '120px',
+                    height: '120px',
+                    color: '#1e3a5f',
+                    position: 'relative',
+                    zIndex: 1
+                  }} />
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </section>
 
       {/* CSS Animations */}
