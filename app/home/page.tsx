@@ -195,20 +195,6 @@ Your modification gets filed correctly, approved faster, and implemented properl
     setIsClient(true);
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://server.fillout.com/embed/v1/';
-      script.async = true;
-      document.body.appendChild(script);
-
-      return () => {
-        if (document.body.contains(script)) {
-          document.body.removeChild(script);
-        }
-      };
-    }
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1203,12 +1189,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           display: block;
         }
 
-        .fillout-container {
-          background: white;
-          padding: 24px;
-          border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
 
         /* ========== COMPREHENSIVE MOBILE RESPONSIVE STYLES ========== */
 
@@ -1415,10 +1395,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             margin-bottom: 16px !important;
           }
 
-          /* === CONTACT FORM === */
-          .fillout-container {
-            padding: 20px !important;
-          }
 
           #contact h2 {
             font-size: 28px !important;
@@ -2972,33 +2948,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </p>
           </div>
 
-          {/* INQUIRY FORM */}
-          <div className="mb-8">
-            <h3 className="text-[22px] font-semibold text-white text-center mb-3">
-              Have a Question?
-            </h3>
-            <p className="text-[16px] text-white/80 text-center mb-6">
-              Send us a message and we'll get back to you within 24 hours.
-            </p>
-
-            <div
-              style={{
-                width: '100%',
-                height: '500px'
-              }}
-              data-fillout-id="eQxkUtxCQ9us"
-              data-fillout-embed-type="standard"
-              data-fillout-inherit-parameters
-              data-fillout-dynamic-resize
-            />
-          </div>
-
-          {/* OR DIVIDER */}
-          <div className="flex items-center gap-4 my-8">
-            <div className="flex-1 h-[1px] bg-white/20"></div>
-            <span className="text-white/60 font-medium">OR</span>
-            <div className="flex-1 h-[1px] bg-white/20"></div>
-          </div>
 
           {/* CONSULTATION BOOKING */}
           <div className="text-center">
