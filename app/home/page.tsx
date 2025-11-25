@@ -1541,6 +1541,22 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             display: flex !important;
             position: relative !important;
             z-index: 10 !important;
+            animation: fadeInDown 0.6s ease-out;
+          }
+
+          #services .logo-accent-mobile > div {
+            backdrop-filter: blur(10px);
+          }
+
+          @keyframes fadeInDown {
+            from {
+              opacity: 0;
+              transform: translateY(-20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
 
           #services .center-logo-hub {
@@ -1722,6 +1738,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             display: flex !important;
             position: relative !important;
             z-index: 10 !important;
+            animation: fadeInDown 0.6s ease-out;
+          }
+
+          #services .logo-accent-mobile > div {
+            backdrop-filter: blur(10px);
           }
 
           #services .center-logo-hub {
@@ -1910,20 +1931,30 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             <div className="logo-accent-mobile" style={{
               display: 'none',
               justifyContent: 'center',
-              marginBottom: '20px'
+              marginBottom: '24px'
             }}>
-              <img
-                src="/Civic Strategy Partners Minus LLC.png"
-                alt="Civic Strategy Partners"
-                style={{
-                  width: '100px',
-                  height: 'auto',
-                  objectFit: 'contain',
-                  opacity: 0.9,
-                  filter: 'drop-shadow(0 2px 4px rgba(30, 58, 95, 0.15))',
-                  borderRadius: '12px'
-                }}
-              />
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '20px',
+                background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+                borderRadius: '20px',
+                boxShadow: '0 8px 32px rgba(59, 130, 246, 0.15), 0 4px 16px rgba(30, 58, 95, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
+                border: '1px solid rgba(59, 130, 246, 0.1)',
+                transition: 'all 0.3s ease'
+              }}>
+                <img
+                  src="/Civic Strategy Partners Minus LLC.png"
+                  alt="Civic Strategy Partners"
+                  style={{
+                    width: '100px',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                />
+              </div>
             </div>
 
             <h2 className="text-[2.75rem] font-bold text-[#1e3a5f] mb-3" style={{ fontFamily: 'Merriweather, serif', fontWeight: 700 }}>
