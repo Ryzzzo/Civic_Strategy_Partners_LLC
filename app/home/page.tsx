@@ -2191,12 +2191,19 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 outcomeNumber: '30-60 Day',
                 outcomeLabel: 'Fast, compliant modifications'
               }
-            ].map((service, index) => (
+            ].map((service, index) => {
+              const isOdd = index % 2 === 0; // 0,2,4 are odd cards (1st, 3rd, 5th)
+              const accentColor = isOdd ? '#c9a227' : '#2c5282'; // gold or navy
+              const accentRgba = isOdd ? 'rgba(201, 162, 39' : 'rgba(44, 82, 130';
+              const hoverShadowColor = isOdd ? 'rgba(201, 162, 39, 0.15)' : 'rgba(30, 58, 95, 0.15)';
+
+              return (
               <div
                 key={index}
                 style={{
-                  background: '#ffffff',
+                  background: `linear-gradient(180deg, #ffffff 0%, ${accentRgba}, 0.02) 100%)`,
                   border: '2px solid rgba(30, 58, 95, 0.08)',
+                  borderTop: `4px solid ${accentColor}`,
                   borderRadius: '20px',
                   padding: '27px 23px',
                   boxShadow: '0 4px 16px rgba(30, 58, 95, 0.08), 0 2px 8px rgba(30, 58, 95, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
@@ -2208,8 +2215,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(30, 58, 95, 0.12), 0 4px 12px rgba(30, 58, 95, 0.06)';
-                  e.currentTarget.style.borderColor = 'rgba(201, 162, 39, 0.2)';
+                  e.currentTarget.style.boxShadow = `0 12px 32px ${hoverShadowColor}, 0 4px 12px rgba(30, 58, 95, 0.06)`;
+                  e.currentTarget.style.borderColor = `${accentRgba}, 0.3)`;
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
@@ -2238,19 +2245,19 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                     {service.title}
                   </h3>
 
-                  {/* Gold Star Icon with Background Circle */}
+                  {/* Star Icon with Background Circle */}
                   <div style={{
                     width: '52px',
                     height: '52px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05))',
-                    border: '1px solid rgba(201, 162, 39, 0.2)',
+                    background: `linear-gradient(135deg, ${accentRgba}, 0.15), ${accentRgba}, 0.08))`,
+                    border: `1.5px solid ${accentRgba}, 0.3)`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0
                   }}>
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="#c9a227" style={{ filter: 'drop-shadow(0 2px 4px rgba(201, 162, 39, 0.3))' }}>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill={accentColor} style={{ filter: `drop-shadow(0 2px 4px ${accentRgba}, 0.3))` }}>
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   </div>
@@ -2268,7 +2275,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 </p>
 
                 {/* What You Receive */}
-                <div style={{ marginBottom: '16px' }}>
+                <div style={{
+                  marginBottom: '16px',
+                  background: `linear-gradient(135deg, ${accentRgba}, 0.05), ${accentRgba}, 0.02))`,
+                  padding: '16px',
+                  borderRadius: '8px',
+                  borderLeft: `3px solid ${accentColor}`
+                }}>
                   <p style={{
                     fontFamily: 'Source Sans Pro, sans-serif',
                     fontSize: '0.75rem',
@@ -2276,9 +2289,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     fontWeight: 600,
-                    marginBottom: '12px',
-                    borderLeft: '3px solid #c9a227',
-                    paddingLeft: '12px'
+                    marginBottom: '12px'
                   }}>
                     What You Receive
                   </p>
@@ -2311,8 +2322,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <div style={{
                   marginTop: '18px',
                   padding: '20px',
-                  background: 'linear-gradient(135deg, rgba(30, 58, 95, 0.03), rgba(201, 162, 39, 0.03))',
-                  borderLeft: '3px solid #c9a227',
+                  background: `linear-gradient(135deg, ${accentRgba}, 0.08), ${accentRgba}, 0.04))`,
+                  borderLeft: `4px solid ${accentColor}`,
                   borderRadius: '12px',
                   textAlign: 'center',
                   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
@@ -2321,7 +2332,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                     fontFamily: 'Merriweather, serif',
                     fontSize: '1.75rem',
                     fontWeight: 700,
-                    color: '#1e3a5f',
+                    color: accentColor,
                     marginBottom: '4px',
                     letterSpacing: '-0.02em'
                   }}>
@@ -2339,7 +2350,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   </p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
