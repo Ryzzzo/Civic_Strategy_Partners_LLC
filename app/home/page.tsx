@@ -1881,6 +1881,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 style={{
                   ...position,
                   width: '250px',
+                  height: '240px',
                   background: 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(10px)',
                   borderRadius: '20px',
@@ -1888,7 +1889,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   border: '1px solid rgba(30, 58, 95, 0.06)',
                   boxShadow: '0 4px 24px rgba(30, 58, 95, 0.08)',
                   zIndex: 10,
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between'
                 }}
                 onClick={() => setExpandedService(service.id)}
                 onMouseEnter={(e) => {
@@ -1919,7 +1923,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   fontSize: '1.05rem',
                   fontWeight: 700,
                   color: '#1e3a5f',
-                  marginBottom: '12px',
                   lineHeight: 1.3
                 }}>
                   {service.title}
@@ -1928,8 +1931,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   fontFamily: 'Source Sans Pro, sans-serif',
                   fontSize: '0.875rem',
                   color: '#4a5568',
-                  lineHeight: 1.6,
-                  marginBottom: '16px'
+                  lineHeight: 1.6
                 }}>
                   {service.teaser}
                 </p>
