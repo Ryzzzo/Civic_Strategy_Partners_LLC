@@ -1514,10 +1514,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       <div className="wave-bar wave-bar-bottom silk-gradient"></div>
 
       {/* What We Do Section - Orbital Layout */}
-      <section id="services" className="pt-20 pb-24 px-6 bg-[#f0f4f8] fade-in-section">
+      <section id="services" className="pt-12 pb-16 px-6 bg-[#f0f4f8] fade-in-section">
         <div className="max-w-[1200px] mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-[2.75rem] font-bold text-[#1e3a5f] mb-3" style={{ fontFamily: 'Merriweather, serif', fontWeight: 700 }}>
               What We Do
             </h2>
@@ -1527,12 +1527,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           </div>
 
           {/* Orbital Layout Container */}
-          <div className="relative w-full mx-auto" style={{ height: '900px', maxWidth: '1200px' }}>
+          <div className="relative w-full mx-auto" style={{ height: '750px', maxWidth: '1200px' }}>
 
             {/* SVG Connection Lines Layer */}
             <svg
               className="absolute top-0 left-0 w-full h-full pointer-events-none"
-              viewBox="0 0 1200 900"
+              viewBox="0 0 1200 750"
               preserveAspectRatio="xMidYMid meet"
               style={{ zIndex: 1 }}
             >
@@ -1573,54 +1573,54 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               </defs>
 
               {/* Center hub glow */}
-              <circle cx="600" cy="450" r="140" fill="url(#hubGlow)" opacity="0.5">
+              <circle cx="600" cy="375" r="140" fill="url(#hubGlow)" opacity="0.5">
                 <animate attributeName="r" values="140;155;140" dur="4s" repeatCount="indefinite"/>
                 <animate attributeName="opacity" values="0.5;0.7;0.5" dur="4s" repeatCount="indefinite"/>
               </circle>
 
               {/* Decorative Rings */}
-              <circle cx="600" cy="450" r="220" fill="none" stroke="rgba(30, 58, 95, 0.05)" strokeWidth="1" />
-              <circle cx="600" cy="450" r="180" fill="none" stroke="rgba(201, 162, 39, 0.1)" strokeWidth="1.5" strokeDasharray="4 8">
-                <animateTransform attributeName="transform" type="rotate" from="0 600 450" to="360 600 450" dur="60s" repeatCount="indefinite"/>
+              <circle cx="600" cy="375" r="220" fill="none" stroke="rgba(30, 58, 95, 0.05)" strokeWidth="1" />
+              <circle cx="600" cy="375" r="180" fill="none" stroke="rgba(201, 162, 39, 0.1)" strokeWidth="1.5" strokeDasharray="4 8">
+                <animateTransform attributeName="transform" type="rotate" from="0 600 375" to="360 600 375" dur="60s" repeatCount="indefinite"/>
               </circle>
-              <circle cx="600" cy="450" r="150" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="1" strokeDasharray="2 6">
-                <animateTransform attributeName="transform" type="rotate" from="0 600 450" to="-360 600 450" dur="45s" repeatCount="indefinite"/>
+              <circle cx="600" cy="375" r="150" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="1" strokeDasharray="2 6">
+                <animateTransform attributeName="transform" type="rotate" from="0 600 375" to="-360 600 375" dur="45s" repeatCount="indefinite"/>
               </circle>
 
               {/* Connection Lines - Curved paths from cards to center */}
               {/* Card 1 (top-left) to center */}
-              <path id="path1" d="M 180 100 Q 350 250 600 400" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 180 100 Q 350 250 600 400" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path1" d="M 180 80 Q 350 200 600 325" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 180 80 Q 350 200 600 325" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="0" to="-200" dur="15s" repeatCount="indefinite"/>
               </path>
 
               {/* Card 2 (top-right) to center */}
-              <path id="path2" d="M 1020 100 Q 850 250 600 400" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 1020 100 Q 850 250 600 400" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path2" d="M 1020 80 Q 850 200 600 325" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 1020 80 Q 850 200 600 325" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-40" to="-240" dur="15s" repeatCount="indefinite"/>
               </path>
 
               {/* Card 3 (middle-left) to center */}
-              <path id="path3" d="M 20 450 Q 280 450 520 450" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 20 450 Q 280 450 520 450" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path3" d="M 20 375 Q 280 375 520 375" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 20 375 Q 280 375 520 375" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-80" to="-280" dur="15s" repeatCount="indefinite"/>
               </path>
 
               {/* Card 4 (middle-right) to center */}
-              <path id="path4" d="M 1180 450 Q 920 450 680 450" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 1180 450 Q 920 450 680 450" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path4" d="M 1180 375 Q 920 375 680 375" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 1180 375 Q 920 375 680 375" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-120" to="-320" dur="15s" repeatCount="indefinite"/>
               </path>
 
               {/* Card 5 (bottom-left) to center */}
-              <path id="path5" d="M 180 800 Q 350 650 600 500" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 180 800 Q 350 650 600 500" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path5" d="M 180 670 Q 350 550 600 425" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 180 670 Q 350 550 600 425" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-160" to="-360" dur="15s" repeatCount="indefinite"/>
               </path>
 
               {/* Card 6 (bottom-right) to center */}
-              <path id="path6" d="M 1020 800 Q 850 650 600 500" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 1020 800 Q 850 650 600 500" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path6" d="M 1020 670 Q 850 550 600 425" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 1020 670 Q 850 550 600 425" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-200" to="-400" dur="15s" repeatCount="indefinite"/>
               </path>
 
@@ -1751,36 +1751,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   justifyContent: 'center'
                 }}
               >
-                {/* Corner brackets */}
-                <div
-                  className="absolute"
-                  style={{
-                    top: '16px',
-                    left: '16px',
-                    width: '28px',
-                    height: '28px',
-                    border: '2.5px solid #c9a227',
-                    borderRight: 'none',
-                    borderBottom: 'none',
-                    borderRadius: '8px 0 0 0',
-                    opacity: 0.6
-                  }}
-                />
-                <div
-                  className="absolute"
-                  style={{
-                    bottom: '16px',
-                    right: '16px',
-                    width: '28px',
-                    height: '28px',
-                    border: '2.5px solid #c9a227',
-                    borderLeft: 'none',
-                    borderTop: 'none',
-                    borderRadius: '0 0 8px 0',
-                    opacity: 0.6
-                  }}
-                />
-
                 <img
                   src="/Civic Strategy Partners Minus LLC.png"
                   alt="Civic Strategy Partners"
