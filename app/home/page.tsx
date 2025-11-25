@@ -1676,12 +1676,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           </div>
 
           {/* Orbital Layout Container */}
-          <div className="relative w-full mx-auto" style={{ height: '900px', maxWidth: '1200px' }}>
+          <div className="relative w-full mx-auto" style={{ height: '800px', maxWidth: '1200px' }}>
 
             {/* SVG Connection Lines Layer */}
             <svg
               className="absolute top-0 left-0 w-full h-full pointer-events-none"
-              viewBox="0 0 1200 900"
+              viewBox="0 0 1200 800"
               preserveAspectRatio="xMidYMid meet"
               style={{ zIndex: 1 }}
             >
@@ -1718,46 +1718,46 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 </radialGradient>
               </defs>
 
-              <circle cx="600" cy="450" r="140" fill="url(#hubGlow)" opacity="0.5">
+              <circle cx="600" cy="400" r="140" fill="url(#hubGlow)" opacity="0.5">
                 <animate attributeName="r" values="140;155;140" dur="4s" repeatCount="indefinite"/>
                 <animate attributeName="opacity" values="0.5;0.7;0.5" dur="4s" repeatCount="indefinite"/>
               </circle>
 
-              <circle cx="600" cy="450" r="220" fill="none" stroke="rgba(30, 58, 95, 0.05)" strokeWidth="1" />
-              <circle cx="600" cy="450" r="180" fill="none" stroke="rgba(201, 162, 39, 0.1)" strokeWidth="1.5" strokeDasharray="4 8">
-                <animateTransform attributeName="transform" type="rotate" from="0 600 450" to="360 600 450" dur="60s" repeatCount="indefinite"/>
+              <circle cx="600" cy="400" r="220" fill="none" stroke="rgba(30, 58, 95, 0.05)" strokeWidth="1" />
+              <circle cx="600" cy="400" r="180" fill="none" stroke="rgba(201, 162, 39, 0.1)" strokeWidth="1.5" strokeDasharray="4 8">
+                <animateTransform attributeName="transform" type="rotate" from="0 600 400" to="360 600 400" dur="60s" repeatCount="indefinite"/>
               </circle>
-              <circle cx="600" cy="450" r="150" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="1" strokeDasharray="2 6">
-                <animateTransform attributeName="transform" type="rotate" from="0 600 450" to="-360 600 450" dur="45s" repeatCount="indefinite"/>
+              <circle cx="600" cy="400" r="150" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="1" strokeDasharray="2 6">
+                <animateTransform attributeName="transform" type="rotate" from="0 600 400" to="-360 600 400" dur="45s" repeatCount="indefinite"/>
               </circle>
 
-              <path id="path1" d="M 180 100 Q 350 250 600 400" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 180 100 Q 350 250 600 400" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path1" d="M 180 89 Q 350 222 600 356" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 180 89 Q 350 222 600 356" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="0" to="-200" dur="15s" repeatCount="indefinite"/>
               </path>
 
-              <path id="path2" d="M 1020 100 Q 850 250 600 400" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 1020 100 Q 850 250 600 400" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path2" d="M 1020 89 Q 850 222 600 356" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 1020 89 Q 850 222 600 356" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-40" to="-240" dur="15s" repeatCount="indefinite"/>
               </path>
 
-              <path id="path3" d="M 20 450 Q 280 450 520 450" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 20 450 Q 280 450 520 450" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path3" d="M 20 400 Q 280 400 520 400" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 20 400 Q 280 400 520 400" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-80" to="-280" dur="15s" repeatCount="indefinite"/>
               </path>
 
-              <path id="path4" d="M 1180 450 Q 920 450 680 450" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 1180 450 Q 920 450 680 450" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path4" d="M 1180 400 Q 920 400 680 400" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 1180 400 Q 920 400 680 400" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-120" to="-320" dur="15s" repeatCount="indefinite"/>
               </path>
 
-              <path id="path5" d="M 180 800 Q 350 650 600 500" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 180 800 Q 350 650 600 500" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path5" d="M 180 711 Q 350 578 600 444" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 180 711 Q 350 578 600 444" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-160" to="-360" dur="15s" repeatCount="indefinite"/>
               </path>
 
-              <path id="path6" d="M 1020 800 Q 850 650 600 500" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M 1020 800 Q 850 650 600 500" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
+              <path id="path6" d="M 1020 711 Q 850 578 600 444" fill="none" stroke="rgba(30, 58, 95, 0.08)" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M 1020 711 Q 850 578 600 444" fill="none" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 14" strokeLinecap="round">
                 <animate attributeName="stroke-dashoffset" from="-200" to="-400" dur="15s" repeatCount="indefinite"/>
               </path>
 
