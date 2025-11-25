@@ -1760,104 +1760,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         </div>
       </section>
 
-      {/* About Section - Side by Side Layout */}
-      <section id="about" className="about-section py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
-        <div className="absolute inset-0 silk-gradient"></div>
-        <div className="absolute inset-0 silk-overlay"></div>
-
-        <div className="about-container max-w-[1200px] mx-auto relative z-10">
-          {/* Iraq Photo - Left Side */}
-          <div className="about-image">
-            <img
-              src="/A714F951-FD08-400C-9B27-FCCB0D74049D.JPG"
-              alt="Kevin Martin - Operation Iraqi Freedom"
-            />
-            <p className="image-caption">
-              Operation Iraqi Freedom<br />Kevin Martin, USMC
-            </p>
-          </div>
-
-          {/* Text Content - Right Side */}
-          <div className="about-content">
-            <h2>
-              <span className="line-1">Marine-Owned.</span>
-              <span className="line-2">Mission-Driven.</span>
-              <span className="line-3">Federal-Focused.</span>
-            </h2>
-
-            <div className="text-[16px] text-white/95 space-y-4" style={{ lineHeight: '1.7' }}>
-              <p>
-                Civic Strategy Partners is built on the belief that federal acquisition should be agile, modern, and mission-oriented—and that GSA MAS is becoming the government's fastest, cleanest way to get there. Agencies are moving more requirements onto MAS to speed procurement, increase commercial access, and push capability directly into government hands. That shift demands contractors who understand the doctrine, the compliance landscape, and how to maintain a contract so it performs.
-              </p>
-              <p>
-                CSP brings a blend of Marine Corps discipline, former-GSA Contract Specialist experience, and deep knowledge of MAS structure and federal readiness. We help companies diagnose failing contracts, correct course, and build federal revenue engines that actually work. Our approach is structured, direct, and grounded in the Civic Strategy Method and MAS Doctrine—models designed to help companies operate with clarity in a constantly changing federal environment.
-              </p>
-              <p>
-                For founders, small businesses, and growing federal practices, CSP provides the guidance, structure, and truth you need to perform in the federal space with confidence.
-              </p>
-            </div>
-
-            <div className="text-center mt-8">
-              <a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-                className="cta-button inline-block"
-              >
-                Book a Consultation
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About the Founder Section - White Background */}
-      <section className="py-24 md:py-32 lg:py-[120px] px-6 bg-white fade-in-section">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left: Portrait Image */}
-            <div className="order-2 md:order-1">
-              <div className="rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src="/1743701547902.jpeg"
-                  alt="Kevin Martin - Founder of Civic Strategy Partners"
-                  className="w-full h-auto object-cover"
-                  style={{ maxHeight: '600px', objectFit: 'cover' }}
-                />
-              </div>
-            </div>
-
-            {/* Right: Biography */}
-            <div className="order-1 md:order-2">
-              <h2 className="text-[42px] font-bold text-[#1e3a5f] mb-6" style={{ fontWeight: 700, lineHeight: '1.2' }}>
-                About the Founder
-              </h2>
-              <div className="text-[16px] text-[#374151] space-y-4" style={{ lineHeight: '1.7' }}>
-                <p>
-                  Kevin Martin is a Marine Corps veteran, former GSA Contract Specialist, and federal acquisition strategist. After serving in Iraq and transitioning into federal contracting, he worked inside GSA's Multiple Award Schedule (MAS) program, where he reviewed proposals, audited contract files, and saw firsthand how companies succeeded or failed in the federal space.
-                </p>
-                <p>
-                  That experience shaped his approach: federal contracting is not about cutting corners or gaming the system. It's about building capability, maintaining compliance, and operating with discipline. Too many companies treat GSA MAS as a checkbox or a badge—then wonder why they don't win work. Kevin founded Civic Strategy Partners to help businesses approach federal contracting the right way: with structure, readiness, and a commitment to long-term performance.
-                </p>
-                <p>
-                  CSP's methodology is grounded in the Civic Strategy Method and MAS Doctrine—frameworks designed to bring clarity to federal acquisition and help contractors build sustainable federal practices. Whether diagnosing a failing MAS contract, guiding a company toward federal readiness, or providing strategic advisory support, Kevin's work is direct, structured, and focused on results.
-                </p>
-              </div>
-
-              <div className="mt-8">
-                <a
-                  href="#contact"
-                  onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-                  className="inline-block bg-[#1e3a5f] text-white px-8 py-4 rounded-lg font-semibold text-[16px] hover:bg-[#152d4a] transition-all duration-300 shadow-lg hover:shadow-xl"
-                  style={{ textDecoration: 'none' }}
-                >
-                  Work with Kevin
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Results Section - Blue Silk Gradient Background */}
       <section id="results" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
         <div className="absolute inset-0 silk-gradient"></div>
@@ -2039,6 +1941,83 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         </div>
       </section>
       )}
+
+      {/* About Section - Side by Side Layout */}
+      <section id="about" className="about-section py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
+        <div className="absolute inset-0 silk-gradient"></div>
+        <div className="absolute inset-0 silk-overlay"></div>
+
+        <div className="about-container max-w-[1200px] mx-auto relative z-10">
+          {/* Iraq Photo - Left Side */}
+          <div className="about-image">
+            <img
+              src="/A714F951-FD08-400C-9B27-FCCB0D74049D.JPG"
+              alt="Kevin Martin - Operation Iraqi Freedom"
+            />
+            <p className="image-caption">
+              Operation Iraqi Freedom<br />Kevin Martin, USMC
+            </p>
+          </div>
+
+          {/* Text Content - Right Side */}
+          <div className="about-content">
+            <h2>
+              <span className="line-1">Marine-Owned.</span>
+              <span className="line-2">Mission-Driven.</span>
+              <span className="line-3">Federal-Focused.</span>
+            </h2>
+
+            <div className="text-[16px] text-white/95 space-y-4" style={{ lineHeight: '1.7' }}>
+              <p>
+                Civic Strategy Partners is built on the belief that federal acquisition should be agile, modern, and mission-oriented—and that GSA MAS is becoming the government's fastest, cleanest way to get there. Agencies are moving more requirements onto MAS to speed procurement, increase commercial access, and push capability directly into government hands. That shift demands contractors who understand the doctrine, the compliance landscape, and how to maintain a contract so it performs.
+              </p>
+              <p>
+                CSP brings a blend of Marine Corps discipline, former-GSA Contract Specialist experience, and deep knowledge of MAS structure and federal readiness. We help companies diagnose failing contracts, correct course, and build federal revenue engines that actually work. Our approach is structured, direct, and grounded in the Civic Strategy Method and MAS Doctrine—models designed to help companies operate with clarity in a constantly changing federal environment.
+              </p>
+              <p>
+                For founders, small businesses, and growing federal practices, CSP provides the guidance, structure, and truth you need to perform in the federal space with confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About the Founder Section - White Background */}
+      <section className="py-24 md:py-32 lg:py-[120px] px-6 bg-white fade-in-section">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Portrait Image */}
+            <div className="order-2 md:order-1">
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src="/1743701547902.jpeg"
+                  alt="Kevin Martin - Founder of Civic Strategy Partners"
+                  className="w-full h-auto object-cover"
+                  style={{ maxHeight: '600px', objectFit: 'cover' }}
+                />
+              </div>
+            </div>
+
+            {/* Right: Biography */}
+            <div className="order-1 md:order-2">
+              <h2 className="text-[42px] font-bold text-[#1e3a5f] mb-6" style={{ fontWeight: 700, lineHeight: '1.2' }}>
+                About the Founder
+              </h2>
+              <div className="text-[16px] text-[#374151] space-y-4" style={{ lineHeight: '1.7' }}>
+                <p>
+                  Kevin Martin is a Marine Corps veteran, former GSA Contract Specialist, and federal acquisition strategist. After serving in Iraq and transitioning into federal contracting, he worked inside GSA's Multiple Award Schedule (MAS) program, where he reviewed proposals, audited contract files, and saw firsthand how companies succeeded or failed in the federal space.
+                </p>
+                <p>
+                  That experience shaped his approach: federal contracting is not about cutting corners or gaming the system. It's about building capability, maintaining compliance, and operating with discipline. Too many companies treat GSA MAS as a checkbox or a badge—then wonder why they don't win work. Kevin founded Civic Strategy Partners to help businesses approach federal contracting the right way: with structure, readiness, and a commitment to long-term performance.
+                </p>
+                <p>
+                  CSP's methodology is grounded in the Civic Strategy Method and MAS Doctrine—frameworks designed to bring clarity to federal acquisition and help contractors build sustainable federal practices. Whether diagnosing a failing MAS contract, guiding a company toward federal readiness, or providing strategic advisory support, Kevin's work is direct, structured, and focused on results.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact/CTA Section - Navy Background */}
       <section id="contact" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
