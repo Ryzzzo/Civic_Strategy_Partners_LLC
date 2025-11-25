@@ -1541,17 +1541,16 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             display: flex !important;
           }
 
+          #services .center-logo-hub {
+            display: none !important;
+          }
+
           #services .relative.w-full.mx-auto {
             height: auto !important;
             max-width: 100% !important;
           }
 
           #services svg {
-            display: none !important;
-          }
-
-          #services .absolute[style*="width: 260px"],
-          #services .absolute[style*="width: 320px"] {
             display: none !important;
           }
 
@@ -1712,8 +1711,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             display: flex !important;
           }
 
-          #services .absolute[style*="width: 260px"],
-          #services .absolute[style*="width: 320px"] {
+          #services .center-logo-hub {
             display: none !important;
           }
 
@@ -1897,11 +1895,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 src="/Civic Strategy Partners Minus LLC.png"
                 alt="Civic Strategy Partners"
                 style={{
-                  width: '60px',
+                  width: '100px',
                   height: 'auto',
                   objectFit: 'contain',
                   opacity: 0.9,
-                  filter: 'drop-shadow(0 2px 4px rgba(30, 58, 95, 0.1))'
+                  filter: 'drop-shadow(0 2px 4px rgba(30, 58, 95, 0.15))'
                 }}
               />
             </div>
@@ -2054,7 +2052,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
             {/* Center Logo Hub */}
             <div
-              className="absolute"
+              className="absolute center-logo-hub"
               style={{
                 top: '50%',
                 left: '50%',
