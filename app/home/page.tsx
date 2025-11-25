@@ -1432,9 +1432,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             font-size: 14px !important;
           }
 
-          footer .grid {
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
+          footer .flex {
+            flex-direction: column !important;
+            gap: 40px !important;
           }
 
           /* === BACK TO TOP BUTTON === */
@@ -3219,7 +3219,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         <div className="absolute inset-0 silk-overlay"></div>
 
         <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center md:justify-center gap-12 md:gap-[120px] mb-12 text-center md:text-left">
             <div>
               <h3 className="text-[18px] font-bold text-white mb-4" style={{ fontFamily: 'Inter', fontWeight: 700 }}>
                 Civic Strategy Partners, LLC
