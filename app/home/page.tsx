@@ -1537,6 +1537,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         /* === MOBILE RESPONSIVE FIXES === */
         @media (max-width: 767px) {
           /* WHAT WE DO SECTION - HIDE ORBITAL, SHOW SIMPLE STACK */
+          #services .logo-accent-mobile {
+            display: flex !important;
+          }
+
           #services .relative.w-full.mx-auto {
             height: auto !important;
             max-width: 100% !important;
@@ -1546,7 +1550,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             display: none !important;
           }
 
-          #services .absolute[style*="width: 260px"] {
+          #services .absolute[style*="width: 260px"],
+          #services .absolute[style*="width: 320px"] {
             display: none !important;
           }
 
@@ -1702,6 +1707,16 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
         /* === TABLET RESPONSIVE (768px - 1023px) === */
         @media (min-width: 768px) and (max-width: 1023px) {
+          /* WHAT WE DO SECTION - Show small logo, hide large center logo */
+          #services .logo-accent-mobile {
+            display: flex !important;
+          }
+
+          #services .absolute[style*="width: 260px"],
+          #services .absolute[style*="width: 320px"] {
+            display: none !important;
+          }
+
           .services-title {
             font-size: 2rem !important;
           }
@@ -1872,6 +1887,25 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         <div className="max-w-[1200px] mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
+            {/* Small Logo Accent - Mobile/Tablet Only */}
+            <div className="logo-accent-mobile" style={{
+              display: 'none',
+              justifyContent: 'center',
+              marginBottom: '16px'
+            }}>
+              <img
+                src="/Civic Strategy Partners Minus LLC.png"
+                alt="Civic Strategy Partners"
+                style={{
+                  width: '60px',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  opacity: 0.9,
+                  filter: 'drop-shadow(0 2px 4px rgba(30, 58, 95, 0.1))'
+                }}
+              />
+            </div>
+
             <h2 className="text-[2.75rem] font-bold text-[#1e3a5f] mb-3" style={{ fontFamily: 'Merriweather, serif', fontWeight: 700 }}>
               What We Do
             </h2>
