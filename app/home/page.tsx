@@ -2418,7 +2418,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       {/* Insights & Expertise Section - White Background */}
       <section id="insights" className="insights-section fade-in-section">
         <div>
-          <h2>Civil Strategy Briefing</h2>
+          <h2>Civic Strategy Briefing</h2>
           <p className="section-subtitle">Insights & Expertise for Government Contracting Success</p>
 
           <div className="insights-grid">
