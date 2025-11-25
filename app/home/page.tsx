@@ -2084,7 +2084,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           height: '1px',
           background: 'linear-gradient(90deg, transparent 0%, rgba(30, 58, 95, 0.15) 20%, rgba(201, 162, 39, 0.3) 50%, rgba(30, 58, 95, 0.15) 80%, transparent 100%)',
           position: 'relative',
-          margin: '48px auto'
+          margin: '0 auto'
         }}>
           {/* Small gold square in center */}
           <div style={{
