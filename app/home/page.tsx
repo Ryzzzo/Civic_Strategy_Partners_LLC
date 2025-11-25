@@ -1645,11 +1645,17 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
       {/* Hero Section with Video */}
       <section className="hero-video">
-        {isClient && (
-          <video ref={videoRef} autoPlay loop muted playsInline className="hero-video-bg">
-            <source src="/dc_at_dusk.mp4" type="video/mp4" />
-          </video>
-        )}
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hero-video-bg"
+          style={{ opacity: isClient ? 1 : 0, transition: 'opacity 0.3s ease-in' }}
+        >
+          <source src="/dc_at_dusk.mp4" type="video/mp4" />
+        </video>
         <div className="video-overlay"></div>
         <div className="hero-content">
           <h1>Your GSA MAS Contract Won't Sell Itself.</h1>
