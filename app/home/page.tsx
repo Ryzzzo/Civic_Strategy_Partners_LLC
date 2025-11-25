@@ -2074,32 +2074,14 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         )}
       </section>
 
-      {/* Decorative Separator */}
+      {/* Premium Gold Separator Bar */}
       <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '0 24px'
-      }}>
-        <div style={{
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent 0%, rgba(30, 58, 95, 0.15) 20%, rgba(201, 162, 39, 0.3) 50%, rgba(30, 58, 95, 0.15) 80%, transparent 100%)',
-          position: 'relative',
-          margin: '0 auto'
-        }}>
-          {/* Small gold square in center */}
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '8px',
-            height: '8px',
-            background: '#c9a227',
-            borderRadius: '2px',
-            boxShadow: '0 0 0 4px #f0f4f8'
-          }} />
-        </div>
-      </div>
+        height: '6px',
+        background: 'linear-gradient(90deg, rgba(184,134,11,0) 0%, rgba(184,134,11,0.3) 15%, #b8860b 50%, rgba(184,134,11,0.3) 85%, rgba(184,134,11,0) 100%)',
+        boxShadow: '0 2px 12px rgba(184,134,11,0.4), 0 -2px 12px rgba(184,134,11,0.4)',
+        maxWidth: '100%',
+        margin: '0'
+      }}></div>
 
       {/* Services Section - Compact Grid Layout */}
       <section className="services-section" style={{ background: '#f0f4f8', padding: '5rem 1.5rem' }}>
