@@ -1762,52 +1762,52 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               </path>
 
               {/* Pulse Dots */}
-              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)">
+              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)" opacity="0">
                 <animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#path1"/></animateMotion>
                 <animate attributeName="opacity" values="0;1;1;0" dur="2.8s" repeatCount="indefinite"/>
               </circle>
-              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)">
+              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)" opacity="0">
                 <animateMotion dur="3.2s" repeatCount="indefinite" begin="0.6s"><mpath href="#path2"/></animateMotion>
                 <animate attributeName="opacity" values="0;1;1;0" dur="3.2s" repeatCount="indefinite" begin="0.6s"/>
               </circle>
-              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)">
+              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)" opacity="0">
                 <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s"><mpath href="#path3"/></animateMotion>
                 <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="1.2s"/>
               </circle>
-              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)">
+              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)" opacity="0">
                 <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.8s"><mpath href="#path4"/></animateMotion>
                 <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="1.8s"/>
               </circle>
-              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)">
+              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)" opacity="0">
                 <animateMotion dur="2.8s" repeatCount="indefinite" begin="2.4s"><mpath href="#path5"/></animateMotion>
                 <animate attributeName="opacity" values="0;1;1;0" dur="2.8s" repeatCount="indefinite" begin="2.4s"/>
               </circle>
-              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)">
+              <circle r="7" fill="#c9a227" filter="url(#pulseGlow)" opacity="0">
                 <animateMotion dur="3.2s" repeatCount="indefinite" begin="3s"><mpath href="#path6"/></animateMotion>
                 <animate attributeName="opacity" values="0;1;1;0" dur="3.2s" repeatCount="indefinite" begin="3s"/>
               </circle>
 
-              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)">
+              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)" opacity="0">
                 <animateMotion dur="2.8s" repeatCount="indefinite" begin="1.4s"><mpath href="#path1"/></animateMotion>
                 <animate attributeName="opacity" values="0;0.8;0.8;0" dur="2.8s" repeatCount="indefinite" begin="1.4s"/>
               </circle>
-              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)">
+              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)" opacity="0">
                 <animateMotion dur="3.2s" repeatCount="indefinite" begin="2.2s"><mpath href="#path2"/></animateMotion>
                 <animate attributeName="opacity" values="0;0.8;0.8;0" dur="3.2s" repeatCount="indefinite" begin="2.2s"/>
               </circle>
-              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)">
+              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)" opacity="0">
                 <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#path3"/></animateMotion>
                 <animate attributeName="opacity" values="0;0.8;0.8;0" dur="2.4s" repeatCount="indefinite"/>
               </circle>
-              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)">
+              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)" opacity="0">
                 <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.6s"><mpath href="#path4"/></animateMotion>
                 <animate attributeName="opacity" values="0;0.8;0.8;0" dur="2.4s" repeatCount="indefinite" begin="0.6s"/>
               </circle>
-              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)">
+              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)" opacity="0">
                 <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.8s"><mpath href="#path5"/></animateMotion>
                 <animate attributeName="opacity" values="0;0.8;0.8;0" dur="2.8s" repeatCount="indefinite" begin="0.8s"/>
               </circle>
-              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)">
+              <circle r="5" fill="#2c5282" filter="url(#pulseGlowNavy)" opacity="0">
                 <animateMotion dur="3.2s" repeatCount="indefinite" begin="1.5s"><mpath href="#path6"/></animateMotion>
                 <animate attributeName="opacity" values="0;0.8;0.8;0" dur="3.2s" repeatCount="indefinite" begin="1.5s"/>
               </circle>
@@ -1860,6 +1860,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 }}
               >
                 <div style={{ position: 'absolute', top: '16px', left: '16px', width: '28px', height: '28px', border: '2.5px solid #c9a227', borderRight: 'none', borderBottom: 'none', borderRadius: '8px 0 0 0', opacity: 0.6 }} />
+                <div style={{ position: 'absolute', top: '16px', right: '16px', width: '28px', height: '28px', border: '2.5px solid #c9a227', borderLeft: 'none', borderBottom: 'none', borderRadius: '0 8px 0 0', opacity: 0.6 }} />
+                <div style={{ position: 'absolute', bottom: '16px', left: '16px', width: '28px', height: '28px', border: '2.5px solid #c9a227', borderRight: 'none', borderTop: 'none', borderRadius: '0 0 0 8px', opacity: 0.6 }} />
                 <div style={{ position: 'absolute', bottom: '16px', right: '16px', width: '28px', height: '28px', border: '2.5px solid #c9a227', borderLeft: 'none', borderTop: 'none', borderRadius: '0 0 8px 0', opacity: 0.6 }} />
 
                 <img src="/Civic Strategy Partners Minus LLC.png" alt="Civic Strategy Partners" style={{ width: '180px', height: 'auto', objectFit: 'contain' }} />
