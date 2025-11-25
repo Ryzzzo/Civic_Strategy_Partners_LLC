@@ -1439,6 +1439,20 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             gap: 40px !important;
           }
 
+          /* === FOOTER LEGAL LINKS - MOBILE === */
+          .legal-links-separator {
+            display: none !important;
+          }
+
+          .legal-links-container {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+
+          .legal-links-container button {
+            font-size: 13px !important;
+          }
+
           /* === WHY CSP SECTION === */
           .why-csp-card svg {
             width: 40px !important;
@@ -4006,7 +4020,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
           {/* Legal Links Section */}
           <div className="border-t border-white/20 pt-8 pb-6 text-center">
-            <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-6 text-[14px]">
+            <div className="legal-links-container flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-6 text-[14px]">
               <button
                 onClick={() => openLegalModal('privacy')}
                 className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
@@ -4014,7 +4028,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               >
                 Privacy Policy
               </button>
-              <span className="text-white/40">|</span>
+              <span className="legal-links-separator text-white/40">|</span>
               <button
                 onClick={() => openLegalModal('terms')}
                 className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
@@ -4022,7 +4036,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               >
                 Terms of Service
               </button>
-              <span className="text-white/40">|</span>
+              <span className="legal-links-separator text-white/40">|</span>
               <button
                 onClick={() => openLegalModal('disclaimer')}
                 className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
@@ -4030,7 +4044,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               >
                 Disclaimer
               </button>
-              <span className="text-white/40">|</span>
+              <span className="legal-links-separator text-white/40">|</span>
               <button
                 onClick={() => openLegalModal('cookies')}
                 className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
@@ -4038,7 +4052,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               >
                 Cookie Policy
               </button>
-              <span className="text-white/40">|</span>
+              <span className="legal-links-separator text-white/40">|</span>
               <button
                 onClick={() => openLegalModal('accessibility')}
                 className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
