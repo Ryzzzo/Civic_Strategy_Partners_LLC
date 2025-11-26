@@ -1976,6 +1976,169 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             font-size: 1.75rem !important;
           }
         }
+
+        /* ========== HUBSPOT FORM OVERRIDES ========== */
+        .hs-form-frame {
+          max-height: 55vh !important;
+          overflow-y: auto !important;
+          padding: 0 8px 8px 0 !important;
+        }
+
+        /* Force 2-column grid layout */
+        .hs-form-frame form,
+        .hs-form-frame .hbspt-form form,
+        .hs-form-frame .hs-form {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 12px 20px !important;
+          font-family: 'Inter', sans-serif !important;
+        }
+
+        /* All regular fields take 1 column */
+        .hs-form-frame .hs-form-field {
+          margin-bottom: 0 !important;
+        }
+
+        /* These fields span full width */
+        .hs-form-frame .hs_which_categories_best_describe_your_needs_,
+        .hs-form-frame .hs_how_can_we_help_,
+        .hs-form-frame .hs-fieldtype-textarea,
+        .hs-form-frame .hs-fieldtype-checkbox,
+        .hs-form-frame .hs-fieldtype-booleancheckbox,
+        .hs-form-frame .hs_message,
+        .hs-form-frame .hs-submit,
+        .hs-form-frame .legal-consent-container {
+          grid-column: 1 / -1 !important;
+        }
+
+        /* Labels */
+        .hs-form-frame label:not(.hs-form-checkbox-display) {
+          font-size: 13px !important;
+          font-weight: 600 !important;
+          color: #1e3a5f !important;
+          margin-bottom: 4px !important;
+          display: block !important;
+        }
+
+        /* All input fields */
+        .hs-form-frame input[type="text"],
+        .hs-form-frame input[type="email"],
+        .hs-form-frame input[type="tel"],
+        .hs-form-frame input[type="url"],
+        .hs-form-frame input[type="number"],
+        .hs-form-frame select,
+        .hs-form-frame textarea {
+          width: 100% !important;
+          padding: 10px 12px !important;
+          border: 2px solid #e5e7eb !important;
+          border-radius: 6px !important;
+          font-size: 14px !important;
+          color: #374151 !important;
+          background: #ffffff !important;
+          box-sizing: border-box !important;
+          transition: border-color 0.2s ease !important;
+        }
+
+        .hs-form-frame input:focus,
+        .hs-form-frame select:focus,
+        .hs-form-frame textarea:focus {
+          border-color: #1e3a5f !important;
+          outline: none !important;
+          box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1) !important;
+        }
+
+        .hs-form-frame textarea {
+          min-height: 80px !important;
+          resize: vertical !important;
+        }
+
+        /* Checkboxes - horizontal layout */
+        .hs-form-frame .inputs-list {
+          display: flex !important;
+          flex-wrap: wrap !important;
+          gap: 8px 16px !important;
+          list-style: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+
+        .hs-form-frame .hs-form-checkbox,
+        .hs-form-frame .hs-form-booleancheckbox {
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 6px !important;
+        }
+
+        .hs-form-frame .hs-form-checkbox input[type="checkbox"],
+        .hs-form-frame .hs-form-booleancheckbox input[type="checkbox"] {
+          width: auto !important;
+          margin: 0 !important;
+          cursor: pointer !important;
+        }
+
+        .hs-form-frame .hs-form-checkbox-display,
+        .hs-form-frame .hs-form-booleancheckbox-display {
+          display: inline-flex !important;
+          align-items: center !important;
+          font-size: 13px !important;
+          font-weight: 400 !important;
+          cursor: pointer !important;
+        }
+
+        /* Submit button */
+        .hs-form-frame .hs-button {
+          background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%) !important;
+          color: white !important;
+          border: none !important;
+          border-radius: 8px !important;
+          padding: 12px 32px !important;
+          font-family: 'Inter', sans-serif !important;
+          font-weight: 600 !important;
+          font-size: 15px !important;
+          cursor: pointer !important;
+          transition: all 0.3s ease !important;
+          width: auto !important;
+        }
+
+        .hs-form-frame .hs-button:hover {
+          transform: translateY(-2px) !important;
+          box-shadow: 0 6px 20px rgba(30, 58, 95, 0.3) !important;
+          background: linear-gradient(135deg, #2d4a6f 0%, #1e3a5f 100%) !important;
+        }
+
+        /* Error messages */
+        .hs-form-frame .hs-error-msgs {
+          color: #dc2626 !important;
+          font-size: 12px !important;
+          margin-top: 4px !important;
+          list-style: none !important;
+          padding: 0 !important;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+          .hs-form-frame form,
+          .hs-form-frame .hbspt-form form,
+          .hs-form-frame .hs-form {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+
+          .hs-form-frame .hs_which_categories_best_describe_your_needs_,
+          .hs-form-frame .hs_how_can_we_help_,
+          .hs-form-frame .hs-fieldtype-textarea,
+          .hs-form-frame .hs-fieldtype-checkbox,
+          .hs-form-frame .hs-fieldtype-booleancheckbox,
+          .hs-form-frame .hs_message,
+          .hs-form-frame .hs-submit,
+          .hs-form-frame .legal-consent-container {
+            grid-column: 1 !important;
+          }
+
+          .hs-form-frame {
+            max-height: 65vh !important;
+          }
+        }
       `}</style>
 
       {/* Navigation */}
@@ -3863,10 +4026,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-xl max-w-[600px] w-full relative shadow-2xl"
+            className="bg-white rounded-xl max-w-[900px] w-full relative shadow-2xl"
             style={{
               background: 'white',
-              maxWidth: '600px',
+              maxWidth: '900px',
               width: '100%',
               borderRadius: '16px',
               position: 'relative',
