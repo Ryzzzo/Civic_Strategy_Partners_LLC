@@ -2203,6 +2203,51 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             padding-bottom: 100px !important;
           }
         }
+
+        /* FORCE HUBSPOT FORM TO FULL HEIGHT ON MOBILE */
+        @media (max-width: 768px) {
+          .hs-form-frame,
+          .hs-form-frame > *,
+          .hs-form-frame div,
+          .hs-form-frame form,
+          .hsfc-FormWrapper,
+          .hsfc-Form,
+          .hsfc-Step,
+          .hsfc-Step__Content,
+          .hsfc-Step__Fields,
+          .hsfc-Step__Nav,
+          [data-hsfc-id],
+          [class*="hsfc-"] {
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+            position: relative !important;
+            transform: none !important;
+            clip: auto !important;
+            clip-path: none !important;
+          }
+
+          /* Remove any absolute positioning that might hide content */
+          .hsfc-Step,
+          .hsfc-Step__Content {
+            position: relative !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+
+          /* Ensure the form frame takes full width and auto height */
+          .hs-form-frame {
+            width: 100% !important;
+            display: block !important;
+          }
+
+          /* Make sure inquiry modal inner padding gives room */
+          .inquiry-modal-container > div {
+            padding: 20px 16px 120px 16px !important;
+          }
+        }
       `}</style>
 
       {/* Navigation */}
