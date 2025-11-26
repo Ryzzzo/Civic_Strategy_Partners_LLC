@@ -2262,6 +2262,22 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             overflow: visible !important;
           }
         }
+
+        /* Ensure HubSpot form buttons are visible */
+        .hs-form-frame .hsfc-Step__Nav,
+        .hs-form-frame [data-hsfc-id="StepNav"],
+        .hs-form-frame .hs-submit {
+          padding-bottom: 20px !important;
+          margin-bottom: 20px !important;
+        }
+
+        /* Force scrollbar to always show on mobile */
+        @media (max-width: 768px) {
+          .inquiry-modal-overlay {
+            -webkit-overflow-scrolling: touch !important;
+            overflow-y: scroll !important;
+          }
+        }
       `}</style>
 
       {/* Navigation */}
@@ -4131,6 +4147,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       {/* Inquiry Modal */}
       {inquiryModalOpen && (
         <div
+          className="inquiry-modal-overlay"
           onClick={() => setInquiryModalOpen(false)}
           style={{
             position: 'fixed',
@@ -4140,8 +4157,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             bottom: 0,
             background: 'rgba(0, 0, 0, 0.85)',
             zIndex: 1000,
-            overflowY: 'auto',
-            padding: '20px'
+            overflowY: 'scroll',
+            WebkitOverflowScrolling: 'touch',
+            padding: '20px 20px 100px 20px'
           }}
         >
           <div
@@ -4152,8 +4170,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               width: '100%',
               borderRadius: '16px',
               position: 'relative',
-              margin: '0 auto',
-              padding: '24px'
+              margin: '0 auto 100px auto',
+              padding: '24px',
+              paddingBottom: '40px'
             }}
           >
             <button
