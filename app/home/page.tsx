@@ -3844,7 +3844,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               <button
                 onClick={() => {
                   if (isMobile) {
-                    window.open('https://share.hsforms.com/2f32081e-73eb-45a9-b666-6fd5150e7d19', '_blank');
+                    window.open('https://41g1sf.share-na2.hsforms.com/2LzIIHnPrRam2Zm_VFQ59GQ', '_blank');
                   } else {
                     setInquiryModalOpen(true);
                     document.body.style.overflow = 'hidden';
