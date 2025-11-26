@@ -2019,16 +2019,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           </div>
 
           <div className="md:hidden flex items-center gap-3">
-            <a
-              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
-              className="mobile-contact-btn text-white font-semibold text-[12px] px-3 py-1.5 rounded-md transition-all"
-              style={{
-                background: 'linear-gradient(135deg, #b8860b 0%, #daa520 100%)',
-                boxShadow: '0 2px 8px rgba(184, 134, 11, 0.3)'
-              }}
-            >
-              Contact
-            </a>
             <button
               className="text-[#0F172A]"
               onClick={() => {
