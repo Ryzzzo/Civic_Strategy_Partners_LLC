@@ -4062,32 +4062,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </button>
 
             <div className="p-6">
-              <h2
-                className="text-[28px] font-bold text-[#1e3a5f] mb-4"
-                style={{
-                  fontFamily: 'Merriweather, serif',
-                  fontWeight: 700,
-                  fontSize: '28px',
-                  color: '#1e3a5f',
-                  lineHeight: '1.2',
-                  marginBottom: '16px'
-                }}
-              >
-                Send Us a Message
-              </h2>
-              <p
-                className="text-[16px] text-gray-600 mb-8"
-                style={{
-                  fontFamily: 'Source Sans Pro, sans-serif',
-                  fontSize: '16px',
-                  color: '#6B7280',
-                  lineHeight: '1.6',
-                  marginBottom: '32px'
-                }}
-              >
-                Tell us about your situation and we'll respond within 24 hours.
-              </p>
-
               <div className="hs-form-frame" data-region="na2" data-form-id="2f32081e-73eb-45a9-b666-6fd5150e7d19" data-portal-id="244293135"></div>
             </div>
           </div>
