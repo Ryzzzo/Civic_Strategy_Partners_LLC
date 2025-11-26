@@ -2180,6 +2180,29 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             grid-template-columns: 1fr 1fr !important;
           }
         }
+
+        /* MOBILE MODAL - FULL SCREEN FIX */
+        @media (max-width: 768px) {
+          /* Make inquiry modal full screen on mobile */
+          .inquiry-modal-overlay {
+            padding: 0 !important;
+            align-items: stretch !important;
+          }
+
+          .inquiry-modal-container {
+            min-height: 100vh !important;
+            max-height: none !important;
+            border-radius: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+
+          .inquiry-modal-container .p-6 {
+            padding: 16px !important;
+            padding-top: 60px !important;
+            padding-bottom: 100px !important;
+          }
+        }
       `}</style>
 
       {/* Navigation */}
@@ -4050,7 +4073,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       {inquiryModalOpen && (
         <div
           onClick={() => setInquiryModalOpen(false)}
-          className="fixed inset-0 bg-black/80 flex justify-center items-center z-[1000] p-6"
+          className="inquiry-modal-overlay fixed inset-0 bg-black/80 flex justify-center items-center z-[1000] p-6"
           style={{
             position: 'fixed',
             top: 0,
@@ -4058,27 +4081,22 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             right: 0,
             bottom: 0,
             background: 'rgba(0, 0, 0, 0.85)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
             zIndex: 1000,
-            padding: '20px',
-            overflowY: 'auto',
-            WebkitOverflowScrolling: 'touch'
+            overflow: 'auto'
           }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-xl w-full relative shadow-2xl"
+            className="inquiry-modal-container bg-white rounded-xl w-full relative shadow-2xl"
             style={{
               background: 'white',
               maxWidth: '600px',
               width: '100%',
-              borderRadius: '16px',
+              minHeight: '100%',
+              borderRadius: '0',
               position: 'relative',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
-              marginTop: '20px',
-              marginBottom: '20px'
+              boxShadow: 'none',
+              margin: '0 auto'
             }}
           >
             <button
