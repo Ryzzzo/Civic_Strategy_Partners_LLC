@@ -3912,55 +3912,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 Tell us about your situation and we'll respond within 24 hours.
               </p>
 
-              <div
-                className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center"
-                style={{
-                  background: '#F9FAFB',
-                  border: '2px dashed #D1D5DB',
-                  borderRadius: '12px',
-                  padding: '48px',
-                  textAlign: 'center'
-                }}
-              >
-                <svg
-                  width="64"
-                  height="64"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#c9a227"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{
-                    margin: '0 auto 24px',
-                    opacity: 0.6
-                  }}
-                >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                <p
-                  style={{
-                    fontFamily: 'Source Sans Pro, sans-serif',
-                    fontSize: '18px',
-                    color: '#6B7280',
-                    fontWeight: 600,
-                    marginBottom: '8px'
-                  }}
-                >
-                  HubSpot Form Integration
-                </p>
-                <p
-                  style={{
-                    fontFamily: 'Source Sans Pro, sans-serif',
-                    fontSize: '14px',
-                    color: '#9CA3AF',
-                    lineHeight: '1.5'
-                  }}
-                >
-                  HubSpot form will be embedded here
-                </p>
-              </div>
+              <div className="hs-form-frame" data-region="na2" data-form-id="2f32081e-73eb-45a9-b666-6fd5150e7d19" data-portal-id="244293135"></div>
             </div>
           </div>
         </div>

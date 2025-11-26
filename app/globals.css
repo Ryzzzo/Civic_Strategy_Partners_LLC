@@ -94,13 +94,17 @@ html {
   background: #0F172A;
 }
 
-/* Isolate Fillout form from site styles */
-.fillout-form-container * {
-  all: revert;
-}
-
-.fillout-form-container {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+/* HubSpot Form Styling */
+.hs-form-frame {
+  --hs-form-background: transparent;
+  --hs-form-font-family: 'Inter', sans-serif;
+  --hs-form-accent-color: #b8860b;
+  --hs-form-input-border-color: rgba(255,255,255,0.3);
+  --hs-form-input-background: rgba(255,255,255,0.1);
+  --hs-form-text-color: white;
+  --hs-form-label-color: white;
+  --hs-form-submit-background: #b8860b;
+  --hs-form-submit-color: white;
 }
 
 /* Services Section Responsive Styles */
