@@ -17,9 +17,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <script src="https://js-na2.hsforms.net/forms/embed/244293135.js" defer></script>
-      </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>{children}</body>
     </html>
   );

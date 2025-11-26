@@ -224,15 +224,30 @@ Your modification gets filed correctly, approved faster, and implemented properl
   }, []);
 
   useEffect(() => {
-    if (inquiryModalOpen && typeof window !== 'undefined' && (window as any).hbspt) {
-      const targetElement = document.querySelector('.hs-form-frame');
-      if (targetElement && !targetElement.querySelector('form')) {
-        (window as any).hbspt.forms.create({
-          region: "na2",
-          portalId: "244293135",
-          formId: "2f32081e-73eb-45a9-b666-6fd5150e7d19",
-          target: '.hs-form-frame'
-        });
+    if (inquiryModalOpen) {
+      if (!(window as any).hbspt) {
+        const script = document.createElement('script');
+        script.src = 'https://js-na2.hsforms.net/forms/embed/244293135.js';
+        script.async = true;
+        script.onload = () => {
+          (window as any).hbspt.forms.create({
+            region: "na2",
+            portalId: "244293135",
+            formId: "2f32081e-73eb-45a9-b666-6fd5150e7d19",
+            target: '.hs-form-frame'
+          });
+        };
+        document.body.appendChild(script);
+      } else {
+        const targetElement = document.querySelector('.hs-form-frame');
+        if (targetElement && !targetElement.querySelector('form')) {
+          (window as any).hbspt.forms.create({
+            region: "na2",
+            portalId: "244293135",
+            formId: "2f32081e-73eb-45a9-b666-6fd5150e7d19",
+            target: '.hs-form-frame'
+          });
+        }
       }
     }
   }, [inquiryModalOpen]);
