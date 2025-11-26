@@ -2064,6 +2064,43 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           box-shadow: 0 6px 20px rgba(30, 58, 95, 0.3) !important;
         }
 
+        /* Hide gray boxes/unused space in multi-step forms */
+        .hs-form-frame .hs-dependent-field,
+        .hs-form-frame .hs_error_rollup,
+        .hs-form-frame .hs-field-desc,
+        .hs-form-frame .hs-form-required-field-message,
+        .hs-form-frame .hs-form-booleancheckbox-display + .hs-field-desc,
+        .hs-form-frame .hs_recaptcha,
+        .hs-form-frame .grecaptcha-badge,
+        .hs-form-frame .legal-consent-container:empty,
+        .hs-form-frame .hs-richtext:empty,
+        .hs-form-frame fieldset.form-columns-0,
+        .hs-form-frame .hs-fieldtype-booleancheckbox.hs-form-field:empty {
+          display: none !important;
+          visibility: hidden !important;
+          height: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: hidden !important;
+        }
+
+        /* Remove extra spacing from form fieldsets */
+        .hs-form-frame fieldset {
+          margin: 0 !important;
+          padding: 0 !important;
+          border: none !important;
+        }
+
+        /* Tighten up multi-step form spacing */
+        .hs-form-frame .hs-form-field {
+          margin-bottom: 12px !important;
+        }
+
+        /* Hide any empty containers */
+        .hs-form-frame div:empty:not(input):not(button) {
+          display: none !important;
+        }
+
         /* Mobile - single column */
         @media (max-width: 768px) {
           .hs-form-frame form,
