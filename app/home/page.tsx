@@ -3758,7 +3758,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   e.currentTarget.style.textDecoration = 'none';
                 }}
               >
-                Continue reading on LinkedIn →
+                Read more on LinkedIn →
               </a>
             </div>
           </div>
