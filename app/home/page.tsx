@@ -1979,8 +1979,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
         /* ========== HUBSPOT FORM OVERRIDES ========== */
         .hs-form-frame {
-          max-height: 55vh !important;
-          overflow-y: auto !important;
           padding: 0 8px 8px 0 !important;
         }
 
@@ -4031,9 +4029,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               background: 'white',
               maxWidth: '900px',
               width: '100%',
+              maxHeight: '90vh',
               borderRadius: '16px',
               position: 'relative',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
+              display: 'flex',
+              flexDirection: 'column'
             }}
           >
             <button
@@ -4062,7 +4063,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               ×
             </button>
 
-            <div className="p-8">
+            <div className="p-8" style={{ maxHeight: 'calc(90vh - 40px)', overflowY: 'auto' }}>
               <h2
                 className="text-[28px] font-bold text-[#1e3a5f] mb-4"
                 style={{
