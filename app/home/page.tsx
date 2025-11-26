@@ -1199,15 +1199,15 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           /* === NAVIGATION === */
           nav {
             padding: 12px 16px !important;
-            height: 56px !important;
+            height: 64px !important;
           }
 
           nav .logo-button img {
-            height: 40px !important;
+            height: 52px !important;
           }
 
           nav .logo-button div {
-            font-size: 14px !important;
+            display: none !important;
           }
 
           nav button,
@@ -1220,13 +1220,18 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             font-size: 14px !important;
           }
 
+          .mobile-contact-btn {
+            font-size: 12px !important;
+            padding: 6px 12px !important;
+          }
+
           /* === WAVE BARS === */
           .wave-bar {
             height: 60px !important;
           }
 
           .wave-bar-top {
-            margin-top: 56px !important;
+            margin-top: 64px !important;
           }
 
           /* === HERO SECTION === */
@@ -1901,19 +1906,31 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </a>
           </div>
 
-          <button
-            className="md:hidden text-[#0F172A]"
-            onClick={() => {
-              const menu = document.getElementById('mobile-menu');
-              if (menu) {
-                menu.classList.toggle('hidden');
-              }
-            }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <a
+              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
+              className="mobile-contact-btn text-white font-semibold text-[12px] px-3 py-1.5 rounded-md transition-all"
+              style={{
+                background: 'linear-gradient(135deg, #b8860b 0%, #daa520 100%)',
+                boxShadow: '0 2px 8px rgba(184, 134, 11, 0.3)'
+              }}
+            >
+              Contact
+            </a>
+            <button
+              className="text-[#0F172A]"
+              onClick={() => {
+                const menu = document.getElementById('mobile-menu');
+                if (menu) {
+                  menu.classList.toggle('hidden');
+                }
+              }}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div id="mobile-menu" className="hidden md:hidden bg-white border-t border-[#E5E7EB]">
