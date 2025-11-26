@@ -1964,7 +1964,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </button>
             <a
               href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
-              className="premium-cta"
+              className="premium-cta text-center"
               style={{ padding: '10px 24px', fontSize: '16px' }}
             >
               Schedule Consultation
