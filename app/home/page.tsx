@@ -4026,9 +4026,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             className="bg-white rounded-xl w-full relative shadow-2xl"
             style={{
               background: 'white',
-              maxWidth: '1400px',
-              width: '95vw',
-              maxHeight: '95vh',
+              maxWidth: '600px',
+              width: '100%',
+              maxHeight: '90vh',
               borderRadius: '16px',
               position: 'relative',
               boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
