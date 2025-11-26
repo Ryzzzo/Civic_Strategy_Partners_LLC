@@ -4132,7 +4132,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       {inquiryModalOpen && (
         <div
           onClick={() => setInquiryModalOpen(false)}
-          className="inquiry-modal-overlay fixed inset-0 bg-black/80 flex justify-center items-center z-[1000] p-6"
           style={{
             position: 'fixed',
             top: 0,
@@ -4141,26 +4140,24 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             bottom: 0,
             background: 'rgba(0, 0, 0, 0.85)',
             zIndex: 1000,
-            overflow: 'auto'
+            overflowY: 'auto',
+            padding: '20px'
           }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="inquiry-modal-container bg-white rounded-xl w-full relative shadow-2xl"
             style={{
               background: 'white',
               maxWidth: '600px',
               width: '100%',
-              minHeight: '100%',
-              borderRadius: '0',
+              borderRadius: '16px',
               position: 'relative',
-              boxShadow: 'none',
-              margin: '0 auto'
+              margin: '0 auto',
+              padding: '24px'
             }}
           >
             <button
               onClick={() => setInquiryModalOpen(false)}
-              className="absolute top-4 right-4 bg-white border-2 border-gray-200 rounded-full w-10 h-10 text-2xl text-gray-600 cursor-pointer z-10 hover:bg-gray-50 transition-colors"
               style={{
                 position: 'absolute',
                 top: '16px',
@@ -4176,17 +4173,20 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 zIndex: 10,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                lineHeight: '1'
+                justifyContent: 'center'
               }}
               aria-label="Close inquiry modal"
             >
               ×
             </button>
 
-            <div className="p-6">
-              <div className="hs-form-frame" data-region="na2" data-form-id="2f32081e-73eb-45a9-b666-6fd5150e7d19" data-portal-id="244293135"></div>
-            </div>
+            <div
+              className="hs-form-frame"
+              data-region="na2"
+              data-form-id="2f32081e-73eb-45a9-b666-6fd5150e7d19"
+              data-portal-id="244293135"
+              style={{ paddingTop: '20px' }}
+            ></div>
           </div>
         </div>
       )}
