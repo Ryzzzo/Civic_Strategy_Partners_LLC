@@ -1191,6 +1191,48 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           display: block;
         }
 
+        /* ========== DESKTOP OPTIMIZATIONS FOR SERVICE MODALS ========== */
+        @media (min-width: 1024px) {
+          .service-modal-container {
+            max-width: 900px;
+          }
+
+          .service-modal-content {
+            padding: 40px;
+          }
+
+          .service-modal-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+          }
+
+          .service-modal-description {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+          }
+
+          .service-modal-outcomes {
+            padding: 20px;
+          }
+
+          .service-modal-outcomes h3 {
+            font-size: 20px;
+            margin-bottom: 14px;
+          }
+
+          .outcomes-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+          }
+
+          .outcomes-list li {
+            margin-bottom: 0;
+          }
+        }
 
         /* ========== COMPREHENSIVE MOBILE RESPONSIVE STYLES ========== */
 
@@ -1484,6 +1526,35 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
           .legal-separator {
             margin: 0 8px !important;
+          }
+
+          /* === SERVICE MODAL === */
+          .service-modal-container {
+            max-width: 95vw !important;
+          }
+
+          .service-modal-content {
+            padding: 24px !important;
+          }
+
+          .service-modal-title {
+            font-size: 24px !important;
+            margin-bottom: 16px !important;
+          }
+
+          .service-modal-description {
+            font-size: 14px !important;
+            margin-bottom: 20px !important;
+          }
+
+          .service-modal-outcomes {
+            padding: 16px !important;
+          }
+
+          .outcomes-list {
+            grid-template-columns: 1fr !important;
+            gap: 6px !important;
+            font-size: 13px !important;
           }
 
           /* === WHY CSP SECTION === */
@@ -2335,11 +2406,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             }}
           >
             <div
-              className="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto relative"
+              className="bg-white rounded-2xl service-modal-container w-full max-h-[85vh] overflow-y-auto relative"
               onClick={(e) => e.stopPropagation()}
               style={{
                 animation: 'slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 24px 80px rgba(0, 0, 0, 0.3)'
+                boxShadow: '0 24px 80px rgba(0, 0, 0, 0.3)',
+                maxWidth: '900px'
               }}
             >
               {/* Close Button */}
@@ -2352,62 +2424,65 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               </button>
 
               {/* Modal Content */}
-              <div className="p-10">
+              <div className="service-modal-content" style={{ padding: '40px' }}>
                 {services.filter(s => s.id === expandedService).map(service => (
                   <div key={service.id}>
-                    <h2 style={{
+                    <h2 className="service-modal-title" style={{
                       fontFamily: 'Merriweather, serif',
-                      fontSize: '2.25rem',
+                      fontSize: '28px',
                       fontWeight: 700,
                       color: '#1e3a5f',
-                      marginBottom: '24px',
+                      marginBottom: '20px',
                       lineHeight: 1.2
                     }}>
                       {service.title}
                     </h2>
 
-                    <div style={{
+                    <div className="service-modal-description" style={{
                       fontFamily: 'Source Sans Pro, sans-serif',
-                      fontSize: '1.05rem',
+                      fontSize: '15px',
                       color: '#374151',
-                      lineHeight: 1.8,
+                      lineHeight: 1.6,
                       whiteSpace: 'pre-line',
-                      marginBottom: '32px'
+                      marginBottom: '24px'
                     }}>
                       {service.fullDescription}
                     </div>
 
-                    <div style={{
-                      padding: '24px',
+                    <div className="service-modal-outcomes" style={{
+                      padding: '20px',
                       background: 'linear-gradient(135deg, rgba(30, 58, 95, 0.05), rgba(201, 162, 39, 0.05))',
                       borderRadius: '16px',
                       borderLeft: '4px solid #c9a227'
                     }}>
                       <h3 style={{
                         fontFamily: 'Merriweather, serif',
-                        fontSize: '1.25rem',
+                        fontSize: '20px',
                         fontWeight: 700,
                         color: '#1e3a5f',
-                        marginBottom: '16px'
+                        marginBottom: '14px'
                       }}>
                         Key Outcomes
                       </h3>
-                      <ul style={{
+                      <ul className="outcomes-list" style={{
                         fontFamily: 'Source Sans Pro, sans-serif',
-                        fontSize: '1rem',
+                        fontSize: '14px',
                         color: '#374151',
-                        lineHeight: 1.8,
-                        paddingLeft: '20px'
+                        lineHeight: 1.6,
+                        paddingLeft: '20px',
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, 1fr)',
+                        gap: '8px 20px'
                       }}>
                         {service.outcomes.map((outcome, idx) => (
-                          <li key={idx} style={{ marginBottom: '8px' }}>
+                          <li key={idx} style={{ marginBottom: '0' }}>
                             {outcome}
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="mt-8 pt-8 border-t border-gray-200 flex justify-center">
+                    <div className="mt-6 pt-6 border-t border-gray-200 flex justify-center">
                       <button
                         onClick={() => setExpandedService(null)}
                         style={{
