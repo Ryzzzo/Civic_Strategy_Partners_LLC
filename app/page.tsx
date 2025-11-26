@@ -2353,7 +2353,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               Contact
             </button>
             <a
-              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
+              href="https://meetings-na2.hubspot.com/kmartin"
+              target="_blank"
+              rel="noopener noreferrer"
               className="premium-cta"
               style={{ padding: '10px 24px', fontSize: '16px' }}
             >
@@ -2408,7 +2410,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               Contact
             </button>
             <a
-              href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
+              href="https://meetings-na2.hubspot.com/kmartin"
+              target="_blank"
+              rel="noopener noreferrer"
               className="premium-cta text-center"
               style={{ padding: '10px 24px', fontSize: '16px' }}
             >
