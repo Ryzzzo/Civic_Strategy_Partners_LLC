@@ -1440,35 +1440,45 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           }
 
           /* === FOOTER LEGAL LINKS - MOBILE === */
-          .legal-links-container > .legal-links-separator {
+          .legal-links-container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 6px !important;
+          }
+
+          .legal-link {
+            font-size: 13px !important;
+            padding: 3px 0 !important;
+            line-height: 1.3 !important;
+          }
+
+          /* Hide first separator after Privacy Policy */
+          .legal-link:nth-child(1) + .legal-separator {
             display: none !important;
           }
 
-          .legal-links-container {
-            flex-direction: column !important;
-            gap: 6px !important;
-            margin-bottom: 16px !important;
-            align-items: center !important;
-          }
-
-          .legal-row-1,
-          .legal-row-2,
-          .legal-row-3 {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 10px !important;
-          }
-
-          .legal-row-2 .legal-links-separator,
-          .legal-row-3 .legal-links-separator {
+          /* Row 2: Terms + Separator + Disclaimer */
+          .legal-link:nth-child(3),
+          .legal-link:nth-child(3) + .legal-separator,
+          .legal-link:nth-child(5) {
             display: inline !important;
           }
 
-          .legal-links-container button {
-            font-size: 13px !important;
-            padding: 2px 0 !important;
-            line-height: 1.3 !important;
+          /* Hide separator after Disclaimer */
+          .legal-link:nth-child(5) + .legal-separator {
+            display: none !important;
+          }
+
+          /* Row 3: Cookie + Separator + Accessibility */
+          .legal-link:nth-child(7),
+          .legal-link:nth-child(7) + .legal-separator,
+          .legal-link:nth-child(9) {
+            display: inline !important;
+          }
+
+          .legal-separator {
+            margin: 0 8px !important;
           }
 
           /* === WHY CSP SECTION === */
@@ -4038,52 +4048,46 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
           {/* Legal Links Section */}
           <div className="border-t border-white/20 pt-8 pb-6 text-center">
-            <div className="legal-links-container flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-6 text-[14px]">
-              <div className="legal-row-1">
-                <button
-                  onClick={() => openLegalModal('privacy')}
-                  className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
-                  style={{ fontFamily: 'Inter', textDecoration: 'none' }}
-                >
-                  Privacy Policy
-                </button>
-              </div>
-              <span className="legal-links-separator text-white/40">|</span>
-              <div className="legal-row-2">
-                <button
-                  onClick={() => openLegalModal('terms')}
-                  className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
-                  style={{ fontFamily: 'Inter', textDecoration: 'none' }}
-                >
-                  Terms of Service
-                </button>
-                <span className="legal-links-separator text-white/40">|</span>
-                <button
-                  onClick={() => openLegalModal('disclaimer')}
-                  className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
-                  style={{ fontFamily: 'Inter', textDecoration: 'none' }}
-                >
-                  Disclaimer
-                </button>
-              </div>
-              <span className="legal-links-separator text-white/40">|</span>
-              <div className="legal-row-3">
-                <button
-                  onClick={() => openLegalModal('cookies')}
-                  className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
-                  style={{ fontFamily: 'Inter', textDecoration: 'none' }}
-                >
-                  Cookie Policy
-                </button>
-                <span className="legal-links-separator text-white/40">|</span>
-                <button
-                  onClick={() => openLegalModal('accessibility')}
-                  className="text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
-                  style={{ fontFamily: 'Inter', textDecoration: 'none' }}
-                >
-                  Accessibility Statement
-                </button>
-              </div>
+            <div className="legal-links-container mb-6 text-[14px]">
+              <button
+                onClick={() => openLegalModal('privacy')}
+                className="legal-link text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
+                style={{ fontFamily: 'Inter', textDecoration: 'none' }}
+              >
+                Privacy Policy
+              </button>
+              <span className="legal-separator text-white/40">|</span>
+              <button
+                onClick={() => openLegalModal('terms')}
+                className="legal-link text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
+                style={{ fontFamily: 'Inter', textDecoration: 'none' }}
+              >
+                Terms of Service
+              </button>
+              <span className="legal-separator text-white/40">|</span>
+              <button
+                onClick={() => openLegalModal('disclaimer')}
+                className="legal-link text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
+                style={{ fontFamily: 'Inter', textDecoration: 'none' }}
+              >
+                Disclaimer
+              </button>
+              <span className="legal-separator text-white/40">|</span>
+              <button
+                onClick={() => openLegalModal('cookies')}
+                className="legal-link text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
+                style={{ fontFamily: 'Inter', textDecoration: 'none' }}
+              >
+                Cookie Policy
+              </button>
+              <span className="legal-separator text-white/40">|</span>
+              <button
+                onClick={() => openLegalModal('accessibility')}
+                className="legal-link text-white/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
+                style={{ fontFamily: 'Inter', textDecoration: 'none' }}
+              >
+                Accessibility Statement
+              </button>
             </div>
             <p className="text-[14px] text-white/60" style={{ fontFamily: 'Inter' }} suppressHydrationWarning>
               © {new Date().getFullYear()} Civic Strategy Partners, LLC. All rights reserved.
