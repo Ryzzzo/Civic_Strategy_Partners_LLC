@@ -3115,7 +3115,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       `}</style>
 
       {/* Results Section - Blue Silk Gradient Background */}
-      <section id="results" className="py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
+      <section id="results" className="py-16 md:py-20 lg:py-24 px-6 relative overflow-hidden fade-in-section">
         <div className="absolute inset-0 silk-gradient"></div>
         <div className="absolute inset-0 silk-overlay"></div>
 
@@ -3145,7 +3145,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
             <div className="glass-card p-8" style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(10px)' }}>
               <h3 className="text-[20px] font-bold text-[#1e3a5f] mb-4" style={{ fontWeight: 700 }}>
                 MAS Structure Correction & Performance Alignment
@@ -3172,16 +3172,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 A small business with a quiet MAS contract faced the risk of falling below minimum sales thresholds. CSP conducted a comprehensive compliance and lifecycle review, identifying missing mods, outdated pricing files, and structural issues impacting visibility. Recommendations allowed the company to reestablish compliance, protect their contract, and begin rebuilding a real revenue pathway.
               </p>
             </div>
-          </div>
-
-          <div className="text-center mt-16">
-            <a
-              href="mailto:info@civicstrategypartners.com?subject=Talk Through Your Scenario"
-              className="inline-block premium-cta text-white px-10 py-4 text-[18px] font-semibold"
-              style={{ fontWeight: 600 }}
-            >
-              Talk Through Your Scenario
-            </a>
           </div>
         </div>
       </section>
