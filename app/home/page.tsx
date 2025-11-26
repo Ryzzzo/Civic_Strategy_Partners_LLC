@@ -1232,6 +1232,27 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           .outcomes-list li {
             margin-bottom: 0;
           }
+
+          /* Article Modal Desktop Optimizations */
+          .article-modal-container {
+            max-width: 850px;
+          }
+
+          .article-modal-title {
+            font-size: 28px;
+            margin: 32px 32px 12px;
+          }
+
+          .article-modal-content {
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0 32px;
+            padding-bottom: 24px;
+          }
+
+          .article-modal-content p {
+            margin-bottom: 20px;
+          }
         }
 
         /* ========== COMPREHENSIVE MOBILE RESPONSIVE STYLES ========== */
@@ -1555,6 +1576,26 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             grid-template-columns: 1fr !important;
             gap: 6px !important;
             font-size: 13px !important;
+          }
+
+          /* === ARTICLE MODAL === */
+          .article-modal-container {
+            max-width: 95vw !important;
+          }
+
+          .article-modal-title {
+            font-size: 22px !important;
+            margin: 24px 20px 12px !important;
+          }
+
+          .article-modal-content {
+            font-size: 15px !important;
+            margin: 0 20px !important;
+            padding-bottom: 20px !important;
+          }
+
+          .article-modal-content p {
+            margin-bottom: 16px !important;
           }
 
           /* === WHY CSP SECTION === */
@@ -3604,11 +3645,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-xl max-w-[800px] max-h-[90vh] overflow-y-auto relative shadow-2xl"
+            className="bg-white rounded-xl article-modal-container max-h-[85vh] overflow-y-auto relative shadow-2xl"
             style={{
               background: 'white',
-              maxWidth: '800px',
-              maxHeight: '90vh',
+              maxWidth: '850px',
+              maxHeight: '85vh',
               borderRadius: '12px',
               overflowY: 'auto',
               position: 'relative',
@@ -3642,88 +3683,82 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               className="w-full object-cover"
               style={{
                 width: '100%',
-                aspectRatio: '1200/627',
+                height: '200px',
                 objectFit: 'cover',
                 borderRadius: '12px 12px 0 0'
               }}
             />
 
             <h1
-              className="text-[32px] font-semibold text-[#0F2847] mx-10 mt-10 mb-3"
+              className="article-modal-title text-[28px] font-semibold text-[#0F2847] mx-10 mt-8 mb-3"
               style={{
                 fontFamily: 'Inter',
                 fontWeight: 600,
-                fontSize: '32px',
+                fontSize: '28px',
                 color: '#0F2847',
                 lineHeight: '1.2',
-                margin: '40px 40px 12px'
+                margin: '32px 32px 12px'
               }}
             >
               {currentArticle.title}
             </h1>
 
             <p
-              className="text-[14px] text-[#6B7280] mx-10 mb-8"
+              className="text-[14px] text-[#6B7280] mx-10 mb-6"
               style={{
                 fontFamily: 'Inter',
                 fontSize: '14px',
                 color: '#6B7280',
-                margin: '0 40px 32px'
+                margin: '0 32px 24px'
               }}
             >
               {formatDate(currentArticle.date)} | {calculateReadTime(currentArticle.content)}
             </p>
 
             <div
-              className="text-[18px] text-[#374151] mx-10 pb-10"
+              className="article-modal-content text-[16px] text-[#374151] mx-10 pb-6"
               style={{
                 fontFamily: 'Inter',
-                fontSize: '18px',
+                fontSize: '16px',
                 color: '#374151',
-                lineHeight: '1.8',
-                margin: '0 40px',
-                paddingBottom: '40px'
+                lineHeight: '1.7',
+                margin: '0 32px',
+                paddingBottom: '24px'
               }}
             >
               {currentArticle.content.split('\n\n').map((paragraph, i) => (
-                <p key={i} style={{ marginBottom: '24px' }}>
+                <p key={i} style={{ marginBottom: '20px' }}>
                   {paragraph}
                 </p>
               ))}
             </div>
 
             <div
-              className="bg-[#F9FAFB] border-2 border-[#E5E7EB] rounded-lg p-8 m-10 text-center"
               style={{
-                background: '#F9FAFB',
-                border: '2px solid #E5E7EB',
-                borderRadius: '8px',
-                padding: '32px',
-                margin: '40px',
-                textAlign: 'center'
+                textAlign: 'center',
+                marginTop: '24px',
+                paddingBottom: '32px'
               }}
             >
-              <p
-                className="text-[20px] font-semibold text-[#0F2847] mb-5"
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '20px',
-                  color: '#0F2847',
-                  marginBottom: '20px'
-                }}
-              >
-                Ready to discuss your GSA strategy?
-              </p>
               <a
-                href="mailto:info@civicstrategypartners.com?subject=Consultation Request"
-                className="inline-block bg-[#0F2847] text-white px-8 py-3.5 rounded-md text-[16px] font-medium cursor-pointer hover:bg-[#1e3a5f] transition-colors border-none"
+                href="https://www.linkedin.com/company/civic-strategy-partners-llc/"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   fontFamily: 'Inter',
-                  fontWeight: 500
+                  fontSize: '14px',
+                  color: '#1e3a5f',
+                  textDecoration: 'none',
+                  transition: 'text-decoration 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.textDecoration = 'underline';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.textDecoration = 'none';
                 }}
               >
-                Schedule Consultation →
+                Continue reading on LinkedIn →
               </a>
             </div>
           </div>
