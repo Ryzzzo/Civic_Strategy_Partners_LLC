@@ -2126,10 +2126,16 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
         /* Mobile fixes for HubSpot multi-step form */
         @media (max-width: 768px) {
+          /* Force HubSpot form to show all content */
           .hs-form-frame,
+          .hs-form-frame > div,
           .hsfc-FormWrapper,
+          .hsfc-Form,
           .hsfc-Step,
-          .hsfc-Step__Content {
+          [data-hsfc-id="FormWrapper"],
+          [data-hsfc-id="Step"] {
+            min-height: auto !important;
+            height: auto !important;
             max-height: none !important;
             overflow: visible !important;
           }
@@ -2143,6 +2149,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
           .hs-form-frame .hs-form-field {
             grid-column: 1 !important;
+          }
+
+          /* Ensure nav buttons have adequate space */
+          .hsfc-Step__Navigation {
+            padding: 15px 0 !important;
+            margin-top: 20px !important;
           }
 
           /* Ensure buttons are always visible */
@@ -4048,9 +4060,11 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             background: 'rgba(0, 0, 0, 0.85)',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             zIndex: 1000,
-            padding: '24px'
+            padding: '20px',
+            overflowY: 'auto',
+            WebkitOverflowScrolling: 'touch'
           }}
         >
           <div
@@ -4059,14 +4073,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             style={{
               background: 'white',
               maxWidth: '600px',
-              width: '95%',
-              maxHeight: '85vh',
+              width: '100%',
               borderRadius: '16px',
               position: 'relative',
               boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
-              display: 'flex',
-              flexDirection: 'column',
-              margin: '20px'
+              marginTop: '20px',
+              marginBottom: '20px'
             }}
           >
             <button
@@ -4095,7 +4107,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               ×
             </button>
 
-            <div className="p-6" style={{ flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
+            <div className="p-6">
               <div className="hs-form-frame" data-region="na2" data-form-id="2f32081e-73eb-45a9-b666-6fd5150e7d19" data-portal-id="244293135"></div>
             </div>
           </div>
