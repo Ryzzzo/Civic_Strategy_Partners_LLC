@@ -3843,13 +3843,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               </p>
               <button
                 onClick={() => {
-                  const mobile = window.innerWidth <= 768;
-                  if (mobile) {
-                    window.open('https://41g1sf.share-na2.hsforms.com/2LzIIHnPrRam2Zm_VFQ59GQ', '_blank');
-                  } else {
-                    setInquiryModalOpen(true);
-                    document.body.style.overflow = 'hidden';
-                  }
+                  window.open('https://41g1sf.share-na2.hsforms.com/2LzIIHnPrRam2Zm_VFQ59GQ', '_blank');
                 }}
                 className="premium-cta"
                 style={{
