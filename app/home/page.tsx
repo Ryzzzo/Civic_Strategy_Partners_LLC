@@ -1986,7 +1986,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               className="h-[85px] w-auto object-contain"
             />
             <div className="text-[#0F172A] font-bold text-[18px]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-              Civic Strategy Partners
+              CIVIC STRATEGY PARTNERS
             </div>
           </button>
 
@@ -2019,8 +2019,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           </div>
 
           <div className="md:hidden flex items-center gap-3">
-            <div className="text-[#0F172A] font-bold text-[16px]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-              Civic Strategy Partners
+            <div className="text-[#0F172A] font-bold text-[13px] whitespace-nowrap" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              CIVIC STRATEGY PARTNERS
             </div>
             <button
               className="text-[#0F172A]"
