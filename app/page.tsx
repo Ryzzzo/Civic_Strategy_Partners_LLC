@@ -3587,130 +3587,56 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               }}
             >
               {briefings.map((briefing, index) => (
-                <article
+                <a
                   key={index}
-                  className="group"
+                  href={briefing.linkedInUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                   style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
                     boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
                     maxWidth: '380px',
-                    flex: '1 1 380px'
+                    flex: '1 1 380px',
+                    textDecoration: 'none'
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.15)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)';
-                  }}
-                  onClick={() => window.open(briefing.linkedInUrl, '_blank')}
                 >
-                  <div style={{ position: 'relative' }}>
+                  <div className="relative h-52 overflow-hidden">
                     <img
                       src={briefing.featuredImage}
                       alt={briefing.title}
-                      style={{
-                        width: '100%',
-                        height: '220px',
-                        objectFit: 'cover'
-                      }}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <span
-                      style={{
-                        position: 'absolute',
-                        top: '12px',
-                        left: '12px',
-                        backgroundColor: '#c9a227',
-                        color: '#ffffff',
-                        fontSize: '12px',
-                        fontWeight: 600,
-                        padding: '6px 12px',
-                        borderRadius: '20px',
-                        fontFamily: 'Inter, sans-serif',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.5px'
-                      }}
-                    >
+                    <span className="absolute top-3 left-3 bg-[#c9a227] text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide">
                       Civic Strategy Briefing
                     </span>
                   </div>
 
-                  <div style={{ padding: '24px' }}>
+                  <div className="p-6">
+                    <p className="text-sm text-gray-500 mb-2" style={{ fontFamily: 'Source Sans Pro, sans-serif' }}>
+                      {briefing.publishDate}
+                    </p>
+
                     <h3
-                      style={{
-                        fontFamily: 'Merriweather, serif',
-                        fontSize: '20px',
-                        fontWeight: 700,
-                        color: '#1e3a5f',
-                        marginBottom: '8px',
-                        lineHeight: '1.4',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden'
-                      }}
+                      className="text-xl font-bold text-[#1e3a5f] mb-3 group-hover:text-[#c9a227] transition-colors line-clamp-2"
+                      style={{ fontFamily: 'Merriweather, serif', lineHeight: '1.4' }}
                     >
                       {briefing.title}
                     </h3>
 
                     <p
-                      style={{
-                        fontFamily: 'Source Sans Pro, sans-serif',
-                        fontSize: '14px',
-                        color: '#6B7280',
-                        marginBottom: '12px'
-                      }}
-                    >
-                      {briefing.publishDate}
-                    </p>
-
-                    <p
-                      style={{
-                        fontFamily: 'Source Sans Pro, sans-serif',
-                        fontSize: '15px',
-                        color: '#4B5563',
-                        lineHeight: '1.6',
-                        marginBottom: '16px',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden'
-                      }}
+                      className="text-gray-600 text-sm mb-4 line-clamp-3"
+                      style={{ fontFamily: 'Source Sans Pro, sans-serif', lineHeight: '1.6' }}
                     >
                       {briefing.excerpt}
                     </p>
 
-                    <a
-                      href={briefing.linkedInUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '15px',
-                        fontWeight: 600,
-                        color: '#c9a227',
-                        textDecoration: 'none',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.textDecoration = 'underline';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.textDecoration = 'none';
-                      }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Read on LinkedIn →
-                    </a>
+                    <div className="flex items-center justify-between mt-4">
+                      <span className="text-[#c9a227] text-sm font-semibold group-hover:underline inline-flex items-center gap-1">
+                        Read on LinkedIn →
+                      </span>
+                    </div>
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           </div>
