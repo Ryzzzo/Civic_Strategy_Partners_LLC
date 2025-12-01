@@ -3592,49 +3592,89 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   href={briefing.linkedInUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                  className="group block rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                   style={{
+                    backgroundColor: '#ffffff',
                     boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
                     maxWidth: '380px',
                     flex: '1 1 380px',
                     textDecoration: 'none'
                   }}
                 >
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative overflow-hidden" style={{ height: '220px', backgroundColor: '#f3f4f6' }}>
                     <img
                       src={briefing.featuredImage}
                       alt={briefing.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <span className="absolute top-3 left-3 bg-[#c9a227] text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide">
+                    <span
+                      className="absolute top-3 left-3 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide"
+                      style={{
+                        backgroundColor: '#c9a227',
+                        color: '#ffffff'
+                      }}
+                    >
                       Civic Strategy Briefing
                     </span>
                   </div>
 
-                  <div className="p-6">
-                    <p className="text-sm text-gray-500 mb-2" style={{ fontFamily: 'Source Sans Pro, sans-serif' }}>
+                  <div style={{ padding: '24px', backgroundColor: '#ffffff' }}>
+                    <p
+                      style={{
+                        fontFamily: 'Source Sans Pro, sans-serif',
+                        color: '#6B7280',
+                        fontSize: '14px',
+                        marginBottom: '8px'
+                      }}
+                    >
                       {briefing.publishDate}
                     </p>
 
                     <h3
-                      className="text-xl font-bold text-[#1e3a5f] mb-3 group-hover:text-[#c9a227] transition-colors line-clamp-2"
-                      style={{ fontFamily: 'Merriweather, serif', lineHeight: '1.4' }}
+                      style={{
+                        fontFamily: 'Merriweather, serif',
+                        lineHeight: '1.4',
+                        color: '#1e3a5f',
+                        fontSize: '20px',
+                        fontWeight: 700,
+                        marginBottom: '12px',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden'
+                      }}
                     >
                       {briefing.title}
                     </h3>
 
                     <p
-                      className="text-gray-600 text-sm mb-4 line-clamp-3"
-                      style={{ fontFamily: 'Source Sans Pro, sans-serif', lineHeight: '1.6' }}
+                      style={{
+                        fontFamily: 'Source Sans Pro, sans-serif',
+                        lineHeight: '1.6',
+                        color: '#4B5563',
+                        fontSize: '15px',
+                        marginBottom: '16px',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden'
+                      }}
                     >
                       {briefing.excerpt}
                     </p>
 
-                    <div className="flex items-center justify-between mt-4">
-                      <span className="text-[#c9a227] text-sm font-semibold group-hover:underline inline-flex items-center gap-1">
-                        Read on LinkedIn →
-                      </span>
-                    </div>
+                    <span
+                      style={{
+                        color: '#c9a227',
+                        fontSize: '15px',
+                        fontWeight: 600,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px'
+                      }}
+                    >
+                      Read on LinkedIn →
+                    </span>
                   </div>
                 </a>
               ))}
