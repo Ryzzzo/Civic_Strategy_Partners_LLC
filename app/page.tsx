@@ -3640,10 +3640,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             {/* Cards Grid - Up to 5 per row, cards max 380px */}
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 380px))',
-                gap: '24px',
-                justifyContent: 'center'
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: '24px'
               }}
             >
               {briefings.map((briefing, index) => (
@@ -3657,7 +3657,9 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   style={{
                     backgroundColor: '#ffffff',
                     boxShadow: '0 4px 20px rgba(30, 58, 95, 0.08)',
-                    border: '1px solid rgba(30, 58, 95, 0.06)'
+                    border: '1px solid rgba(30, 58, 95, 0.06)',
+                    width: '380px',
+                    maxWidth: '100%'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px)';
