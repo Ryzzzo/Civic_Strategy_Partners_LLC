@@ -3593,7 +3593,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       {!briefingsLoading && briefings.length > 0 && (
         <section
           id="insights"
-          className="py-20 md:py-24 lg:py-[80px] px-6 fade-in-section"
+          className="py-20 md:py-24 lg:py-[80px] px-6"
           style={{ backgroundColor: '#1e3a5f' }}
         >
           <div className="max-w-[1200px] mx-auto">
