@@ -3689,17 +3689,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                       height: '4px',
                       background: 'linear-gradient(90deg, #c9a227, #daa520)'
                     }} />
-                    <span
-                      className="absolute top-4 left-4 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide"
-                      style={{
-                        backgroundColor: '#c9a227',
-                        color: '#ffffff',
-                        fontSize: '11px',
-                        letterSpacing: '0.05em'
-                      }}
-                    >
-                      Civic Strategy Briefing
-                    </span>
                   </div>
 
                   {/* Card Content */}
