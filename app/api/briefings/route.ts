@@ -20,7 +20,7 @@ export async function GET() {
           Authorization: `Bearer ${hubspotToken}`,
           'Content-Type': 'application/json',
         },
-        next: { revalidate: 60 },
+        cache: 'no-store',
       }
     );
 
