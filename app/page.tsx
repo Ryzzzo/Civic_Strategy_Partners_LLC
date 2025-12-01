@@ -3637,13 +3637,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               </p>
             </div>
 
-            {/* Cards Grid */}
+            {/* Cards Grid - Up to 5 per row */}
             <div
               style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                gap: '32px'
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '24px',
+                maxWidth: '100%'
               }}
             >
               {briefings.map((briefing, index) => (
@@ -3657,9 +3657,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   style={{
                     backgroundColor: '#ffffff',
                     boxShadow: '0 4px 20px rgba(30, 58, 95, 0.08)',
-                    border: '1px solid rgba(30, 58, 95, 0.06)',
-                    maxWidth: '380px',
-                    flex: '1 1 380px'
+                    border: '1px solid rgba(30, 58, 95, 0.06)'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px)';
@@ -4068,7 +4066,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       )}
 
       {/* About Section - Side by Side Layout */}
-      <section id="about" className="about-section py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden fade-in-section">
+      <section id="about" className="about-section py-24 md:py-32 lg:py-[120px] px-6 relative overflow-hidden">
         <div className="absolute inset-0 silk-gradient"></div>
         <div className="absolute inset-0 silk-overlay"></div>
 
