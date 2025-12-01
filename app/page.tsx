@@ -3813,16 +3813,16 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             justifyContent: 'center',
             alignItems: 'center',
             zIndex: 1000,
-            padding: '24px'
+            padding: '16px'
           }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
               background: 'white',
-              maxWidth: '800px',
+              maxWidth: '960px',
               width: '100%',
-              maxHeight: '90vh',
+              maxHeight: '95vh',
               overflowY: 'auto',
               borderRadius: '16px',
               position: 'relative',
@@ -3856,15 +3856,17 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               ×
             </button>
 
-            {/* Featured Image */}
+            {/* Featured Image - Full height to show complete banner */}
             <div style={{ position: 'relative' }}>
               <img
                 src={selectedBriefing.featuredImage}
                 alt={selectedBriefing.title}
                 style={{
                   width: '100%',
-                  height: '250px',
-                  objectFit: 'cover',
+                  height: 'auto',
+                  maxHeight: '350px',
+                  objectFit: 'contain',
+                  backgroundColor: '#1e3a5f',
                   borderRadius: '16px 16px 0 0'
                 }}
               />
@@ -3880,15 +3882,15 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             </div>
 
             {/* Content */}
-            <div style={{ padding: '32px 40px 40px' }}>
+            <div style={{ padding: '32px 48px 48px' }}>
               {/* Author & Date */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
                 <img
                   src="/1743701547902.jpeg"
                   alt="Kevin Martin, MBA"
                   style={{
-                    width: '48px',
-                    height: '48px',
+                    width: '52px',
+                    height: '52px',
                     borderRadius: '50%',
                     objectFit: 'cover',
                     border: '3px solid #f0f4f8'
@@ -3897,7 +3899,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <div>
                   <p style={{
                     fontFamily: 'Source Sans Pro, sans-serif',
-                    fontSize: '16px',
+                    fontSize: '17px',
                     color: '#1e3a5f',
                     fontWeight: 600,
                     margin: 0
@@ -3906,7 +3908,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   </p>
                   <p style={{
                     fontFamily: 'Source Sans Pro, sans-serif',
-                    fontSize: '14px',
+                    fontSize: '15px',
                     color: '#6B7280',
                     margin: 0
                   }}>
@@ -3918,24 +3920,24 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               {/* Title */}
               <h1 style={{
                 fontFamily: 'Merriweather, serif',
-                fontSize: '28px',
+                fontSize: '32px',
                 fontWeight: 700,
                 color: '#1e3a5f',
                 lineHeight: 1.3,
-                marginBottom: '24px'
+                marginBottom: '28px'
               }}>
                 {selectedBriefing.title}
               </h1>
 
-              {/* Article Content */}
+              {/* Article Content - Full text, no truncation */}
               <div style={{
                 fontFamily: 'Source Sans Pro, sans-serif',
-                fontSize: '17px',
+                fontSize: '18px',
                 color: '#374151',
-                lineHeight: 1.8
+                lineHeight: 1.85
               }}>
                 {selectedBriefing.excerpt.split('\n\n').map((paragraph, i) => (
-                  <p key={i} style={{ marginBottom: '20px' }}>
+                  <p key={i} style={{ marginBottom: '24px' }}>
                     {paragraph}
                   </p>
                 ))}
@@ -3943,8 +3945,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
               {/* LinkedIn CTA */}
               <div style={{
-                marginTop: '32px',
-                paddingTop: '24px',
+                marginTop: '40px',
+                paddingTop: '28px',
                 borderTop: '1px solid #E5E7EB',
                 textAlign: 'center'
               }}>
@@ -3955,13 +3957,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '8px',
+                    gap: '10px',
                     background: 'linear-gradient(135deg, #0a66c2 0%, #004182 100%)',
                     color: '#ffffff',
-                    padding: '14px 28px',
+                    padding: '16px 32px',
                     borderRadius: '8px',
                     fontFamily: 'Source Sans Pro, sans-serif',
-                    fontSize: '16px',
+                    fontSize: '17px',
                     fontWeight: 600,
                     textDecoration: 'none',
                     transition: 'all 0.3s ease',
@@ -3976,7 +3978,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                     e.currentTarget.style.boxShadow = '0 4px 12px rgba(10, 102, 194, 0.3)';
                   }}
                 >
-                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                   Continue Reading on LinkedIn
