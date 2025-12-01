@@ -1,74 +1,54 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const hubspotToken = process.env.HUBSPOT_ACCESS_TOKEN;
-
-  if (!hubspotToken) {
-    console.error('HubSpot access token not configured');
-    return NextResponse.json(
-      { error: 'HubSpot access token not configured', briefings: [] },
-      { status: 500 }
-    );
-  }
-
   try {
-    console.log('Fetching briefings from HubSpot...');
-    const response = await fetch(
-      'https://api.hubapi.com/cms/v3/blogs/posts?limit=10&state=PUBLISHED&sort=-publishDate',
-      {
-        headers: {
-          Authorization: `Bearer ${hubspotToken}`,
-          'Content-Type': 'application/json',
-        },
-        cache: 'no-store',
-      }
-    );
+    const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
+    
+    if (!HUBSPOT_ACCESS_TOKEN) {
+      console.error('Missing HUBSPOT_ACCESS_TOKEN');
+      return NextResponse.json({ briefings: [] });
+    }
+
+    // Added content_group_id filter for the specific blog
+    const url = 'https://api.hubapi.com/cms/v3/blogs/posts?limit=10&state=PUBLISHED&sort=-publishDate&content_group_id=267778497252';
+    
+    console.log('Fetching from HubSpot:', url);
+
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error('HubSpot API Error:', response.status, errorData);
-      return NextResponse.json({ briefings: [], error: errorData }, { status: response.status });
+      const errorText = await response.text();
+      console.error('HubSpot API error:', response.status, errorText);
+      return NextResponse.json({ briefings: [] });
     }
 
     const data = await response.json();
-    console.log('HubSpot raw response:', JSON.stringify(data, null, 2));
+    console.log('HubSpot returned', data.results?.length || 0, 'posts');
 
-    const briefings = (data.results || []).map((post: any) => {
-      const date = new Date(post.publishDate || post.created);
-      const formattedDate = date.toLocaleDateString('en-US', {
+    const briefings = data.results?.map((post: any) => ({
+      title: post.name || post.htmlTitle || 'Untitled',
+      publishDate: new Date(post.publishDate).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
-      });
+      }),
+      excerpt: post.metaDescription || post.postSummary || '',
+      fullContent: post.postBody || post.post_body || '',
+      featuredImage: post.featuredImage || 'https://placehold.co/1200x627/1e3a5f/ffffff?text=Civic+Strategy+Briefing',
+      linkedInUrl: 'https://www.linkedin.com/in/kevinmartincsp/',
+      authorName: 'Kevin Martin, MBA',
+      authorAvatar: '/1743701547902.jpeg'
+    })) || [];
 
-      let excerpt = '';
-      if (post.postBody) {
-        excerpt = post.postBody.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
-      } else if (post.metaDescription) {
-        excerpt = post.metaDescription;
-      }
-
-      const linkedInUrl = post.linkRelCanonicalUrl || post.url;
-
-      const briefing = {
-        title: post.name || post.htmlTitle || 'Untitled',
-        publishDate: formattedDate,
-        excerpt: excerpt,
-        fullContent: post.postBody || post.post_body || '',
-        featuredImage: post.featuredImage || 'https://placehold.co/1200x627/1e3a5f/ffffff?text=CSP+Briefing',
-        linkedInUrl: linkedInUrl,
-        authorName: post.authorName || post.blogAuthor?.displayName || 'Kevin Martin, MBA',
-        authorAvatar: post.blogAuthor?.avatar || '/1743701547902.jpeg'
-      };
-
-      console.log('Transformed briefing:', briefing);
-      return briefing;
-    });
-
-    console.log('Total briefings transformed:', briefings.length);
     return NextResponse.json({ briefings });
   } catch (error) {
     console.error('Error fetching briefings:', error);
-    return NextResponse.json({ briefings: [], error: 'Failed to fetch briefings' }, { status: 500 });
+    return NextResponse.json({ briefings: [] });
   }
 }
