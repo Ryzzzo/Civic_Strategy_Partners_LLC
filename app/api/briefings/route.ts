@@ -8,6 +8,8 @@ interface HubSpotBlogPost {
   postBody: string;
   featuredImage: string;
   url: string;
+  linkRelCanonicalUrl: string; // This is the canonical URL field (LinkedIn link)
+  tagIds: number[];
   blogAuthor?: {
     displayName: string;
     avatar: string;
@@ -23,7 +25,7 @@ export async function GET() {
 
   if (!hubspotToken) {
     return NextResponse.json(
-      { error: 'HubSpot access token not configured' },
+      { error: 'HubSpot access token not configured', briefings: [] },
       { status: 500 }
     );
   }
@@ -41,15 +43,14 @@ export async function GET() {
     );
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('HubSpot API error:', response.status, errorText);
       throw new Error(`HubSpot API error: ${response.status}`);
     }
 
     const data: HubSpotResponse = await response.json();
 
     const briefings = data.results
-      .filter((post) => {
-        return true;
-      })
       .slice(0, 5)
       .map((post) => {
         const publishDate = new Date(post.publishDate);
@@ -70,8 +71,8 @@ export async function GET() {
           publishDate: formattedDate,
           excerpt,
           featuredImage: post.featuredImage || 'https://placehold.co/1200x627/1e3a5f/ffffff?text=Civic+Strategy+Briefing',
-          linkedInUrl: post.url,
-          authorName: post.blogAuthor?.displayName || 'Civic Strategy Partners',
+          linkedInUrl: post.linkRelCanonicalUrl || post.url, // Use canonical URL (LinkedIn) if set, fallback to HubSpot URL
+          authorName: post.blogAuthor?.displayName || 'Kevin Martin, MBA',
           authorAvatar: post.blogAuthor?.avatar || '',
         };
       });
