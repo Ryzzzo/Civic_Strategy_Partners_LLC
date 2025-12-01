@@ -92,10 +92,48 @@ html {
 }
 
 /* HubSpot Form Styling - CSP Brand */
-.hs-form-frame {
-  max-height: 60vh;
-  overflow-y: auto;
-  padding-right: 8px;
+
+/* HubSpot Multi-Step Form - Full Height Fix */
+.hs-form-frame,
+#hubspot-form-container {
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+
+#hubspot-form-container > div,
+#hubspot-form-container iframe,
+#hubspot-form-container .hbspt-form {
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Multi-step form specific fixes */
+.hsfc-Step,
+.hsfc-Step__Content,
+.hsfc-Step__Fields,
+.hsfc-FormWrapper,
+[data-hsfc-id] {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Navigation buttons always visible */
+.hsfc-Step__Nav,
+.hsfc-Step__Navigation {
+  padding-top: 20px !important;
+  margin-top: 16px !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+/* Hide the HubSpot multi-step banner completely */
+.hsfc-Step__Banner,
+[data-hsfc-id="Banner"] {
+  display: none !important;
 }
 
 .hs-form {

@@ -430,21 +430,55 @@ Your modification gets filed correctly, approved faster, and implemented properl
     fetchBriefings();
   }, []);
 
+  const createHubSpotForm = () => {
+    const container = document.getElementById('hubspot-form-container');
+    if (container && (window as any).hbspt) {
+      container.innerHTML = ''; // Clear any existing form
+      (window as any).hbspt.forms.create({
+        region: "na2",
+        portalId: "244293135",
+        formId: "2f32081e-73eb-45a9-b666-6fd5150e7d19",
+        target: "#hubspot-form-container",
+        onFormReady: function() {
+          // Force container to recalculate height
+          if (container) {
+            container.style.minHeight = 'auto';
+          }
+        },
+        onFormSubmitted: function() {
+          // Optional: close modal or show success
+          console.log('Form submitted successfully');
+        }
+      });
+    }
+  };
+
   useEffect(() => {
     if (inquiryModalOpen) {
       document.body.style.overflow = 'hidden';
 
-      // Check if script already exists
-      const existingScript = document.querySelector('script[src*="hsforms.net/forms/embed"]');
+      // Load HubSpot forms script
+      const existingScript = document.querySelector('script[src*="hsforms.net/forms/embed/v2"]');
 
       if (!existingScript) {
         const script = document.createElement('script');
-        script.src = 'https://js-na2.hsforms.net/forms/embed/244293135.js';
+        script.src = '//js-na2.hsforms.net/forms/embed/v2.js';
         script.async = true;
+        script.onload = () => {
+          createHubSpotForm();
+        };
         document.body.appendChild(script);
+      } else {
+        // Script already loaded, just create form
+        createHubSpotForm();
       }
     } else {
       document.body.style.overflow = 'auto';
+      // Clean up form when modal closes
+      const container = document.getElementById('hubspot-form-container');
+      if (container) {
+        container.innerHTML = '';
+      }
     }
 
     return () => {
@@ -3642,6 +3676,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           }
         }
 
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+
         .hero-fade-up {
           opacity: 0;
           animation: heroFadeUp 0.8s ease-out forwards;
@@ -4735,7 +4773,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       {/* Inquiry Modal */}
       {inquiryModalOpen && (
         <div
-          className="inquiry-modal-overlay"
           onClick={() => {
             setInquiryModalOpen(false);
             document.body.style.overflow = 'auto';
@@ -4748,26 +4785,26 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             bottom: 0,
             background: 'rgba(0, 0, 0, 0.85)',
             zIndex: 1000,
-            overflowY: 'scroll',
-            WebkitOverflowScrolling: 'touch',
-            padding: '20px 20px 100px 20px'
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            overflowY: 'auto',
+            padding: '40px 20px'
           }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
               background: 'white',
-              maxWidth: '600px',
+              maxWidth: '650px',
               width: '100%',
-              minHeight: '500px',
-              maxHeight: '90vh',
-              overflowY: 'auto',
               borderRadius: '16px',
               position: 'relative',
-              margin: '0 auto',
-              padding: '24px'
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
+              margin: 'auto 0'
             }}
           >
+            {/* Close Button */}
             <button
               onClick={() => {
                 setInquiryModalOpen(false);
@@ -4788,19 +4825,93 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 zIndex: 10,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#f3f4f6';
+                e.currentTarget.style.borderColor = '#d1d5db';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'white';
+                e.currentTarget.style.borderColor = '#E5E7EB';
               }}
               aria-label="Close inquiry modal"
             >
               ×
             </button>
 
-            <div
-              className="hs-form-frame"
-              data-region="na2"
-              data-form-id="2f32081e-73eb-45a9-b666-6fd5150e7d19"
-              data-portal-id="244293135"
-            ></div>
+            {/* Header */}
+            <div style={{
+              padding: '32px 32px 0 32px',
+              borderBottom: '1px solid #f0f0f0',
+              marginBottom: '0'
+            }}>
+              <div style={{
+                width: '56px',
+                height: '56px',
+                background: 'linear-gradient(135deg, rgba(30, 58, 95, 0.1), rgba(201, 162, 39, 0.1))',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '16px'
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <h2 style={{
+                fontFamily: 'Merriweather, serif',
+                fontSize: '24px',
+                fontWeight: 700,
+                color: '#1e3a5f',
+                marginBottom: '8px'
+              }}>
+                Send Us a Message
+              </h2>
+              <p style={{
+                fontFamily: 'Source Sans Pro, sans-serif',
+                fontSize: '15px',
+                color: '#6B7280',
+                marginBottom: '24px',
+                lineHeight: '1.5'
+              }}>
+                Tell us about your situation and we'll respond within 24 hours.
+              </p>
+            </div>
+
+            {/* Form Container - No fixed height, grows with content */}
+            <div style={{ padding: '24px 32px 32px 32px' }}>
+              <div
+                id="hubspot-form-container"
+                style={{
+                  minHeight: '200px',
+                  width: '100%'
+                }}
+              >
+                {/* Loading state */}
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '60px 20px',
+                  color: '#6B7280'
+                }}>
+                  <div style={{
+                    width: '24px',
+                    height: '24px',
+                    border: '3px solid #e5e7eb',
+                    borderTopColor: '#1e3a5f',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite',
+                    marginRight: '12px'
+                  }}></div>
+                  Loading form...
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
