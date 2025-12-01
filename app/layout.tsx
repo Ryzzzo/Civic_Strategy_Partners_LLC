@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244293135.js"></script>
+      </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>{children}</body>
     </html>
   );
