@@ -430,51 +430,31 @@ Your modification gets filed correctly, approved faster, and implemented properl
     fetchBriefings();
   }, []);
 
-  const createHubSpotForm = () => {
-    const container = document.getElementById('hubspot-form-container');
-    if (container && (window as any).hbspt) {
-      container.innerHTML = ''; // Clear any existing form
-      (window as any).hbspt.forms.create({
-        region: "na2",
-        portalId: "244293135",
-        formId: "2f32081e-73eb-45a9-b666-6fd5150e7d19",
-        target: "#hubspot-form-container",
-        onFormReady: function() {
-          // Force container to recalculate height
-          if (container) {
-            container.style.minHeight = 'auto';
-          }
-        },
-        onFormSubmitted: function() {
-          // Optional: close modal or show success
-          console.log('Form submitted successfully');
-        }
-      });
-    }
-  };
-
   useEffect(() => {
     if (inquiryModalOpen) {
       document.body.style.overflow = 'hidden';
 
-      // Load HubSpot forms script
-      const existingScript = document.querySelector('script[src*="hsforms.net/forms/embed/v2"]');
+      const container = document.getElementById('hubspot-form-container');
+      if (container) {
+        container.innerHTML = '';
 
-      if (!existingScript) {
-        const script = document.createElement('script');
-        script.src = '//js-na2.hsforms.net/forms/embed/v2.js';
-        script.async = true;
-        script.onload = () => {
-          createHubSpotForm();
-        };
-        document.body.appendChild(script);
-      } else {
-        // Script already loaded, just create form
-        createHubSpotForm();
+        const formDiv = document.createElement('div');
+        formDiv.className = 'hs-form-frame';
+        formDiv.setAttribute('data-region', 'na2');
+        formDiv.setAttribute('data-form-id', '2f32081e-73eb-45a9-b666-6fd5150e7d19');
+        formDiv.setAttribute('data-portal-id', '244293135');
+        container.appendChild(formDiv);
+
+        const existingScript = document.querySelector('script[src*="js-na2.hsforms.net/forms/embed/244293135"]');
+        if (!existingScript) {
+          const script = document.createElement('script');
+          script.src = 'https://js-na2.hsforms.net/forms/embed/244293135.js';
+          script.defer = true;
+          document.body.appendChild(script);
+        }
       }
     } else {
       document.body.style.overflow = 'auto';
-      // Clean up form when modal closes
       const container = document.getElementById('hubspot-form-container');
       if (container) {
         container.innerHTML = '';
