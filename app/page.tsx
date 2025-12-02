@@ -62,6 +62,7 @@ export default function Home() {
   const [selectedBriefing, setSelectedBriefing] = useState<BriefingItem | null>(null);
   const [statsAnimated, setStatsAnimated] = useState<boolean[]>([false, false, false, false, false, false]);
   const statsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   const services = [
     {
@@ -248,15 +249,24 @@ Your modification gets filed correctly, approved faster, and implemented properl
       video.playbackRate = 0.5;
     };
 
+    const handleCanPlay = () => {
+      setVideoLoaded(true);
+    };
+
     video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    video.addEventListener('canplay', handleCanPlay);
 
     // Trigger it manually in case video is already loaded
     if (video.readyState >= 2) {
       video.playbackRate = 0.5;
     }
+    if (video.readyState >= 3) {
+      setVideoLoaded(true);
+    }
 
     return () => {
       video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('canplay', handleCanPlay);
     };
   }, []);
 
@@ -1109,6 +1119,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           align-items: center;
           justify-content: center;
           overflow: hidden;
+          background-color: #0F172A;
         }
 
         .hero-video-bg {
@@ -1119,6 +1130,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           height: 100%;
           object-fit: cover;
           z-index: 0;
+          opacity: 0;
+          transition: opacity 0.6s ease-in;
+        }
+
+        .hero-video-bg.loaded {
+          opacity: 1;
         }
 
         .video-overlay {
@@ -2611,7 +2628,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           loop
           muted
           playsInline
-          className="hero-video-bg"
+          preload="metadata"
+          className={`hero-video-bg ${videoLoaded ? 'loaded' : ''}`}
         >
           <source src="/dc_at_dusk.mp4" type="video/mp4" />
         </video>
