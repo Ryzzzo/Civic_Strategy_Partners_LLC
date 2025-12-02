@@ -4793,10 +4793,12 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
-              background: 'white',
+             background: 'white',
               maxWidth: '650px',
-              width: '100%',
-              borderRadius: '16px',
+            width: '100%',
+            maxHeight: 'calc(100vh - 80px)',
+            overflowY: 'auto',
+            borderRadius: '16px',
               position: 'relative',
               boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
               margin: 'auto 0'
