@@ -31,6 +31,13 @@ export async function GET() {
     const data = await response.json();
     console.log('HubSpot returned', data.results?.length || 0, 'posts');
 
+    // Debug: Log first post to see available fields
+    if (data.results && data.results.length > 0) {
+      console.log('First post fields:', Object.keys(data.results[0]));
+      console.log('URL field:', data.results[0].url);
+      console.log('Canonical URL field:', data.results[0].canonicalUrl);
+    }
+
     const briefings = data.results?.map((post: any) => ({
       title: post.name || post.htmlTitle || 'Untitled',
       publishDate: new Date(post.publishDate).toLocaleDateString('en-US', {
@@ -41,7 +48,7 @@ export async function GET() {
       excerpt: post.metaDescription || post.postSummary || '',
       fullContent: post.postBody || post.post_body || '',
       featuredImage: post.featuredImage || 'https://placehold.co/1200x627/1e3a5f/ffffff?text=Civic+Strategy+Briefing',
-      linkedInUrl: 'https://www.linkedin.com/in/kevinmartincsp/',
+      linkedInUrl: post.url || post.canonicalUrl || post.absoluteUrl || 'https://www.linkedin.com/in/kevinmartincsp/',
       authorName: 'Kevin Martin, MBA',
       authorAvatar: '/1743701547902.jpeg'
     })) || [];
