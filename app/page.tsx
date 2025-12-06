@@ -2531,19 +2531,26 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           <div className="hidden md:flex items-center gap-8">
             <button
               onClick={() => scrollToSection('services')}
-              className="text-[#4B5563] text-[15px] font-medium hover:text-[#1E3A8F]"
+              className="text-[#4B5563] text-[15px] font-medium hover:text-[#1E3A8F] transition-colors duration-200"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection('about')}
-              className="text-[#4B5563] text-[15px] font-medium hover:text-[#1E3A8F]"
+              className="text-[#4B5563] text-[15px] font-medium hover:text-[#1E3A8F] transition-colors duration-200"
             >
               About
             </button>
             <button
+              onClick={() => scrollToSection('insights')}
+              className="text-[#4B5563] text-[15px] font-medium hover:text-[#1E3A8F] transition-colors duration-200"
+              aria-label="Navigate to Civic Strategy Briefing blog section"
+            >
+              Blog
+            </button>
+            <button
               onClick={() => scrollToSection('contact')}
-              className="text-[#4B5563] text-[15px] font-medium hover:text-[#1E3A8F]"
+              className="text-[#4B5563] text-[15px] font-medium hover:text-[#1E3A8F] transition-colors duration-200"
             >
               Contact
             </button>
@@ -2582,7 +2589,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 scrollToSection('services');
                 document.getElementById('mobile-menu')?.classList.add('hidden');
               }}
-              className="text-[#4B5563] text-[15px] font-medium text-left"
+              className="text-[#4B5563] text-[15px] font-medium text-left hover:text-[#1E3A8F] transition-colors duration-200"
             >
               Services
             </button>
@@ -2591,16 +2598,26 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 scrollToSection('about');
                 document.getElementById('mobile-menu')?.classList.add('hidden');
               }}
-              className="text-[#4B5563] text-[15px] font-medium text-left"
+              className="text-[#4B5563] text-[15px] font-medium text-left hover:text-[#1E3A8F] transition-colors duration-200"
             >
               About
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('insights');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+              }}
+              className="text-[#4B5563] text-[15px] font-medium text-left hover:text-[#1E3A8F] transition-colors duration-200"
+              aria-label="Navigate to Civic Strategy Briefing blog section"
+            >
+              Blog
             </button>
             <button
               onClick={() => {
                 scrollToSection('contact');
                 document.getElementById('mobile-menu')?.classList.add('hidden');
               }}
-              className="text-[#4B5563] text-[15px] font-medium text-left"
+              className="text-[#4B5563] text-[15px] font-medium text-left hover:text-[#1E3A8F] transition-colors duration-200"
             >
               Contact
             </button>
