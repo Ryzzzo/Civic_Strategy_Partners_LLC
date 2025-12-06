@@ -86,6 +86,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-site-verification" content="1r7B2VRIEobdxhpV8kJw4_sQFujbS2wBHibiAlOAmqQ" />
         <link rel="icon" href="/Civic Strategy Partners Minus LLC.png" type="image/png" />
         <link rel="apple-touch-icon" href="/Civic Strategy Partners Minus LLC.png" />
         <script
