@@ -158,6 +158,7 @@ export default function VideoHeroPreload({
 
       {/* Content - Fades in with video */}
       <div
+        className="hero-content"
         style={{
           opacity: isReady ? 1 : 0,
           transform: isReady ? 'translateY(0)' : 'translateY(20px)',
