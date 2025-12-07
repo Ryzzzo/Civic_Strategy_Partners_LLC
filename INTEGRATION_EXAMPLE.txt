@@ -1,0 +1,182 @@
+// EXAMPLE: How to integrate either solution into your existing app/page.tsx
+// Choose ONE of the solutions below
+
+// ====================================================================
+// OPTION 1: PRELOAD SOLUTION - Simple & Fast
+// ====================================================================
+
+'use client';
+
+import VideoHeroPreload from './components/VideoHeroPreload';
+// ... rest of your imports
+
+export default function Home() {
+  return (
+    <main>
+      {/* Replace your current hero section with this */}
+      <VideoHeroPreload
+        videoSrc="/dc_at_dusk.mp4"
+        mobileFallbackSrc="/CSP_WIDE_Larger_Text.png"
+        mobileFallbackWidth={1277}
+        mobileFallbackHeight={715}
+      >
+        {/* Your existing hero content - just move it inside */}
+        <h1 className="hero-fade-up">Your GSA MAS Contract Won't Sell Itself.</h1>
+        <p className="hero-subline hero-fade-up">
+          Civic Strategy Partners helps you diagnose, fix, and optimize your MAS
+          or federal sales posture—so you stop missing revenue and start performing.
+        </p>
+        <p className="hero-intro hero-fade-up">
+          Most companies think a GSA Schedule will generate sales automatically...
+        </p>
+        <a href="#services" className="cta-button hero-fade-up">Services</a>
+      </VideoHeroPreload>
+
+      {/* Rest of your page sections continue normally */}
+      <section id="services">
+        {/* ... */}
+      </section>
+    </main>
+  );
+}
+
+// ====================================================================
+// OPTION 2: CURTAIN SOLUTION - Premium & Polished (RECOMMENDED)
+// ====================================================================
+
+'use client';
+
+import VideoHeroCurtain from './components/VideoHeroCurtain';
+// ... rest of your imports
+
+export default function Home() {
+  return (
+    <main>
+      {/* Replace your current hero section with this */}
+      <VideoHeroCurtain
+        videoSrc="/dc_at_dusk.mp4"
+        mobileFallbackSrc="/CSP_WIDE_Larger_Text.png"
+        mobileFallbackWidth={1277}
+        mobileFallbackHeight={715}
+        logoSrc="/CSP_WIDE_Larger_Text.png" // Shows during loading
+      >
+        {/* Your existing hero content - just move it inside */}
+        <h1 className="hero-fade-up">Your GSA MAS Contract Won't Sell Itself.</h1>
+        <p className="hero-subline hero-fade-up">
+          Civic Strategy Partners helps you diagnose, fix, and optimize your MAS
+          or federal sales posture—so you stop missing revenue and start performing.
+        </p>
+        <p className="hero-intro hero-fade-up">
+          Most companies think a GSA Schedule will generate sales automatically...
+        </p>
+        <a href="#services" className="cta-button hero-fade-up">Services</a>
+      </VideoHeroCurtain>
+
+      {/* Rest of your page sections continue normally */}
+      <section id="services">
+        {/* ... */}
+      </section>
+    </main>
+  );
+}
+
+// ====================================================================
+// MIGRATION STEPS
+// ====================================================================
+
+/*
+
+STEP 1: Choose your solution (I recommend Curtain for CSP)
+
+STEP 2: In app/page.tsx, find this block:
+  <section className="hero-video">
+    <video ref={videoRef} ...>
+    <div className="hero-content">
+      ... your content ...
+    </div>
+  </section>
+
+STEP 3: Replace with:
+  <VideoHeroCurtain videoSrc="..." ...>
+    ... your content (from inside hero-content div) ...
+  </VideoHeroCurtain>
+
+STEP 4: Remove old code:
+  - videoRef state/ref (no longer needed)
+  - videoLoaded state (handled internally)
+  - useEffect video loading logic (handled internally)
+  - hero-video CSS (replaced by component)
+
+STEP 5: Test on:
+  - Desktop (Chrome, Firefox, Safari)
+  - Mobile (iOS Safari, Chrome Mobile)
+  - Slow connection (Chrome DevTools throttling)
+
+*/
+
+// ====================================================================
+// BEFORE vs AFTER COMPARISON
+// ====================================================================
+
+// ❌ BEFORE (Current problematic code)
+// --------------------------------------------------
+/*
+<section className="hero-video">
+  <div className="absolute inset-0 bg-slate-900 z-0"></div>
+  <video
+    ref={videoRef}
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="auto"
+    className="hero-video-bg loaded hidden md:block"
+  >
+    <source src="/dc_at_dusk.mp4" type="video/mp4" />
+  </video>
+  <div className="block md:hidden absolute inset-0 w-full h-full">
+    <Image src="/CSP_WIDE_Larger_Text.png" ... />
+  </div>
+  <div className="video-overlay"></div>
+  <div className="hero-content">
+    <h1>Your GSA MAS Contract Won't Sell Itself.</h1>
+    <p>Civic Strategy Partners helps you...</p>
+    <a href="#services">Services</a>
+  </div>
+</section>
+*/
+
+// ✅ AFTER (Clean solution)
+// --------------------------------------------------
+/*
+<VideoHeroCurtain
+  videoSrc="/dc_at_dusk.mp4"
+  mobileFallbackSrc="/CSP_WIDE_Larger_Text.png"
+  mobileFallbackWidth={1277}
+  mobileFallbackHeight={715}
+  logoSrc="/CSP_WIDE_Larger_Text.png"
+>
+  <h1>Your GSA MAS Contract Won't Sell Itself.</h1>
+  <p>Civic Strategy Partners helps you...</p>
+  <a href="#services">Services</a>
+</VideoHeroCurtain>
+*/
+
+// ====================================================================
+// OPTIONAL: Add video preload to layout.tsx for even faster loading
+// ====================================================================
+
+/*
+// In app/layout.tsx, add to <head>:
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <head>
+        <link rel="preload" href="/dc_at_dusk.mp4" as="video" type="video/mp4" />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+*/
