@@ -2526,8 +2526,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             <Image
               src="/CSP Simple No Background.png"
               alt="Civic Strategy Partners Logo"
-              width={85}
-              height={85}
+              width={629}
+              height={629}
               priority
               quality={90}
               className={`${scrolled ? 'h-[60px]' : 'h-[85px]'} w-auto object-contain transition-all duration-300`}
@@ -2660,15 +2660,17 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         >
           <source src="/dc_at_dusk.mp4" type="video/mp4" />
         </video>
-        <div
-          className="block md:hidden absolute inset-0 w-full h-full"
-          style={{
-            backgroundImage: 'url(/CSP_WIDE_Larger_Text.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        ></div>
+        <div className="block md:hidden absolute inset-0 w-full h-full">
+          <Image
+            src="/CSP_WIDE_Larger_Text.png"
+            alt="Civic Strategy Partners Hero Background"
+            width={1277}
+            height={715}
+            priority
+            quality={90}
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="video-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-fade-up" style={{ animationDelay: '0.2s' }}>Your GSA MAS Contract Won't Sell Itself.</h1>
@@ -2707,8 +2709,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <Image
                   src="/Civic Strategy Partners Minus LLC.png"
                   alt="Civic Strategy Partners"
-                  width={100}
-                  height={100}
+                  width={1024}
+                  height={1024}
                   priority
                   quality={90}
                   style={{
@@ -2921,8 +2923,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <Image
                   src="/Civic Strategy Partners Minus LLC.png"
                   alt="Civic Strategy Partners"
-                  width={180}
-                  height={180}
+                  width={1024}
+                  height={1024}
                   priority
                   quality={90}
                   style={{ width: '180px', height: 'auto', objectFit: 'contain' }}
@@ -3936,8 +3938,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                         <Image
                           src="/1743701547902.jpeg"
                           alt="Kevin Martin, MBA"
-                          width={36}
-                          height={36}
+                          width={800}
+                          height={799}
                           loading="lazy"
                           quality={85}
                           style={{
@@ -4078,8 +4080,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <Image
                   src="/1743701547902.jpeg"
                   alt="Kevin Martin, MBA"
-                  width={52}
-                  height={52}
+                  width={800}
+                  height={799}
                   loading="lazy"
                   quality={85}
                   style={{
@@ -4310,8 +4312,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <Image
                   src="/1743701547902.jpeg"
                   alt="Kevin Martin - Founder of Civic Strategy Partners"
-                  width={600}
-                  height={600}
+                  width={800}
+                  height={799}
                   loading="lazy"
                   quality={85}
                   className="w-full h-auto object-cover"
