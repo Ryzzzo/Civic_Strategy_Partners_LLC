@@ -1134,12 +1134,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         }
 
         .hero-content h1 {
-          font-size: clamp(24px, 5vw, 52px);
+          font-size: clamp(24px, 4.5vw, 48px);
           font-weight: 800;
           line-height: 1.2;
           letter-spacing: -0.02em;
           margin-bottom: 24px;
           text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+          white-space: nowrap;
         }
 
         @media (max-width: 480px) {
@@ -1150,6 +1151,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           .hero-content h1 {
             font-size: clamp(20px, 5.5vw, 52px);
             letter-spacing: -0.03em;
+            white-space: normal;
           }
         }
 
