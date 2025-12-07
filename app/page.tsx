@@ -2614,6 +2614,7 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
       {/* Hero Section with Video - Advanced Preload */}
       <VideoHeroPreload
         videoSrc="/dc_at_dusk.mp4"
+        videoSrcMobileHigh="/dc_at_dusk.mp4"
         mobileFallbackSrc="/CSP_WIDE_Larger_Text.png"
         mobileFallbackWidth={1277}
         mobileFallbackHeight={715}

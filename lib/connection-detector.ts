@@ -96,13 +96,6 @@ export function determineVideoQuality(
     return 'none';
   }
 
-  if (connectionInfo.quality === 'medium') {
-    if (deviceInfo.memory && deviceInfo.memory < 4) {
-      return 'none';
-    }
-    return 'low';
-  }
-
   if (connectionInfo.quality === 'high') {
     if (deviceInfo.memory && deviceInfo.memory >= 4) {
       return 'high';
@@ -110,7 +103,7 @@ export function determineVideoQuality(
     return 'low';
   }
 
-  return 'low';
+  return 'none';
 }
 
 export function shouldLoadVideo(): boolean {
