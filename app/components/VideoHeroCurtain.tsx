@@ -94,7 +94,7 @@ export default function VideoHeroCurtain({
 
   return (
     <section className="hero-video-curtain">
-      {/* Video Background - Desktop */}
+      {/* Video Background - All Devices */}
       <video
         ref={videoRef}
         autoPlay
@@ -102,7 +102,7 @@ export default function VideoHeroCurtain({
         muted
         playsInline
         preload="auto"
-        className="hero-video-bg hidden md:block"
+        className="hero-video-bg"
         style={{
           position: 'absolute',
           top: 0,
@@ -115,23 +115,6 @@ export default function VideoHeroCurtain({
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
-
-      {/* Static Background - Mobile */}
-      <div className="block md:hidden absolute inset-0 w-full h-full">
-        <Image
-          src={mobileFallbackSrc}
-          alt="Hero Background"
-          width={mobileFallbackWidth}
-          height={mobileFallbackHeight}
-          priority
-          quality={90}
-          className="w-full h-full object-cover"
-          style={{
-            filter: 'blur(8px) brightness(0.4)',
-            opacity: 0.3
-          }}
-        />
-      </div>
 
       {/* Overlay */}
       <div

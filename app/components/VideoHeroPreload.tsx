@@ -122,7 +122,7 @@ export default function VideoHeroPreload({
       {/* Background - Slate for instant render */}
       <div className="absolute inset-0 bg-slate-900 z-0"></div>
 
-      {/* Video Background - Desktop */}
+      {/* Video Background - All Devices */}
       <video
         ref={videoRef}
         autoPlay
@@ -130,7 +130,7 @@ export default function VideoHeroPreload({
         muted
         playsInline
         preload="auto"
-        className={`hero-video-bg ${videoLoaded ? 'loaded' : ''} hidden md:block`}
+        className={`hero-video-bg ${videoLoaded ? 'loaded' : ''}`}
         style={{
           opacity: videoLoaded && isReady ? 1 : 0,
           transition: 'opacity 0.8s ease-in-out'
@@ -138,20 +138,6 @@ export default function VideoHeroPreload({
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
-
-      {/* Static Background - Mobile */}
-      <div className="block md:hidden absolute inset-0 w-full h-full">
-        <Image
-          src={mobileFallbackSrc}
-          alt="Hero Background"
-          width={mobileFallbackWidth}
-          height={mobileFallbackHeight}
-          priority
-          quality={90}
-          className="w-full h-full object-cover opacity-30"
-          style={{ filter: 'blur(8px) brightness(0.4)' }}
-        />
-      </div>
 
       {/* Overlay - Blue theme matching original */}
       <div className="video-overlay"></div>
