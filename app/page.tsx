@@ -246,6 +246,10 @@ Your modification gets filed correctly, approved faster, and implemented properl
     const video = videoRef.current;
     if (!video) return;
 
+    // Only load video on desktop (md breakpoint and above)
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     const handleLoadedMetadata = () => {
       video.playbackRate = 0.5;
     };
@@ -2650,11 +2654,21 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
           loop
           muted
           playsInline
-          preload="metadata"
-          className={`hero-video-bg ${videoLoaded ? 'loaded' : ''}`}
+          preload="none"
+          poster="/CSP_WIDE_Larger_Text.png"
+          className={`hero-video-bg ${videoLoaded ? 'loaded' : ''} hidden md:block`}
         >
           <source src="/dc_at_dusk.mp4" type="video/mp4" />
         </video>
+        <div
+          className="block md:hidden absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: 'url(/CSP_WIDE_Larger_Text.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
         <div className="video-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-fade-up" style={{ animationDelay: '0.2s' }}>Your GSA MAS Contract Won't Sell Itself.</h1>
