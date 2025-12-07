@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { Activity, Map, Briefcase, RefreshCw, Award, Package, Check } from 'lucide-react';
 import Lenis from 'lenis';
 
@@ -2518,9 +2519,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             onClick={scrollToTop}
             className="logo-button flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
           >
-            <img
+            <Image
               src="/CSP Simple No Background.png"
               alt="Civic Strategy Partners Logo"
+              width={85}
+              height={85}
+              priority
+              quality={90}
               className={`${scrolled ? 'h-[60px]' : 'h-[85px]'} w-auto object-contain transition-all duration-300`}
             />
             <div className="text-[#0F172A] font-semibold text-[18px]">
@@ -2685,9 +2690,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 border: '1px solid rgba(59, 130, 246, 0.1)',
                 transition: 'all 0.3s ease'
               }}>
-                <img
+                <Image
                   src="/Civic Strategy Partners Minus LLC.png"
                   alt="Civic Strategy Partners"
+                  width={100}
+                  height={100}
+                  priority
+                  quality={90}
                   style={{
                     width: '100px',
                     height: 'auto',
@@ -2895,7 +2904,15 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <div style={{ position: 'absolute', bottom: '16px', left: '16px', width: '28px', height: '28px', border: '2.5px solid #c9a227', borderRight: 'none', borderTop: 'none', borderRadius: '0 0 0 8px', opacity: 0.6 }} />
                 <div style={{ position: 'absolute', bottom: '16px', right: '16px', width: '28px', height: '28px', border: '2.5px solid #c9a227', borderLeft: 'none', borderTop: 'none', borderRadius: '0 0 8px 0', opacity: 0.6 }} />
 
-                <img src="/Civic Strategy Partners Minus LLC.png" alt="Civic Strategy Partners" style={{ width: '180px', height: 'auto', objectFit: 'contain' }} />
+                <Image
+                  src="/Civic Strategy Partners Minus LLC.png"
+                  alt="Civic Strategy Partners"
+                  width={180}
+                  height={180}
+                  priority
+                  quality={90}
+                  style={{ width: '180px', height: 'auto', objectFit: 'contain' }}
+                />
               </div>
             </div>
 
@@ -3824,9 +3841,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 >
                   {/* Image Container */}
                   <div className="relative overflow-hidden" style={{ height: '200px', backgroundColor: '#1e3a5f' }}>
-                    <img
+                    <Image
                       src={briefing.featuredImage}
                       alt={briefing.title}
+                      width={380}
+                      height={200}
+                      loading="lazy"
+                      quality={85}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       style={{ opacity: 0.95 }}
                     />
@@ -3898,9 +3919,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                       borderTop: '1px solid #f0f4f8'
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <img
+                        <Image
                           src="/1743701547902.jpeg"
                           alt="Kevin Martin, MBA"
+                          width={36}
+                          height={36}
+                          loading="lazy"
+                          quality={85}
                           style={{
                             width: '36px',
                             height: '36px',
@@ -4005,9 +4030,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
 
             {/* Featured Image - Full height to show complete banner */}
             <div style={{ position: 'relative' }}>
-              <img
+              <Image
                 src={selectedBriefing.featuredImage}
                 alt={selectedBriefing.title}
+                width={800}
+                height={350}
+                loading="lazy"
+                quality={85}
                 style={{
                   width: '100%',
                   height: 'auto',
@@ -4032,9 +4061,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             <div style={{ padding: '32px 48px 48px' }}>
               {/* Author & Date */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
-                <img
+                <Image
                   src="/1743701547902.jpeg"
                   alt="Kevin Martin, MBA"
+                  width={52}
+                  height={52}
+                  loading="lazy"
+                  quality={85}
                   style={{
                     width: '52px',
                     height: '52px',
@@ -4217,9 +4250,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
         <div className="about-container max-w-[1200px] mx-auto relative z-10">
           {/* Iraq Photo - Left Side */}
           <div className="about-image">
-            <img
+            <Image
               src="/A714F951-FD08-400C-9B27-FCCB0D74049D.JPG"
               alt="Kevin Martin - Operation Iraqi Freedom"
+              width={600}
+              height={800}
+              loading="lazy"
+              quality={85}
             />
             <p className="image-caption">
               Operation Iraqi Freedom<br />Kevin Martin, USMC
@@ -4256,9 +4293,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             {/* Left: Portrait Image */}
             <div className="order-2 md:order-1">
               <div className="rounded-2xl overflow-hidden shadow-xl">
-                <img
+                <Image
                   src="/1743701547902.jpeg"
                   alt="Kevin Martin - Founder of Civic Strategy Partners"
+                  width={600}
+                  height={600}
+                  loading="lazy"
+                  quality={85}
                   className="w-full h-auto object-cover"
                   style={{ maxHeight: '600px', objectFit: 'cover' }}
                 />
@@ -4597,9 +4638,13 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               ×
             </button>
 
-            <img
+            <Image
               src={currentArticle.imageUrl}
               alt={currentArticle.title}
+              width={850}
+              height={200}
+              loading="lazy"
+              quality={85}
               className="w-full object-cover"
               style={{
                 width: '100%',

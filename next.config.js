@@ -4,7 +4,23 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.hubspot.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.hubspotusercontent.net',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
