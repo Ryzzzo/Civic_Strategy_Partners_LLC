@@ -2,9 +2,18 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import {
+  detectConnectionQuality,
+  detectDeviceCapability,
+  determineVideoQuality,
+  type VideoQuality
+} from '@/lib/connection-detector';
+import { videoPerformanceMonitor } from '@/lib/video-performance-monitor';
 
 interface VideoHeroPreloadProps {
   videoSrc: string;
+  videoSrcMobileLow?: string;
+  videoSrcMobileHigh?: string;
   mobileFallbackSrc: string;
   mobileFallbackWidth: number;
   mobileFallbackHeight: number;
@@ -12,20 +21,23 @@ interface VideoHeroPreloadProps {
 }
 
 /**
- * VideoHeroPreload Component
+ * VideoHeroPreload Component - Adaptive Loading Edition
  *
- * Professional video background with aggressive preloading and smooth loading states.
- * Eliminates FOUC by ensuring video is ready before revealing content.
+ * Professional video background with intelligent quality selection.
+ * Adapts to network conditions and device capabilities.
  *
  * Features:
- * - Preloads video metadata before rendering
+ * - Connection quality detection (3G/4G/5G/WiFi)
+ * - Device capability assessment
+ * - Adaptive video quality selection
  * - Smooth fade-in transitions
- * - Error handling with fallback
- * - Mobile-optimized with static image
- * - Loading state management
+ * - Comprehensive fallback system
+ * - Performance monitoring
  */
 export default function VideoHeroPreload({
   videoSrc,
+  videoSrcMobileLow,
+  videoSrcMobileHigh,
   mobileFallbackSrc,
   mobileFallbackWidth,
   mobileFallbackHeight,
@@ -34,33 +46,70 @@ export default function VideoHeroPreload({
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const [selectedQuality, setSelectedQuality] = useState<VideoQuality>('none');
+  const [loadStartTime, setLoadStartTime] = useState<number>(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Preload video immediately on mount
-    const video = videoRef.current;
-    if (!video) return;
+    const connectionInfo = detectConnectionQuality();
+    const deviceInfo = detectDeviceCapability();
+    const quality = determineVideoQuality(connectionInfo, deviceInfo);
 
-    // Set up event listeners before loading
+    setSelectedQuality(quality);
+
+    if (quality === 'none') {
+      setIsReady(true);
+      return;
+    }
+
+    const video = videoRef.current;
+    if (!video) {
+      setIsReady(true);
+      return;
+    }
+
+    const startTime = Date.now();
+    setLoadStartTime(startTime);
+
     const handleLoadedMetadata = () => {
-      // Set slow motion playback like original
       video.playbackRate = 0.5;
     };
 
     const handleCanPlay = () => {
+      const loadTime = Date.now() - startTime;
+
+      videoPerformanceMonitor.logMetric({
+        quality,
+        loadTime,
+        connectionType: connectionInfo.effectiveType,
+        deviceMemory: deviceInfo.memory,
+        success: true,
+        timestamp: Date.now()
+      });
+
       setVideoLoaded(true);
-      // Small delay to ensure smooth transition
       setTimeout(() => setIsReady(true), 100);
     };
 
-    const handleError = () => {
+    const handleError = (e: Event) => {
+      const loadTime = Date.now() - startTime;
+
+      videoPerformanceMonitor.logMetric({
+        quality,
+        loadTime,
+        connectionType: connectionInfo.effectiveType,
+        deviceMemory: deviceInfo.memory,
+        success: false,
+        error: 'Video load failed',
+        timestamp: Date.now()
+      });
+
       console.warn('Video failed to load, using fallback');
       setVideoError(true);
-      setIsReady(true); // Show content anyway
+      setIsReady(true);
     };
 
     const handleLoadedData = () => {
-      // Video has loaded enough data to play
       setVideoLoaded(true);
     };
 
@@ -69,17 +118,15 @@ export default function VideoHeroPreload({
     video.addEventListener('loadeddata', handleLoadedData);
     video.addEventListener('error', handleError);
 
-    // Trigger load
     video.load();
 
-    // Cleanup
     return () => {
       video.removeEventListener('loadedmetadata', handleLoadedMetadata);
       video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('loadeddata', handleLoadedData);
       video.removeEventListener('error', handleError);
     };
-  }, []);
+  }, [loadStartTime]);
 
   return (
     <section className="hero-video">
@@ -122,36 +169,53 @@ export default function VideoHeroPreload({
       {/* Background - Slate for instant render */}
       <div className="absolute inset-0 bg-slate-900 z-0"></div>
 
-      {/* Video Background - Desktop */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className={`hero-video-bg ${videoLoaded ? 'loaded' : ''} hidden md:block`}
-        style={{
-          opacity: videoLoaded && isReady ? 1 : 0,
-          transition: 'opacity 0.8s ease-in-out'
-        }}
-      >
-        <source src={videoSrc} type="video/mp4" />
-      </video>
+      {/* Video Background - Adaptive Quality */}
+      {selectedQuality !== 'none' && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className={`hero-video-bg ${videoLoaded ? 'loaded' : ''} ${
+            selectedQuality === 'desktop' ? 'hidden md:block' : ''
+          }`}
+          style={{
+            opacity: videoLoaded && isReady ? 1 : 0,
+            transition: 'opacity 0.8s ease-in-out'
+          }}
+        >
+          {selectedQuality === 'desktop' && (
+            <source src={videoSrc} type="video/mp4" />
+          )}
+          {selectedQuality === 'high' && videoSrcMobileHigh && (
+            <source src={videoSrcMobileHigh} type="video/mp4" />
+          )}
+          {selectedQuality === 'low' && videoSrcMobileLow && (
+            <source src={videoSrcMobileLow} type="video/mp4" />
+          )}
+          {selectedQuality === 'low' && !videoSrcMobileLow && videoSrcMobileHigh && (
+            <source src={videoSrcMobileHigh} type="video/mp4" />
+          )}
+        </video>
+      )}
 
-      {/* Static Background - Mobile */}
-      <div className="block md:hidden absolute inset-0 w-full h-full">
-        <Image
-          src={mobileFallbackSrc}
-          alt="Hero Background"
-          width={mobileFallbackWidth}
-          height={mobileFallbackHeight}
-          priority
-          quality={90}
-          className="w-full h-full object-cover opacity-30"
-          style={{ filter: 'blur(8px) brightness(0.4)' }}
-        />
-      </div>
+      {/* Static Background - Fallback for no video or mobile */}
+      {(selectedQuality === 'none' || selectedQuality === 'desktop') && (
+        <div className={selectedQuality === 'desktop' ? 'block md:hidden absolute inset-0 w-full h-full' : 'absolute inset-0 w-full h-full'}>
+          <Image
+            src={mobileFallbackSrc}
+            alt="Hero Background"
+            width={mobileFallbackWidth}
+            height={mobileFallbackHeight}
+            priority
+            quality={90}
+            className="w-full h-full object-cover opacity-30"
+            style={{ filter: 'blur(8px) brightness(0.4)' }}
+          />
+        </div>
+      )}
 
       {/* Overlay - Blue theme matching original */}
       <div className="video-overlay"></div>
