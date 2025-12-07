@@ -55,6 +55,12 @@ export default function VideoHeroPreload({
     const deviceInfo = detectDeviceCapability();
     const quality = determineVideoQuality(connectionInfo, deviceInfo);
 
+    console.log('Video Performance:', {
+      quality,
+      connection: connectionInfo,
+      device: deviceInfo
+    });
+
     setSelectedQuality(quality);
 
     if (quality === 'none') {
@@ -78,6 +84,8 @@ export default function VideoHeroPreload({
     const handleCanPlay = () => {
       const loadTime = Date.now() - startTime;
 
+      console.log('Video loaded successfully:', { quality, loadTime });
+
       videoPerformanceMonitor.logMetric({
         quality,
         loadTime,
@@ -93,6 +101,14 @@ export default function VideoHeroPreload({
 
     const handleError = (e: Event) => {
       const loadTime = Date.now() - startTime;
+
+      console.error('Video failed to load:', {
+        quality,
+        videoSrc,
+        videoSrcMobileHigh,
+        videoSrcMobileLow,
+        error: e
+      });
 
       videoPerformanceMonitor.logMetric({
         quality,
@@ -189,14 +205,11 @@ export default function VideoHeroPreload({
           {selectedQuality === 'desktop' && (
             <source src={videoSrc} type="video/mp4" />
           )}
-          {selectedQuality === 'high' && videoSrcMobileHigh && (
-            <source src={videoSrcMobileHigh} type="video/mp4" />
+          {selectedQuality === 'high' && (
+            <source src={videoSrcMobileHigh || videoSrc} type="video/mp4" />
           )}
-          {selectedQuality === 'low' && videoSrcMobileLow && (
-            <source src={videoSrcMobileLow} type="video/mp4" />
-          )}
-          {selectedQuality === 'low' && !videoSrcMobileLow && videoSrcMobileHigh && (
-            <source src={videoSrcMobileHigh} type="video/mp4" />
+          {selectedQuality === 'low' && (
+            <source src={videoSrcMobileLow || videoSrcMobileHigh || videoSrc} type="video/mp4" />
           )}
         </video>
       )}

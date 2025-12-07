@@ -103,6 +103,10 @@ export function determineVideoQuality(
     return 'low';
   }
 
+  if (connectionInfo.quality === 'medium') {
+    return 'low';
+  }
+
   return 'none';
 }
 
