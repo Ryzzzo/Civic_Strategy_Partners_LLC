@@ -153,7 +153,7 @@ export default function VideoHeroPreload({
           position: 'absolute',
           inset: 0,
           background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-          zIndex: 50,
+          zIndex: 10,
           transition: 'opacity 0.6s ease-out',
           opacity: isReady ? 0 : 1,
           pointerEvents: isReady ? 'none' : 'auto'

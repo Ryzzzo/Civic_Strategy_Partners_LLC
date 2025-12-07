@@ -472,3 +472,24 @@ body > * {
     white-space: normal;
   }
 }
+
+.hero-subline {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  opacity: 0.95;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.hero-intro {
+  font-size: clamp(15px, 1.5vw, 17px);
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  opacity: 0.9;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
