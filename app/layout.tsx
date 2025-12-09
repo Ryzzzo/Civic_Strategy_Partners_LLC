@@ -5,14 +5,14 @@ import { Inter, Playfair_Display } from 'next/font/google';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'optional',
+  display: 'swap',
   preload: true,
   adjustFontFallback: true
 });
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
-  display: 'optional',
+  display: 'swap',
   preload: true,
   adjustFontFallback: true
 });
@@ -89,6 +89,8 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="google-site-verification" content="1r7B2VRIEobdxhpV8kJw4_sQFujbS2wBHibiAlOAmqQ" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" href="/Civic Strategy Partners Minus LLC.png" type="image/png" />
         <link rel="apple-touch-icon" href="/Civic Strategy Partners Minus LLC.png" />
         <script

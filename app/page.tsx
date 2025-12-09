@@ -799,8 +799,6 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
         * {
           margin: 0;
           padding: 0;
