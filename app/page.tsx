@@ -2491,8 +2491,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
               alt="Civic Strategy Partners Logo"
               width={85}
               height={85}
+              quality={90}
               priority
-              quality={85}
               className={`${scrolled ? 'h-[60px]' : 'h-[85px]'} w-auto object-contain transition-all duration-300`}
             />
             <div className="text-[#0F172A] font-semibold text-[18px]">
@@ -2655,8 +2655,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   alt="Civic Strategy Partners"
                   width={100}
                   height={100}
+                  quality={90}
                   loading="lazy"
-                  quality={85}
                   style={{
                     width: '100px',
                     height: 'auto',
@@ -2869,8 +2869,8 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                   alt="Civic Strategy Partners"
                   width={180}
                   height={180}
+                  quality={90}
                   loading="lazy"
-                  quality={85}
                   style={{ width: '180px', height: 'auto', objectFit: 'contain' }}
                 />
               </div>
