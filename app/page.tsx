@@ -2491,10 +2491,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
             <Image
               src="/CSP Simple No Background.png"
               alt="Civic Strategy Partners Logo"
-              width={629}
-              height={629}
+              width={85}
+              height={85}
               priority
-              quality={90}
+              quality={85}
               className={`${scrolled ? 'h-[60px]' : 'h-[85px]'} w-auto object-contain transition-all duration-300`}
             />
             <div className="text-[#0F172A] font-semibold text-[18px]">
@@ -2655,10 +2655,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <Image
                   src="/Civic Strategy Partners Minus LLC.png"
                   alt="Civic Strategy Partners"
-                  width={1024}
-                  height={1024}
-                  priority
-                  quality={90}
+                  width={100}
+                  height={100}
+                  loading="lazy"
+                  quality={85}
                   style={{
                     width: '100px',
                     height: 'auto',
@@ -2869,10 +2869,10 @@ This statement was last updated on ${new Date().toLocaleDateString('en-US', { ye
                 <Image
                   src="/Civic Strategy Partners Minus LLC.png"
                   alt="Civic Strategy Partners"
-                  width={1024}
-                  height={1024}
-                  priority
-                  quality={90}
+                  width={180}
+                  height={180}
+                  loading="lazy"
+                  quality={85}
                   style={{ width: '180px', height: 'auto', objectFit: 'contain' }}
                 />
               </div>
